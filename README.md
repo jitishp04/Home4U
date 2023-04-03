@@ -52,11 +52,21 @@ When you're ready to make this README your own, just edit this file and use the 
 Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
 ## Name
-Choose a self-explaining name for your project.
+HOME4YOU
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+HOME4U is a smart home system that provides users with the experience of monitoring home security from a distance and enjoying smart control of their home through devices, e.g., controlling their home's lights and music from their smartphones.
 
+## Team Information
+Group Number: 16
+Group members:
+* Henrik Lagrosen (guslagrhe@student.gu.se)
+* Shiyao Xin (gusshiyxi@student.gu.se)
+* Jitish Padhya (guspadji@student.gu.se)
+* Jacob Sundelid (gussundeja@student.gu.se)
+* Raghav Tengse (gustengra@student.gu.se)
+* Utkarsh Singh (gussinut@student.gu.se)
+* 
 ## Badges
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 

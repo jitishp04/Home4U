@@ -1,6 +1,6 @@
-# Requirement
+# User Story
 
-<Requirement description>
+<User story>
 
 [Related to: #<issue number>]
 

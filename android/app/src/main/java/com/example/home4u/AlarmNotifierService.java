@@ -15,6 +15,11 @@ public class AlarmNotifierService extends Service {
     }
 
     @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return START_STICKY; // The service will be restarted if it is killed
+    }
+
+    @Override
     public void onCreate() {
         super.onCreate();
 

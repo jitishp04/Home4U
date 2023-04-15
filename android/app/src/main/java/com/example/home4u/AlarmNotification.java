@@ -10,6 +10,7 @@ import android.content.Intent;
 import androidx.core.app.NotificationCompat;
 
 public class AlarmNotification {
+    public static final int NOTIFICATION_ID = 3562988;
     public static final String CHANNEL_NAME = "Alarm notifications";
     public static final String CHANNEL_ID = "alarm_notification_channel";
 

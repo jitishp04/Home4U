@@ -1,0 +1,11 @@
+{
+    "songs": [
+        {
+            "fileName": "example_song_name.wav",
+            "name": "Example song name",
+            "artist": "Example Artist",
+            "album": "Example Album",
+            "length": "4:30"
+        }
+    ]
+}

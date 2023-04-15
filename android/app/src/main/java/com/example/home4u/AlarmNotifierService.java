@@ -8,7 +8,12 @@ import androidx.annotation.Nullable;
 
 public class AlarmNotifierService extends Service {
 
-    AlarmNotifierSub alarmNotifierSub;
+    private static boolean isRunning = false;
+    private AlarmNotifierSub alarmNotifierSub;
+
+    public static boolean isRunning(){
+        return isRunning;
+    }
 
     @Nullable
     @Override
@@ -25,14 +30,18 @@ public class AlarmNotifierService extends Service {
     public void onCreate() {
         super.onCreate();
 
+        assert !isRunning;
+        isRunning = true;
+
         alarmNotifierSub = new AlarmNotifierSub(this);
         alarmNotifierSub.connect();
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroy() { //TODO: this might not be called, find safer lifecycle methods
         super.onDestroy();
 
         alarmNotifierSub.disconnect();
+        isRunning = false;
     }
 }

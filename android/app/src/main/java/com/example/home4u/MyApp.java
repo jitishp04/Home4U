@@ -13,6 +13,10 @@ public class MyApp extends Application {
 
         if(! hasRegisteredNotificationChannels()){
             registerNotificationChannels();
+            PreferenceManager.getDefaultSharedPreferences(this)
+                    .edit()
+                    .putBoolean(HAS_REGISTERED_NOTIFICATION_CHANNEL, true)
+                    .apply();
         }
     }
 

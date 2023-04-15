@@ -31,6 +31,7 @@ public class AlarmNotification {
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentText("Alarm has been triggered")
                 .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setSmallIcon(R.drawable.ic_alarm_notification)
                 .setContentIntent(pendingIntent);
 
         return builder.build();

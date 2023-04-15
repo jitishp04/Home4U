@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 
 public class AlarmNotifierService extends Service {
 
+    AlarmNotifierSub alarmNotifierSub;
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -23,5 +25,14 @@ public class AlarmNotifierService extends Service {
     public void onCreate() {
         super.onCreate();
 
+        alarmNotifierSub = new AlarmNotifierSub(this);
+        alarmNotifierSub.connect();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        alarmNotifierSub.disconnect();
     }
 }

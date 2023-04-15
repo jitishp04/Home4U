@@ -6,7 +6,7 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
-public class AlarmNotificationService extends Service {
+public class AlarmNotifierService extends Service {
 
     @Nullable
     @Override

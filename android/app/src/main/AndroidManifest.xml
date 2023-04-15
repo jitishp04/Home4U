@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -26,6 +31,8 @@
         <service
             android:name=".AlarmNotifierService"
             />
+
+        <service android:name="org.eclipse.paho.android.service.MqttService" />
 
 
         <!-- Inspired by ChatGPT -->

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             this.startService(newIntent);
         }*/
 
-        MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
+        MusicInfoDownloader.downloadAsync(new MusicInfoDownloaderCallback() {
              @Override
              public void onSuccess(JSONObject jsonObject) {
 

@@ -15,9 +15,9 @@ public class MusicInfoDownloader {
     public static final String MUSIC_LIBRARY_URL = "http://192.168.0.135:8080/info.json";
 
 
-    public static void download(MusicInfoDownloaderCallback callback){
+    public static void downloadAsync(MusicInfoDownloaderCallback callback){
         new Thread(() -> {
-            final JSONObject jsonObject = download();
+            final JSONObject jsonObject = downloadSync();
             if(jsonObject == null) {
                 callback.onFailure();
             } else {
@@ -27,7 +27,7 @@ public class MusicInfoDownloader {
     }
 
     // *Inspired by ChatGPT*
-    private static JSONObject download(){
+    private static JSONObject downloadSync(){
         HttpURLConnection urlConnection = null;
         try {
             final URL url = new URL(MUSIC_LIBRARY_URL);

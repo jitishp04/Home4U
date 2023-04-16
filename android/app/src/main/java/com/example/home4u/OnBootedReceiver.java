@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.home4u.alarm.AlarmNotifierService;
+
 import java.util.Objects;
 
 public class OnBootedReceiver extends BroadcastReceiver {

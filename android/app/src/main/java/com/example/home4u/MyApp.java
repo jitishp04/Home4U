@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.example.home4u.alarm.AlarmNotification;
+
 public class MyApp extends Application {
     public static final String HAS_REGISTERED_NOTIFICATION_CHANNEL = "has registered notification channel";
 

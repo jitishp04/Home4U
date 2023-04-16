@@ -31,7 +31,7 @@
         </activity>
 
         <service
-            android:name=".AlarmNotifierService"
+            android:name=".alarm.AlarmNotifierService"
             android:launchMode="singleInstance"
             />
 

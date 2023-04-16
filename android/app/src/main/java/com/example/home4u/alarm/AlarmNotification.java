@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.alarm;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
+
+import com.example.home4u.MainActivity;
+import com.example.home4u.R;
 
 public class AlarmNotification {
     public static final int NOTIFICATION_ID = 3562988;

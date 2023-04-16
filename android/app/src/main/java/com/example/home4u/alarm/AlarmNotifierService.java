@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.alarm;
 
 import android.app.Service;
 import android.content.Intent;

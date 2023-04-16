@@ -2,11 +2,11 @@ package com.example.home4u;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.home4u.alarm.AlarmNotifierService;
+import com.example.home4u.music_info.MusicInfoDownloader;
+import com.example.home4u.music_info.MusicInfoDownloaderCallback;
 
 import org.json.JSONObject;
 

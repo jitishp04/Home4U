@@ -1,6 +1,4 @@
-package com.example.home4u;
-
-import android.util.Log;
+package com.example.home4u.music_info;
 
 import org.json.JSONObject;
 

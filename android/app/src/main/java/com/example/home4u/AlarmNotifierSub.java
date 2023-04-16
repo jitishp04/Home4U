@@ -19,9 +19,9 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class AlarmNotifierSub implements IMqttActionListener, MqttCallback {
     private static final String TAG = AlarmNotifierSub.class.getName();
 
-    public static final String MQTT_SERVER = "";
-    public static final String CLIENT_ID = "";
-    public static final String TOPIC = "";
+    public static final String MQTT_SERVER = "tcp://broker.hivemq.com:1883";
+    public static final String CLIENT_ID = "feajkaef";
+    public static final String TOPIC = "/dit133";
 
     private final MqttClient mqttClient;
     private Context context;
@@ -60,6 +60,7 @@ public class AlarmNotifierSub implements IMqttActionListener, MqttCallback {
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
+        Log.d(TAG, message.toString());
         if (message.toString().equals("motion_detected")) {
             Notification notification = AlarmNotification.create(context);
             NotificationHelper.postNotification(notification, context);

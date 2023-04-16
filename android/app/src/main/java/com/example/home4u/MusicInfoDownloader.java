@@ -23,8 +23,7 @@ public class MusicInfoDownloader {
             if(jsonObject == null) {
                 callback.onFailure();
             } else {
-                callback.onSuccess();
-                Log.w(TAG, jsonObject.toString());
+                callback.onSuccess(jsonObject);
             }
         }).start();
     }
@@ -41,7 +40,6 @@ public class MusicInfoDownloader {
             return new JSONObject(jsonString);
 
         } catch (Exception e) {
-            Log.e(TAG, e.toString());
             e.printStackTrace();
             return null;
         } finally {

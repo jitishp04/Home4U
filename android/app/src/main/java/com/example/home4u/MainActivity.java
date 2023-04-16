@@ -26,15 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
         MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
              @Override
-             public void onSuccess() {
+             public void onSuccess(JSONObject jsonObject) {
 
              }
 
              @Override
              public void onFailure() {
-
+                 Log.e(TAG, "Failed to download music info");
              }
-             }
-        );
+         });
     }
 }

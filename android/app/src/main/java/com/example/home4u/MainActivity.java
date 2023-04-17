@@ -2,16 +2,20 @@ package com.example.home4u;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
+import com.example.home4u.scenes.SceneActivity;
 
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+    private Button sceneMaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +39,17 @@ public class MainActivity extends AppCompatActivity {
                  Log.e(TAG, "Failed to download music info");
              }
          });
+
+        View();
+
+        sceneMaker.setOnClickListener(v -> {
+            Intent sceneActivityIntent = new Intent(MainActivity.this, SceneActivity.class);
+            startActivity(sceneActivityIntent);
+        });
+
+    }
+
+    private void View() {
+        sceneMaker = findViewById(R.id.sceneMaker);
     }
 }

@@ -5,11 +5,16 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 public class AlarmNotifierService extends Service {
 
-    private static final String TAG = AlarmNotifierService.class.getName();
+    private static final String TAG = AlarmNotifierService.class.getSimpleName();
     private static boolean isRunning = false;
     private AlarmNotifierSub alarmNotifierSub;
 
@@ -37,8 +42,18 @@ public class AlarmNotifierService extends Service {
         assert !isRunning;
         isRunning = true;
 
-        alarmNotifierSub = new AlarmNotifierSub(this);
-        alarmNotifierSub.connect();
+        AlarmNotifierWatcher watcher = new AlarmNotifierWatcher();
+        watcher.alarmIsTriggered(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d(TAG, "Value: " + snapshot.getValue(Boolean.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

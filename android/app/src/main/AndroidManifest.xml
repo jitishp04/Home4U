@@ -30,6 +30,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".alarm.AlarmActivity"/>
+
         <service
             android:name=".alarm.AlarmNotifierService"
             android:launchMode="singleInstance"

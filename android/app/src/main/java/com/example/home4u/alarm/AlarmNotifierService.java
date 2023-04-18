@@ -39,10 +39,10 @@ public class AlarmNotifierService extends Service {
     }
 
     private void watchAlarmIsTriggered(){
-        final AlarmNotifierWatcher watcher = new AlarmNotifierWatcher();
-        final Context context = this;
+        final AlarmStateConnection watcher = AlarmStateConnection.getInstance();
+        final Context context = this; //TODO: might cause errors
 
-        watcher.alarmIsTriggered(new ValueEventListener() {
+        watcher.watchAlarmIsTriggered(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final Boolean alarmIsTriggeredWrapped = snapshot.getValue(Boolean.class);
@@ -55,7 +55,7 @@ public class AlarmNotifierService extends Service {
                 Log.v(TAG, "alarmIsTriggered: " + alarmIsTriggered);
 
                 if(alarmIsTriggered) {
-                    AlarmNotification.post(context); //TODO: might cause errors
+                    AlarmNotification.post(context);
                 } else {
                     AlarmNotification.cancel(context);
                 }

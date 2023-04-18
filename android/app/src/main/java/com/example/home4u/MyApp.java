@@ -17,14 +17,10 @@ public class MyApp extends Application {
 
         if(! hasRegisteredNotificationChannels()){
             registerNotificationChannels();
-            PreferenceManager.getDefaultSharedPreferences(this)
-                    .edit()
-                    .putBoolean(HAS_REGISTERED_NOTIFICATION_CHANNEL, true)
-                    .apply();
+            setHasRegisteredNotificationChannels();
         }
 
-        final Intent newIntent = new Intent(this, AlarmNotifierService.class);
-        this.startService(newIntent);
+        startAlarmNotifierService();
     }
 
     private boolean hasRegisteredNotificationChannels(){
@@ -34,5 +30,18 @@ public class MyApp extends Application {
 
     private void registerNotificationChannels(){
         AlarmNotification.createChannel(this);
+    }
+
+    private void setHasRegisteredNotificationChannels(){
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .edit()
+                .putBoolean(HAS_REGISTERED_NOTIFICATION_CHANNEL, true)
+                .apply();
+    }
+
+    //Only one instance of the service will exist, multiple calls has no affect
+    private void startAlarmNotifierService(){
+        final Intent newIntent = new Intent(this, AlarmNotifierService.class);
+        this.startService(newIntent);
     }
 }

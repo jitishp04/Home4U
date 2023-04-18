@@ -9,11 +9,13 @@ public class AlarmNotifierWatcher {
     private final DatabaseReference reference;
 
     public AlarmNotifierWatcher(){
+        final String ALARM_TRIGGERED_KEY = "alarmTriggered";
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reference = database.getReference("alarmTriggered");
+
+        reference = database.getReference(ALARM_TRIGGERED_KEY);
     }
 
     public void alarmIsTriggered(ValueEventListener listener){
-        reference.addListenerForSingleValueEvent(listener);
+        reference.addValueEventListener(listener);
     }
 }

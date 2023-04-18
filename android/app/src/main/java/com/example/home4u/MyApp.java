@@ -1,10 +1,12 @@
 package com.example.home4u;
 
 import android.app.Application;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.home4u.alarm.AlarmNotification;
+import com.example.home4u.alarm.AlarmNotifierService;
 
 public class MyApp extends Application {
     public static final String HAS_REGISTERED_NOTIFICATION_CHANNEL = "has registered notification channel";
@@ -20,6 +22,9 @@ public class MyApp extends Application {
                     .putBoolean(HAS_REGISTERED_NOTIFICATION_CHANNEL, true)
                     .apply();
         }
+
+        final Intent newIntent = new Intent(this, AlarmNotifierService.class);
+        this.startService(newIntent);
     }
 
     private boolean hasRegisteredNotificationChannels(){

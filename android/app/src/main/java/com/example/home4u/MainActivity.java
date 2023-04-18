@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         MusicInfoDownloader.downloadAsync(new MusicInfoDownloaderCallback() {
              @Override
              public void onSuccess(JSONObject jsonObject) {
-
+                Log.v(TAG, jsonObject.toString());
              }
 
              @Override

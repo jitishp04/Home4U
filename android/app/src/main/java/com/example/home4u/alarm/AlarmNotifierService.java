@@ -46,15 +46,19 @@ public class AlarmNotifierService extends Service {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final Boolean alarmIsTriggeredWrapped = snapshot.getValue(Boolean.class);
+
                 if(alarmIsTriggeredWrapped == null){
                     Log.e(TAG, "alarmIsTriggered is null");
                     return;
                 }
                 final boolean alarmIsTriggered = alarmIsTriggeredWrapped;
-
                 Log.v(TAG, "alarmIsTriggered: " + alarmIsTriggered);
 
-                if(alarmIsTriggered) AlarmNotification.post(context); //TODO: might cause errors
+                if(alarmIsTriggered) {
+                    AlarmNotification.post(context); //TODO: might cause errors
+                } else {
+                    AlarmNotification.cancel(context);
+                }
             }
 
             @Override

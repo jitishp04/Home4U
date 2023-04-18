@@ -27,8 +27,6 @@ public class AlarmNotification {
     }
 
 
-
-
     public static void post(Context context){
         Notification notification = create(context);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -46,6 +44,11 @@ public class AlarmNotification {
                 .setContentIntent(pendingIntent);
 
         return builder.build();
+    }
+
+    public static void cancel(Context context){
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(NOTIFICATION_ID);
     }
 
 }

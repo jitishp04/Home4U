@@ -21,6 +21,12 @@
         android:theme="@style/Theme.Home4U"
         tools:targetApi="31">
         <activity
+            android:name=".scenes.ManageScenesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".scenes.AddSceneActivity"
+            android:exported="false" />
+        <activity
             android:name=".scenes.SceneActivity"
             android:exported="false" />
         <activity

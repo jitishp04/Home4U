@@ -1,0 +1,182 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.home4u"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+11-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:5:5-77
+11-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:5:22-74
+12    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+12-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:6:5-81
+12-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:6:22-78
+13    <uses-permission android:name="android.permission.WAKE_LOCK" />
+13-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:8:5-68
+13-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:8:22-65
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:9:5-79
+14-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:9:22-76
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:10:5-67
+15-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:10:22-64
+16    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+16-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:11:5-75
+16-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:11:22-72
+17
+18    <permission
+18-->[androidx.core:core:1.9.0] /Users/h/.gradle/caches/transforms-3/43a64de5a16f642f933aa2c844c81289/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+19        android:name="com.example.home4u.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+19-->[androidx.core:core:1.9.0] /Users/h/.gradle/caches/transforms-3/43a64de5a16f642f933aa2c844c81289/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+20        android:protectionLevel="signature" />
+20-->[androidx.core:core:1.9.0] /Users/h/.gradle/caches/transforms-3/43a64de5a16f642f933aa2c844c81289/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+21
+22    <uses-permission android:name="com.example.home4u.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+22-->[androidx.core:core:1.9.0] /Users/h/.gradle/caches/transforms-3/43a64de5a16f642f933aa2c844c81289/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+22-->[androidx.core:core:1.9.0] /Users/h/.gradle/caches/transforms-3/43a64de5a16f642f933aa2c844c81289/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+23
+24    <application
+24-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:13:5-52:19
+25        android:name="com.example.home4u.MyApp"
+25-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:15:9-30
+26        android:allowBackup="true"
+26-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:14:9-35
+27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+27-->[androidx.core:core:1.9.0] /Users/h/.gradle/caches/transforms-3/43a64de5a16f642f933aa2c844c81289/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+28        android:dataExtractionRules="@xml/data_extraction_rules"
+28-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:16:9-65
+29        android:debuggable="true"
+30        android:extractNativeLibs="false"
+31        android:fullBackupContent="@xml/backup_rules"
+31-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:17:9-54
+32        android:icon="@mipmap/ic_launcher"
+32-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:18:9-43
+33        android:label="@string/app_name"
+33-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:19:9-41
+34        android:supportsRtl="true"
+34-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:20:9-35
+35        android:testOnly="true"
+36        android:theme="@style/Theme.Home4U" >
+36-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:21:9-44
+37        <activity
+37-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:23:9-31:20
+38            android:name="com.example.home4u.MainActivity"
+38-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:24:13-41
+39            android:exported="true" >
+39-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:25:13-36
+40            <intent-filter>
+40-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:26:13-30:29
+41                <action android:name="android.intent.action.MAIN" />
+41-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:27:17-69
+41-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:27:25-66
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:29:17-77
+43-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:29:27-74
+44            </intent-filter>
+45        </activity>
+46        <activity android:name="com.example.home4u.alarm.AlarmActivity" />
+46-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:33:9-56
+46-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:33:19-54
+47
+48        <service
+48-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:35:9-38:15
+49            android:name="com.example.home4u.alarm.AlarmNotifierService"
+49-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:36:13-55
+50            android:launchMode="singleInstance" />
+50-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:37:13-48
+51        <service android:name="org.eclipse.paho.android.service.MqttService" />
+51-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:40:9-80
+51-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:40:18-77
+52
+53        <!-- Inspired by ChatGPT -->
+54        <receiver
+54-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:44:9-51:20
+55            android:name="com.example.home4u.OnBootedReceiver"
+55-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:45:13-45
+56            android:enabled="true"
+56-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:46:13-35
+57            android:exported="false" >
+57-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:47:13-37
+58            <intent-filter>
+58-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:48:13-50:29
+59                <action android:name="android.intent.action.BOOT_COMPLETED" />
+59-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:49:17-79
+59-->/Users/h/Documents/project/android/app/src/main/AndroidManifest.xml:49:25-76
+60            </intent-filter>
+61        </receiver>
+62
+63        <service
+63-->[com.google.firebase:firebase-database:20.2.0] /Users/h/.gradle/caches/transforms-3/d85b861afa91ff52a96a65fa33862d3f/transformed/firebase-database-20.2.0/AndroidManifest.xml:28:9-34:19
+64            android:name="com.google.firebase.components.ComponentDiscoveryService"
+64-->[com.google.firebase:firebase-database:20.2.0] /Users/h/.gradle/caches/transforms-3/d85b861afa91ff52a96a65fa33862d3f/transformed/firebase-database-20.2.0/AndroidManifest.xml:29:13-84
+65            android:directBootAware="true"
+65-->[com.google.firebase:firebase-common:20.3.2] /Users/h/.gradle/caches/transforms-3/9cd0570c92f5b4062f0c1c45c874b6b2/transformed/firebase-common-20.3.2/AndroidManifest.xml:34:13-43
+66            android:exported="false" >
+66-->[com.google.firebase:firebase-database:20.2.0] /Users/h/.gradle/caches/transforms-3/d85b861afa91ff52a96a65fa33862d3f/transformed/firebase-database-20.2.0/AndroidManifest.xml:30:13-37
+67            <meta-data
+67-->[com.google.firebase:firebase-database:20.2.0] /Users/h/.gradle/caches/transforms-3/d85b861afa91ff52a96a65fa33862d3f/transformed/firebase-database-20.2.0/AndroidManifest.xml:31:13-33:85
+68                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+68-->[com.google.firebase:firebase-database:20.2.0] /Users/h/.gradle/caches/transforms-3/d85b861afa91ff52a96a65fa33862d3f/transformed/firebase-database-20.2.0/AndroidManifest.xml:32:17-109
+69                android:value="com.google.firebase.components.ComponentRegistrar" />
+69-->[com.google.firebase:firebase-database:20.2.0] /Users/h/.gradle/caches/transforms-3/d85b861afa91ff52a96a65fa33862d3f/transformed/firebase-database-20.2.0/AndroidManifest.xml:33:17-82
+70        </service>
+71
+72        <activity
+72-->[com.google.android.gms:play-services-base:18.1.0] /Users/h/.gradle/caches/transforms-3/4a7f83fd254fa05cc8acd7d644c57a96/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+73            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+73-->[com.google.android.gms:play-services-base:18.1.0] /Users/h/.gradle/caches/transforms-3/4a7f83fd254fa05cc8acd7d644c57a96/transformed/play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+74            android:exported="false"
+74-->[com.google.android.gms:play-services-base:18.1.0] /Users/h/.gradle/caches/transforms-3/4a7f83fd254fa05cc8acd7d644c57a96/transformed/play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+75            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+75-->[com.google.android.gms:play-services-base:18.1.0] /Users/h/.gradle/caches/transforms-3/4a7f83fd254fa05cc8acd7d644c57a96/transformed/play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+76
+77        <provider
+77-->[com.google.firebase:firebase-common:20.3.2] /Users/h/.gradle/caches/transforms-3/9cd0570c92f5b4062f0c1c45c874b6b2/transformed/firebase-common-20.3.2/AndroidManifest.xml:25:9-30:39
+78            android:name="com.google.firebase.provider.FirebaseInitProvider"
+78-->[com.google.firebase:firebase-common:20.3.2] /Users/h/.gradle/caches/transforms-3/9cd0570c92f5b4062f0c1c45c874b6b2/transformed/firebase-common-20.3.2/AndroidManifest.xml:26:13-77
+79            android:authorities="com.example.home4u.firebaseinitprovider"
+79-->[com.google.firebase:firebase-common:20.3.2] /Users/h/.gradle/caches/transforms-3/9cd0570c92f5b4062f0c1c45c874b6b2/transformed/firebase-common-20.3.2/AndroidManifest.xml:27:13-72
+80            android:directBootAware="true"
+80-->[com.google.firebase:firebase-common:20.3.2] /Users/h/.gradle/caches/transforms-3/9cd0570c92f5b4062f0c1c45c874b6b2/transformed/firebase-common-20.3.2/AndroidManifest.xml:28:13-43
+81            android:exported="false"
+81-->[com.google.firebase:firebase-common:20.3.2] /Users/h/.gradle/caches/transforms-3/9cd0570c92f5b4062f0c1c45c874b6b2/transformed/firebase-common-20.3.2/AndroidManifest.xml:29:13-37
+82            android:initOrder="100" />
+82-->[com.google.firebase:firebase-common:20.3.2] /Users/h/.gradle/caches/transforms-3/9cd0570c92f5b4062f0c1c45c874b6b2/transformed/firebase-common-20.3.2/AndroidManifest.xml:30:13-36
+83
+84        <meta-data
+84-->[com.google.android.gms:play-services-basement:18.1.0] /Users/h/.gradle/caches/transforms-3/ec1d0473320eafbc6e1a7cdc007dfb1a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+85            android:name="com.google.android.gms.version"
+85-->[com.google.android.gms:play-services-basement:18.1.0] /Users/h/.gradle/caches/transforms-3/ec1d0473320eafbc6e1a7cdc007dfb1a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+86            android:value="@integer/google_play_services_version" />
+86-->[com.google.android.gms:play-services-basement:18.1.0] /Users/h/.gradle/caches/transforms-3/ec1d0473320eafbc6e1a7cdc007dfb1a/transformed/play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+87
+88        <provider
+88-->[androidx.emoji2:emoji2:1.2.0] /Users/h/.gradle/caches/transforms-3/721adc9a429ad61e677555b396bca518/transformed/emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+89            android:name="androidx.startup.InitializationProvider"
+89-->[androidx.emoji2:emoji2:1.2.0] /Users/h/.gradle/caches/transforms-3/721adc9a429ad61e677555b396bca518/transformed/emoji2-1.2.0/AndroidManifest.xml:25:13-67
+90            android:authorities="com.example.home4u.androidx-startup"
+90-->[androidx.emoji2:emoji2:1.2.0] /Users/h/.gradle/caches/transforms-3/721adc9a429ad61e677555b396bca518/transformed/emoji2-1.2.0/AndroidManifest.xml:26:13-68
+91            android:exported="false" >
+91-->[androidx.emoji2:emoji2:1.2.0] /Users/h/.gradle/caches/transforms-3/721adc9a429ad61e677555b396bca518/transformed/emoji2-1.2.0/AndroidManifest.xml:27:13-37
+92            <meta-data
+92-->[androidx.emoji2:emoji2:1.2.0] /Users/h/.gradle/caches/transforms-3/721adc9a429ad61e677555b396bca518/transformed/emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+93                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+93-->[androidx.emoji2:emoji2:1.2.0] /Users/h/.gradle/caches/transforms-3/721adc9a429ad61e677555b396bca518/transformed/emoji2-1.2.0/AndroidManifest.xml:30:17-75
+94                android:value="androidx.startup" />
+94-->[androidx.emoji2:emoji2:1.2.0] /Users/h/.gradle/caches/transforms-3/721adc9a429ad61e677555b396bca518/transformed/emoji2-1.2.0/AndroidManifest.xml:31:17-49
+95            <meta-data
+95-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/h/.gradle/caches/transforms-3/0c7b599fb3c37e99776d9726f14f1858/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+96                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+96-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/h/.gradle/caches/transforms-3/0c7b599fb3c37e99776d9726f14f1858/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+97                android:value="androidx.startup" />
+97-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/h/.gradle/caches/transforms-3/0c7b599fb3c37e99776d9726f14f1858/transformed/lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+98        </provider>
+99    </application>
+100
+101</manifest>

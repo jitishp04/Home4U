@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Home4U</string>
+    <string name="Scene_name">scene name</string>
+    <string name="SCENE_NAME">SCENE NAME</string>
+    <string name="Alarm">Alarm</string>
+    <string name="ROUTINES">ROUTINES</string>
+    <string name="SAVE">SAVE</string>
+    <string name="Scenes">Scenes</string>
+    <string name="ADD_SCENE">ADD SCENE</string>
+    <string name="MANAGE_SCENES">MANAGE SCENES</string>
 </resources>

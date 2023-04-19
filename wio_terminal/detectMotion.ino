@@ -6,16 +6,6 @@
 #include"TFT_eSPI.h"
 
 
-void runDetectMotion()
-{
-    if(digitalRead(PIR_MOTION_SENSOR)) {//if it detects the moving people?
-        Serial.println("Motion detected");
-        tft.drawString("Motion detected", 30, 100);
-    }
-    else {
-        Serial.println("Watching");
-        tft.fillScreen(TFT_BLACK);
-        tft.drawString("watching", 30, 100);
-    }
- delay(200);
+bool detectsMotion(){
+  return digitalRead(PIR_MOTION_SENSOR);
 }

@@ -22,8 +22,7 @@ void setupScreen(){
 
 void loop()
 {
-  Serial.println("running");
-
-  //tft.drawString("running", 30, 100);
-  runDetectMotion();
+  if(detectsMotion()){
+    Serial.println("motion detected");
+  }
 }

@@ -6,6 +6,10 @@
 #include"TFT_eSPI.h"
 
 
+void setupMotion(){
+  pinMode(PIR_MOTION_SENSOR, INPUT);
+}
+
 bool detectsMotion(){
   return digitalRead(PIR_MOTION_SENSOR);
 }

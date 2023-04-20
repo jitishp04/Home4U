@@ -9,13 +9,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="486aa07b-b24e-481a-8696-cf20393368aa" name="Changes" comment="" />
+    <list default="true" id="486aa07b-b24e-481a-8696-cf20393368aa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../wio_terminal/detectMotion.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../wio_terminal/detectMotion.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../wio_terminal/wio_terminal.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../wio_terminal/wio_terminal.ino" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[adb-R52T804MKHX-cY2McI._adb-tls-connect._tcp.]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

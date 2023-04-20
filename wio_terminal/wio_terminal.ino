@@ -5,9 +5,9 @@ TFT_eSPI tft;
 
 void setup()
 {
-  pinMode(PIR_MOTION_SENSOR, INPUT);
   Serial.begin(9600); 
 
+  setupMotion();
   setupScreen();
 }
 

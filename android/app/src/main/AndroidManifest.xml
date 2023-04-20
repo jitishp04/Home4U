@@ -31,6 +31,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MusicSelectActivity"/>
+
         <service
             android:name=".alarm.AlarmNotifierService"
             android:launchMode="singleInstance"

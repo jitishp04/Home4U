@@ -40,7 +40,8 @@
         android:text="@string/Alarm"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RoutineTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/RoutineTextView"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:id="@+id/RoutineTextView"
@@ -65,4 +66,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Switch
+        android:id="@+id/modeSwitch"
+        android:layout_width="195dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:text="@string/Dark_mode"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alarmSwitch"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 </androidx.constraintlayout.widget.ConstraintLayout>

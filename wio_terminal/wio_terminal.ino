@@ -1,4 +1,3 @@
-#define PIR_MOTION_SENSOR PIN_WIRE_SCL
 #include"TFT_eSPI.h"
 TFT_eSPI tft;
 
@@ -7,8 +6,11 @@ void setup()
 {
   Serial.begin(9600); 
 
+  setupWifi();
   setupMotion();
   setupScreen();
+
+  downloadSongInfo();
 }
 
 void setupScreen(){
@@ -23,6 +25,7 @@ void setupScreen(){
 void loop()
 {
   if(detectsMotion()){
-    Serial.println("motion detected");
+    myLog("Motion detected");
+    delay(500);
   }
 }

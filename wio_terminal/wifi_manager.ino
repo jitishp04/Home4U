@@ -1,13 +1,14 @@
 #include "myEnv.h"
+#include <rpcWiFi.h>
 
-const char* ssid = SSID; // WiFi Name
+const char* ssid = M_SSID; // WiFi Name
 const char* password = PASSWORD;  // WiFi Password
 
 
 WiFiClient wioClient;
 
 
-void setup_wifi() {
+void setupWifi() {
 
   delay(10);
 

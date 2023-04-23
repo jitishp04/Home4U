@@ -4,13 +4,16 @@ TFT_eSPI tft;
 
 void setup()
 {
-  Serial.begin(9600); 
+  Serial.begin(9600);
+  myLog("== Started ==");
 
   setupWifi();
-  setupMotion();
+  //setupMotion();
   setupScreen();
+  setupAudioPlayer();
 
-  downloadSongInfo();
+  //downloadSongInfo();
+  downloadSong("test.wav");
 }
 
 void setupScreen(){

@@ -1,6 +1,12 @@
-#undef min
+#ifndef SONG_DOWNLOADER_H
+#define SONG_DOWNLOADER_H
+
+
 #include <Seeed_Arduino_FreeRTOS.h>
 #include <FreeRTOS.h>
+#include "logger.cpp"
+
+#undef min //Needed for included HTTPClient
 #include <HTTPClient.h>
 
 
@@ -25,7 +31,7 @@ class SongDownloader{
     void startStreamingTask(String path){
       TaskHandle_t streamSongHandle;
 
-      //mylog("Starting streaming task...");
+      myLog("Starting streaming task...");
 
       StartStreamingTaskParams params = {
         path,
@@ -60,7 +66,7 @@ class SongDownloader{
     }
 
     String* getSongInfo(){
-      //mylog("Started downloading song info...");
+      myLog("Started downloading song info...");
 
       this->http.begin(SONG_INFO_PATH);
       int resCode = http.GET();
@@ -68,14 +74,14 @@ class SongDownloader{
       if(resCode == HTTP_CODE_OK){
 
         String songInfo = http.getString();
-        //mylog("Downloaded song info\n" + songInfo);
+        myLog("Downloaded song info\n" + songInfo);
 
         http.end();
         return &songInfo;
 
       } else {
 
-        //mylog("Failed to download song info: " + String(resCode));
+        myLog("Failed to download song info: " + String(resCode));
 
         http.end();
         return nullptr;
@@ -84,7 +90,7 @@ class SongDownloader{
     }
 
     void streamSong(String fileName){
-      //mylog("Started downloading song...");
+      myLog("Started downloading song...");
 
       const String path = SONGS_DIR_PATH + fileName;
 
@@ -92,7 +98,7 @@ class SongDownloader{
       const int resCode = http.GET();
 
       if(resCode == HTTP_CODE_OK){
-        //mylog("Downloaded song");
+        myLog("Downloaded song");
 
         //Ignores header info of the .wav file
         for (int i = 0; i < 44; i++) {
@@ -104,7 +110,7 @@ class SongDownloader{
         delay(3000);
         
       } else {
-        //mylog("Failed to download song: " + String(resCode));
+        myLog("Failed to download song: " + String(resCode));
       }
     }
 
@@ -115,3 +121,6 @@ class SongDownloader{
       if(bytesRead == 0) return false;
     } 
 };
+
+
+#endif

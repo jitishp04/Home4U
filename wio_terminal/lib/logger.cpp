@@ -1,4 +1,7 @@
 
+#ifndef LOGGER_H
+#define LOGGER_H
+
 void myLog(String message){
   
   // *inspired by chatGpt*
@@ -14,3 +17,7 @@ void myLog(String message){
   String output = timestamp + message;
   Serial.println(output);
 }
+
+#endif
+
+

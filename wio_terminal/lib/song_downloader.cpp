@@ -21,13 +21,17 @@ struct StartStreamingTaskParams {
 
 class SongDownloader{
   private:
+
     const String SONG_LIBRARY_URL = "http://192.168.0.135:8080";//"http://home4u-fa13b.web.app/info.json";
     const String SONG_INFO_PATH = SONG_LIBRARY_URL + "/info.json";
     const String SONGS_DIR_PATH = SONG_LIBRARY_URL + "/songs/";
 
+
     HTTPClient http;
     void (*songStreamCallback)();
 
+
+    //Starts a background task to stream the song
     void startStreamingTask(String path){
       TaskHandle_t streamSongHandle;
 
@@ -39,7 +43,7 @@ class SongDownloader{
       };
 
       xTaskCreate(
-        startStreamSongTask, 
+        startStreamSong, 
         "streamSong", 
         1024, 
         &params, 
@@ -48,25 +52,22 @@ class SongDownloader{
       );
     }
 
-    static void startStreamSongTask(void* params){
+    //Starts the stream song method. Needs to be static to be able to be referenced propperly
+    static void startStreamSong(void* params){
       StartStreamingTaskParams* paramsStruct = static_cast<StartStreamingTaskParams*>(params);
       paramsStruct->instance->streamSong(paramsStruct->path);
     }
 
-    void doStreamTask(){
-      this->songStreamCallback();
-      this->http.end();
-    }
 
   public:
-    const int AUDIO_BUFFER_ENQUEUE_AMT = 16384;
+    const int AUDIO_BUFFER_ENQUEUE_AMT = 16384; //How big audio sample should be downloaded each time
 
     SongDownloader(void (*songStreamCallback)()){
       this->songStreamCallback = songStreamCallback;
     }
 
     String* getSongInfo(){
-      myLog("Started downloading song info...");
+      myLog("Starting to download song info...");
 
       this->http.begin(SONG_INFO_PATH);
       int resCode = http.GET();
@@ -90,9 +91,9 @@ class SongDownloader{
     }
 
     void streamSong(String fileName){
-      myLog("Started downloading song...");
-
       const String path = SONGS_DIR_PATH + fileName;
+
+      myLog("Started downloading song...");
 
       http.begin(SONG_INFO_PATH);
       const int resCode = http.GET();
@@ -107,7 +108,7 @@ class SongDownloader{
 
         startStreamingTask(path);
 
-        delay(3000);
+        delay(3000); //TMP!
         
       } else {
         myLog("Failed to download song: " + String(resCode));

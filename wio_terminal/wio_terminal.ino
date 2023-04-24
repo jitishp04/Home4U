@@ -1,6 +1,6 @@
 #include "TFT_eSPI.h"
 #include "lib/audio_buffer/audio_buffer.h"
-#include "lib/song_downloader/song_downloader.cpp"
+#include "lib/song_downloader.cpp" //the file has to have a .cpp extension, not sure why
 
 TFT_eSPI tft;
 

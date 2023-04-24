@@ -6,6 +6,7 @@
 
 class SongDownloader;
 
+
 struct StartStreamingTaskParams {
   String path;
   SongDownloader* instance;

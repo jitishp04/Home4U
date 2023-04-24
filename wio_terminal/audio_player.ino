@@ -8,38 +8,32 @@ void setupAudioPlayer()
     digitalWrite(SPEAKER,LOW);
 }
 
-int PWM_PERIOD = 62; 
 
-void playBuffer2(uint8_t *data, int dataSize){
-  for (int i = 0; i < dataSize; i++) {
-    int sample = data[i];
-    float dutyCycle = (sample + 32768) / 65535.0;
-    int pulseWidth = dutyCycle * PWM_PERIOD;
-    digitalWrite(SPEAKER, HIGH);
-    delayMicroseconds(pulseWidth);
-    digitalWrite(SPEAKER, LOW);
-    delayMicroseconds(PWM_PERIOD - pulseWidth);
-  }
-}
+void playBuffer(void *input){//AudioBuffer audioBuffer){
+  AudioBuffer audioBuffer = *(AudioBuffer*) input;
+  int int1 = audioBuffer.deque();
+  int int2;
 
-void playBuffer(uint8_t *data, int dataSize){
-  for (int i = 0; i < dataSize; i += 2) {
-    int16_t sample = data[i] | (data[i + 1] << 8);
+  while(audioBuffer.hasNext()){
+    int int2 = audioBuffer.deque();
+
+    //*Inspired by chatGPT
+    int16_t sample = int1 | (int2 << 8);
     int pulseWidth = (sample + 32768) >> 8;
 
     //myLog("sample: " + String(sample) + " pW: " + String(pulseWidth) + " dutyCycle: " + String(dutyCycle));
 
-    for (int j = 0; j < SAMPLE_RATE / 50; j++) {
-      if (pulseWidth > 127) {
-        digitalWrite(SPEAKER, HIGH);
-      } else {
-        digitalWrite(SPEAKER, LOW);
-      }
+    if(pulseWidth > 127){
+      playSound(HIGH);
+    } else {
+      playSound(LOW);
     }
 
+    int1 = int2;
   }
 }
 
 void playSound(int value){
-
+  digitalWrite(SPEAKER, value);
+  delayMicroseconds(100);
 }

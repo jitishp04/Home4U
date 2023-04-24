@@ -1,6 +1,8 @@
-#include"TFT_eSPI.h"
-TFT_eSPI tft;
+#include "TFT_eSPI.h"
+#include "lib/audio_buffer/audio_buffer.h"
+#include "lib/song_downloader/song_downloader.cpp"
 
+TFT_eSPI tft;
 
 void setup()
 {
@@ -12,8 +14,14 @@ void setup()
   setupScreen();
   setupAudioPlayer();
 
-  //downloadSongInfo();
-  downloadSong("test.wav");
+  AudioBuffer audioBuffer;
+  SongDownloader songDownloader(songDownloadCallback);
+  songDownloader.getSongInfo();
+  songDownloader.streamSong("test.wav");
+}
+
+void songDownloadCallback(){
+
 }
 
 void setupScreen(){

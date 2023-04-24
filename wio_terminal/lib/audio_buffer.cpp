@@ -1,3 +1,8 @@
+#ifndef AUDIO_BUFFER_H
+#define AUDIO_BUFFER_H
+
+#include "logger.cpp"
+
 #define AUDIO_BUFFER_SIZE 16384
 #define AUDIO_BUFFER_ENQUEUE_AMT 2048
 
@@ -41,3 +46,6 @@ class AudioBuffer{
       return size != 0;
     }
 };
+
+
+#endif

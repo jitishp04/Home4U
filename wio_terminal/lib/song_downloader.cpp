@@ -60,7 +60,7 @@ class SongDownloader{
 
 
   public:
-    const int AUDIO_BUFFER_ENQUEUE_AMT = 16384; //How big audio sample should be downloaded each time
+    const int SAMPLE_SIZE = 16384; //How big audio sample should be downloaded each time
 
     SongDownloader(void (*songStreamCallback)()){
       this->songStreamCallback = songStreamCallback;
@@ -118,7 +118,7 @@ class SongDownloader{
     bool readSongSample(uint8_t* outputArray){
       if(! http.connected()) return false;
 
-      int bytesRead = http.getStream().readBytes(outputArray, AUDIO_BUFFER_ENQUEUE_AMT);
+      int bytesRead = http.getStream().readBytes(outputArray, SAMPLE_SIZE);
       if(bytesRead == 0) return false;
     } 
 };

@@ -3,30 +3,25 @@
 
 
 #include <Seeed_Arduino_FreeRTOS.h>
-#include <FreeRTOS.h>
+//#include <FreeRTOS.h>
 #include "logger.cpp"
-
 #undef min //Needed for included HTTPClient
 #include <HTTPClient.h>
 
+#define SONG_INFO_PATH "http://192.168.0.135:8081/info.json" //"http://home4u-fa13b.web.app/info.json";
+#define SONGS_DIR_PATH "http://192.168.0.135:8081/songs/"
+#define SONG_SAMPLE_SIZE 1024 //needs to be the same in audio buffer
 
-class SongDownloader;
-
-
-struct StartStreamingTaskParams {
-  String path;
-  SongDownloader* instance;
-};
-
+//Starts the stream song method. Needs to be static to be able to be referenced propperly
+void startStreamHandler(void* params){
+  myLog("Streaming task running");
+  //SongDownloader* songDownloader = static_cast<SongDownloader*>(params);
+  //songDownloader->streamHandler();
+  vTaskDelete(NULL); //crashes without this
+}
 
 class SongDownloader{
   private:
-
-    const String SONG_LIBRARY_URL = "http://192.168.0.135:8080";//"http://home4u-fa13b.web.app/info.json";
-    const String SONG_INFO_PATH = SONG_LIBRARY_URL + "/info.json";
-    const String SONGS_DIR_PATH = SONG_LIBRARY_URL + "/songs/";
-
-
     HTTPClient http;
     void (*songStreamCallback)();
 
@@ -35,33 +30,36 @@ class SongDownloader{
     void startStreamingTask(String path){
       TaskHandle_t streamSongHandle;
 
-      myLog("Starting streaming task...");
+      myLog("Starting streaming task 1...");
 
-      StartStreamingTaskParams params = {
-        path,
-        this
-      };
-
-      xTaskCreate(
-        startStreamSong, 
+      BaseType_t status = xTaskCreate(
+        startStreamHandler, 
         "streamSong", 
-        1024, 
-        &params, 
-        2, 
-        &streamSongHandle
+        2048, 
+        NULL, //this, 
+        tskIDLE_PRIORITY + 10, 
+        NULL
       );
+
+      if(status != pdPASS) {
+        myLog("ERR: Failed to create task!");
+        return;
+      }
+
+      myLog("f1");
+      vTaskStartScheduler();
+      myLog("f2");
     }
 
-    //Starts the stream song method. Needs to be static to be able to be referenced propperly
-    static void startStreamSong(void* params){
-      StartStreamingTaskParams* paramsStruct = static_cast<StartStreamingTaskParams*>(params);
-      paramsStruct->instance->streamSong(paramsStruct->path);
+
+    //This method is run in a different ~thread~
+    void streamHandler(){
+      songStreamCallback();
+      this->http.end();
     }
 
 
   public:
-    const int SAMPLE_SIZE = 16384; //How big audio sample should be downloaded each time
-
     SongDownloader(void (*songStreamCallback)()){
       this->songStreamCallback = songStreamCallback;
     }
@@ -99,7 +97,7 @@ class SongDownloader{
       const int resCode = http.GET();
 
       if(resCode == HTTP_CODE_OK){
-        myLog("Downloaded song");
+        myLog("resCode 200");
 
         //Ignores header info of the .wav file
         for (int i = 0; i < 44; i++) {
@@ -107,8 +105,6 @@ class SongDownloader{
         }
 
         startStreamingTask(path);
-
-        delay(3000); //TMP!
         
       } else {
         myLog("Failed to download song: " + String(resCode));
@@ -118,8 +114,9 @@ class SongDownloader{
     bool readSongSample(uint8_t* outputArray){
       if(! http.connected()) return false;
 
-      int bytesRead = http.getStream().readBytes(outputArray, SAMPLE_SIZE);
+      int bytesRead = http.getStream().readBytes(outputArray, SONG_SAMPLE_SIZE);
       if(bytesRead == 0) return false;
+      return true;
     } 
 };
 

@@ -10,7 +10,7 @@ WiFiClient wioClient;
 
 void setupWifi() {
 
-  delay(100);
+  delay(400); // The connection is more reliable with this delay, for some reason
 
   //tft.setTextSize(2);
   //tft.setCursor((320 - tft.textWidth("Connecting to Wi-Fi..")) / 2, 120);

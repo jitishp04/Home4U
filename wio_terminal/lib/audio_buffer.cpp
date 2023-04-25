@@ -3,8 +3,8 @@
 
 #include "logger.cpp"
 
-#define AUDIO_BUFFER_SIZE 16384
-#define AUDIO_BUFFER_ENQUEUE_AMT 2048
+#define AUDIO_BUFFER_SIZE 4096 //16384 
+#define AUDIO_BUFFER_ENQUEUE_AMT 1024
 
 class AudioBuffer{
   private:
@@ -32,6 +32,10 @@ class AudioBuffer{
     }
 
     uint8_t deque(){
+      if(size == 0){
+        myLog("ERR: Dequeue on empty queue!");
+        return -1;
+      }
       uint8_t item = array[front];
       front = incIndex(front);
       size--;
@@ -39,7 +43,7 @@ class AudioBuffer{
     }
 
     bool isQueueFull(){
-      return size+1 == AUDIO_BUFFER_SIZE;
+      return size + AUDIO_BUFFER_ENQUEUE_AMT >= AUDIO_BUFFER_SIZE;
     }
 
     bool hasNext(){

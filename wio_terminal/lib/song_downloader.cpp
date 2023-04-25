@@ -12,13 +12,8 @@
 #define SONGS_DIR_PATH "http://192.168.0.135:8081/songs/"
 #define SONG_SAMPLE_SIZE 1024 //needs to be the same in audio buffer
 
-//Starts the stream song method. Needs to be static to be able to be referenced propperly
-void startStreamHandler(void* params){
-  myLog("Streaming task running");
-  //SongDownloader* songDownloader = static_cast<SongDownloader*>(params);
-  //songDownloader->streamHandler();
-  vTaskDelete(NULL); //crashes without this
-}
+
+void startStreamHandler(void* params);
 
 class SongDownloader{
   private:
@@ -36,7 +31,7 @@ class SongDownloader{
         startStreamHandler, 
         "streamSong", 
         2048, 
-        NULL, //this, 
+        this, 
         tskIDLE_PRIORITY + 10, 
         NULL
       );
@@ -46,17 +41,10 @@ class SongDownloader{
         return;
       }
 
-      myLog("f1");
       vTaskStartScheduler();
       myLog("f2");
     }
 
-
-    //This method is run in a different ~thread~
-    void streamHandler(){
-      songStreamCallback();
-      this->http.end();
-    }
 
 
   public:
@@ -111,6 +99,12 @@ class SongDownloader{
       }
     }
 
+    //This method is run in a different ~thread~
+    void streamHandler(){
+      songStreamCallback();
+      this->http.end();
+    }
+
     bool readSongSample(uint8_t* outputArray){
       if(! http.connected()) return false;
 
@@ -119,6 +113,15 @@ class SongDownloader{
       return true;
     } 
 };
+
+
+//Starts the stream song method. Needs to be static to be able to be referenced propperly
+void startStreamHandler(void* params){
+  myLog("Streaming task running");
+  SongDownloader* songDownloader = static_cast<SongDownloader*>(params);
+  songDownloader->streamHandler();
+  vTaskDelete(NULL); //crashes without this
+}
 
 
 #endif

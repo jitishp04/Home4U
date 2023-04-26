@@ -3,8 +3,8 @@
 
 #include "logger.cpp"
 
-#define AUDIO_BUFFER_SIZE 4096 //16384 
-#define AUDIO_BUFFER_ENQUEUE_AMT 1024
+#define AUDIO_BUFFER_SIZE 2048 //16384 
+#define AUDIO_BUFFER_ENQUEUE_AMT 177
 
 class AudioBuffer{
   private:

@@ -28,7 +28,7 @@ String getPayload(){
 
 }
 
-void callback(char* topic, byte* payload, unsigned int length) {
+void startStreamSongcallback(char* topic, byte* payload, unsigned int length) {
   tft.fillScreen(TFT_BLACK);
   Serial.print("Message arrived [");
   Serial.print(topic);

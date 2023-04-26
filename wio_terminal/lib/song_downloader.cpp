@@ -8,9 +8,9 @@
 #undef min //Needed for included HTTPClient
 #include <HTTPClient.h>
 
-#define SONG_INFO_PATH "http://192.168.0.135:8081/info.json" //"http://home4u-fa13b.web.app/info.json";
-#define SONGS_DIR_PATH "http://192.168.0.135:8081/songs/"
-#define SONG_SAMPLE_SIZE 1024 //needs to be the same in audio buffer
+#define SONG_INFO_PATH "http://192.168.0.135:8080/info.json" //"http://home4u-fa13b.web.app/info.json";
+#define SONGS_DIR_PATH "http://192.168.0.135:8080/songs/"
+#define SONG_SAMPLE_SIZE 177 //needs to be the same in audio buffer
 
 
 void startStreamHandler(void* params);
@@ -23,26 +23,27 @@ class SongDownloader{
 
     //Starts a background task to stream the song
     void startStreamingTask(String path){
-      TaskHandle_t streamSongHandle;
+      //TaskHandle_t streamSongHandle;
 
-      myLog("Starting streaming task 1...");
+      myLog("Starting streaming task...");
 
-      BaseType_t status = xTaskCreate(
-        startStreamHandler, 
-        "streamSong", 
-        2048, 
-        this, 
-        tskIDLE_PRIORITY + 10, 
-        NULL
-      );
+      streamHandler(this);
 
-      if(status != pdPASS) {
-        myLog("ERR: Failed to create task!");
-        return;
-      }
+      // BaseType_t status = xTaskCreate(
+      //   SongDownloader::streamHandler, 
+      //   "streamSong", 
+      //   4096, 
+      //   this, 
+      //   tskIDLE_PRIORITY + 10, //won't start if too low
+      //   NULL
+      // );
 
-      vTaskStartScheduler();
-      myLog("f2");
+      // if(status != pdPASS) {
+      //   myLog("ERR: Failed to create task!");
+      //   return;
+      // }
+
+      // vTaskStartScheduler();
     }
 
 
@@ -79,9 +80,10 @@ class SongDownloader{
     void streamSong(String fileName){
       const String path = SONGS_DIR_PATH + fileName;
 
-      myLog("Started downloading song...");
+      myLog("Started downloading " + path);
 
       http.begin(SONG_INFO_PATH);
+      http.setTimeout(5000);
       const int resCode = http.GET();
 
       if(resCode == HTTP_CODE_OK){
@@ -99,29 +101,44 @@ class SongDownloader{
       }
     }
 
-    //This method is run in a different ~thread~
-    void streamHandler(){
-      songStreamCallback();
-      this->http.end();
+    //Starts the stream song method. Needs to be static to be able to be referenced propperly
+    static void streamHandler(void* params){
+      myLog("Streaming task running");
+      SongDownloader* songDownloader = static_cast<SongDownloader*>(params);
+
+      songDownloader->songStreamCallback();
+      myLog("Callback completed, closing connection...");
+      songDownloader->http.end();
+
+      vTaskDelete(NULL); //crashes without this
     }
 
-    bool readSongSample(uint8_t* outputArray){
-      if(! http.connected()) return false;
 
-      int bytesRead = http.getStream().readBytes(outputArray, SONG_SAMPLE_SIZE);
-      if(bytesRead == 0) return false;
+    bool readSongSample(uint8_t* outputArray){
+      myLog("readSongSample");
+      if(! http.connected()) {
+        myLog("told you");
+        return false;
+      }
+      myLog("j4");
+
+      int bytesAvailable = http.getStream().available();
+      while(bytesAvailable < SONG_SAMPLE_SIZE){
+        myLog("not enough bytes: " + String(bytesAvailable));
+        delay(300);
+        bytesAvailable = http.getStream().available();
+        myLog("No clue");
+      }
+
+      myLog("enough bytes: " + String(bytesAvailable));
+      int bytesRead = http.getStream().read(outputArray, min(bytesAvailable, SONG_SAMPLE_SIZE));
+      myLog("j5");
       return true;
     } 
 };
 
 
-//Starts the stream song method. Needs to be static to be able to be referenced propperly
-void startStreamHandler(void* params){
-  myLog("Streaming task running");
-  SongDownloader* songDownloader = static_cast<SongDownloader*>(params);
-  songDownloader->streamHandler();
-  vTaskDelete(NULL); //crashes without this
-}
+
 
 
 #endif

@@ -5,37 +5,40 @@
 
 //TFT_eSPI tft;
 SongDownloader songDownloader(songDownloadCallback);
-//AudioBuffer audioBuffer;
+AudioBuffer audioBuffer;
 
 void setup()
 {
   Serial.begin(9600);
+  while(!Serial) ;
+
   myLog("== Started ==");
 
   setupWifi();
   //setupMotion();
   //setupScreen();
-  setupAudioPlayer();
+  //setupAudioPlayer();
 
   //songDownloader.getSongInfo();
   songDownloader.streamSong("test.wav");
-  myLog("1");
   //playBuffer(audioBuffer);
-  myLog("2");
 }
 
 void songDownloadCallback(){
   myLog("songDownloaderCallback");
-  // bool couldDownload;
-  // do{
-  //   while(audioBuffer.isQueueFull()){
-  //     myLog("Audio buffer is full");
-  //     delay(300); //pauses both tasks?
-  //   }
-  //   uint8_t* enqueuePtr = audioBuffer.enqueuePtr();
-  //   couldDownload = songDownloader.readSongSample(enqueuePtr);
-  //   myLog("Downloaded song sample");
-  // } while(couldDownload);
+  bool couldDownload;
+  do{
+    myLog("Looped callback");
+    while(audioBuffer.isQueueFull()){
+      myLog("Audio buffer is full");
+      delay(300); //pauses both tasks?
+    }
+    myLog("buffer not full");
+    uint8_t* enqueuePtr = audioBuffer.enqueuePtr();
+    myLog("got ptr");
+    couldDownload = songDownloader.readSongSample(enqueuePtr);
+    myLog("Did download something: ");
+  } while(couldDownload);
 }
 
 void setupScreen(){

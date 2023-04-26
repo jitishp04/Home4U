@@ -84,14 +84,9 @@ class SongDownloader{
     }
 
 
-    bool readSongSample(uint8_t* outputArray){
-      if(! http.connected()) {
-        return false;
-      }
-
-      int bytesRead = http.getStream().read();
-      myLog("byte read: " + String(bytesRead));
-      return true;
+    // returns -1 when no more data available
+    int readSongSample(){
+      return http.getStream().read();
     } 
 };
 

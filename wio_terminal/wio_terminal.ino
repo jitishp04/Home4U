@@ -1,11 +1,12 @@
 //#include "TFT_eSPI.h"
-#include "lib/audio_buffer.cpp"
+//#include "lib/audio_buffer.cpp"
 #include "lib/song_downloader.cpp" //the file has to have a .cpp extension, not sure why
 #include "lib/logger.cpp"
+#include <HTTPClient.h>
 
 //TFT_eSPI tft;
 SongDownloader songDownloader(songDownloadCallback);
-AudioBuffer audioBuffer;
+//AudioBuffer audioBuffer;
 
 void setup()
 {
@@ -24,16 +25,15 @@ void setup()
   //playBuffer(audioBuffer);
 }
 
-uint8_t outputArray[1000];
 
 void songDownloadCallback(){
-  bool couldDownload;
+  int sample;
   do{
     //uint8_t* enqueuePtr = audioBuffer.enqueuePtr();
-    myLog("got ptr");
-    couldDownload = songDownloader.readSongSample(outputArray);
-    //myLog("Did download something: " + String(outputArray[0]));
-  } while(couldDownload);
+    sample = songDownloader.readSongSample();
+    playSample(sample);
+    //myLog("Did download something: " + String(sample));
+  } while(sample != -1);
 }
 
 void setupScreen(){

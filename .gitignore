@@ -15,3 +15,9 @@
 local.properties
 /.idea
 /.idea/*
+*/.idea/*
+
+/ignored
+
+#IMPORTANT!
+myEnv.h

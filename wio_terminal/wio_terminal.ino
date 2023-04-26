@@ -24,20 +24,15 @@ void setup()
   //playBuffer(audioBuffer);
 }
 
+uint8_t outputArray[1000];
+
 void songDownloadCallback(){
-  myLog("songDownloaderCallback");
   bool couldDownload;
   do{
-    myLog("Looped callback");
-    while(audioBuffer.isQueueFull()){
-      myLog("Audio buffer is full");
-      delay(300); //pauses both tasks?
-    }
-    myLog("buffer not full");
-    uint8_t* enqueuePtr = audioBuffer.enqueuePtr();
+    //uint8_t* enqueuePtr = audioBuffer.enqueuePtr();
     myLog("got ptr");
-    couldDownload = songDownloader.readSongSample(enqueuePtr);
-    myLog("Did download something: ");
+    couldDownload = songDownloader.readSongSample(outputArray);
+    //myLog("Did download something: " + String(outputArray[0]));
   } while(couldDownload);
 }
 

@@ -13,14 +13,12 @@
 void startStreamHandler(void* params);
 
 class SongDownloader{
-  private:
-    
 
   public:
     SongDownloader(){}
 
     String* getSongInfo(){
-      myLog("Starting to download song info...");
+      myLog("Downloading song info...");
 
       HTTPClient http;
       http.begin(SONG_INFO_PATH);
@@ -61,11 +59,14 @@ class SongDownloader{
           stream.read();
         }
 
+        //Calles callback
         SongDownloaderReader* reader = new SongDownloaderReader(stream);
         songStreamCallback(reader);
 
+        //Closes connection and cleans up
         delete reader;
         http.end();
+
       } else {
         myLog("Failed to download song: " + String(resCode));
       }

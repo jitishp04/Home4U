@@ -4,17 +4,16 @@
 
 void setupAudioPlayer()
 {
-    pinMode(SPEAKER,OUTPUT);
-    digitalWrite(SPEAKER,LOW);
+    pinMode(SPEAKER, OUTPUT);
+    digitalWrite(SPEAKER, LOW);
 }
 
-int lastInt = 0; //TMP!
+int lastInt = 0;
 void playSample(int input){
+
   //*Inspired by chatGPT*
   int16_t sample = lastInt | (input << 8);
   int pulseWidth = (sample + 32768) >> 8;
-
-  //myLog("sample: " + String(sample) + " pW: " + String(pulseWidth));
 
   if(pulseWidth > 127){
     playSound(HIGH);

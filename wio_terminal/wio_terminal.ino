@@ -17,10 +17,10 @@ void setup()
 
   setupWifi();
   //setupMotion();
-  //setupScreen();
+  setupScreen();
   setupAudioPlayer();
 
-  //songDownloader.getSongInfo();
+  songDownloader.getSongInfo();
   songDownloader.streamSong("bit.wav", songDownloadCallback);
 }
 

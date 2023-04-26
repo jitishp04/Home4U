@@ -1,48 +1,45 @@
-//#include "TFT_eSPI.h"
-//#include "lib/audio_buffer.cpp"
+#include "TFT_eSPI.h"
 #include "lib/song_downloader.cpp" //the file has to have a .cpp extension, not sure why
 #include "lib/logger.cpp"
-#include <HTTPClient.h>
+#include "lib/song_downloader_reader.cpp"
+#undef read
 
-//TFT_eSPI tft;
-SongDownloader songDownloader(songDownloadCallback);
-//AudioBuffer audioBuffer;
+TFT_eSPI tft;
+SongDownloader songDownloader;
 
 void setup()
 {
   Serial.begin(9600);
-  while(!Serial) ;
+  while(!Serial) ; //Wait until serial is open
 
+  Serial.println();
   myLog("== Started ==");
 
   setupWifi();
   //setupMotion();
   //setupScreen();
-  //setupAudioPlayer();
+  setupAudioPlayer();
 
   //songDownloader.getSongInfo();
-  songDownloader.streamSong("test.wav");
-  //playBuffer(audioBuffer);
+  songDownloader.streamSong("bit.wav", songDownloadCallback);
 }
 
 
-void songDownloadCallback(){
+void songDownloadCallback(SongDownloaderReader* songSampleReader){
   int sample;
   do{
-    //uint8_t* enqueuePtr = audioBuffer.enqueuePtr();
-    sample = songDownloader.readSongSample();
+    sample = songSampleReader->read();
     playSample(sample);
-    //myLog("Did download something: " + String(sample));
   } while(sample != -1);
 }
 
 void setupScreen(){
-  // tft.begin();
-  // tft.setRotation(3);
+  tft.begin();
+  tft.setRotation(3);
 
-  // tft.fillScreen(TFT_BLACK);
-  // tft.setTextColor(TFT_WHITE);
-  // tft.setTextSize(3); 
+  tft.fillScreen(TFT_BLACK);
+  tft.setTextColor(TFT_WHITE);
+  tft.setTextSize(3); 
 }
 
 void loop()

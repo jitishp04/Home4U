@@ -1,8 +1,5 @@
-/*macro definition of Speaker pin*/
-#include "lib/audio_buffer.cpp"
 
 #define SPEAKER PIN_WIRE_SCL
-#define SAMPLE_RATE 16000
 
 
 void setupAudioPlayer()
@@ -13,7 +10,7 @@ void setupAudioPlayer()
 
 int lastInt = 0; //TMP!
 void playSample(int input){
-  //*Inspired by chatGPT
+  //*Inspired by chatGPT*
   int16_t sample = lastInt | (input << 8);
   int pulseWidth = (sample + 32768) >> 8;
 
@@ -31,5 +28,5 @@ void playSample(int input){
 
 void playSound(int value){
   digitalWrite(SPEAKER, value);
-  delayMicroseconds(100);
+  delayMicroseconds(200);
 }

@@ -1,34 +1,28 @@
 #ifndef SONG_DOWNLOADER_H
 #define SONG_DOWNLOADER_H
 
-
-//#include <Seeed_Arduino_FreeRTOS.h>
-//#include <FreeRTOS.h>
 #include "logger.cpp"
+#include "song_downloader_reader.cpp"
 #undef min //Needed for included HTTPClient
 #include <HTTPClient.h>
 
 #define SONG_INFO_PATH "http://192.168.0.135:8080/info.json" //"http://home4u-fa13b.web.app/info.json";
 #define SONGS_DIR_PATH "http://192.168.0.135:8080/songs/"
-#define SONG_SAMPLE_SIZE 177 //needs to be the same in audio buffer
 
 
 void startStreamHandler(void* params);
 
 class SongDownloader{
   private:
-    void (*songStreamCallback)();
-    HTTPClient http;
-
+    
 
   public:
-    SongDownloader(void (*songStreamCallback)()){
-      this->songStreamCallback = songStreamCallback;
-    }
+    SongDownloader(){}
 
     String* getSongInfo(){
       myLog("Starting to download song info...");
 
+      HTTPClient http;
       http.begin(SONG_INFO_PATH);
       int resCode = http.GET();
 
@@ -41,53 +35,41 @@ class SongDownloader{
         return &songInfo;
 
       } else {
-
         myLog("Failed to download song info: " + String(resCode));
 
         http.end();
         return nullptr;
-
       }
     }
 
-    void streamSong(String fileName){
+    void streamSong(String fileName, void (*songStreamCallback)(SongDownloaderReader*)){
       const String path = SONGS_DIR_PATH + fileName;
+      myLog("Started streaming " + path);
 
-      myLog("Started downloading " + path);
-
+      //Makes a connection
+      HTTPClient http;
       http.begin(path);
       http.setTimeout(5000);
       const int resCode = http.GET();
 
       if(resCode == HTTP_CODE_OK){
-        myLog("resCode 200");
+        myLog("Response: 200");
+        Stream& stream = http.getStream();
 
-        //Ignores header info of the .wav file
+        //Ignores header info of the .wav file, which is always 44 bytes long
         for (int i = 0; i < 44; i++) {
-          http.getStream().read();
+          stream.read();
         }
 
-        streamHandler();
-        
+        SongDownloaderReader* reader = new SongDownloaderReader(stream);
+        songStreamCallback(reader);
+
+        delete reader;
+        http.end();
       } else {
         myLog("Failed to download song: " + String(resCode));
       }
     }
-
-    //Starts the stream song method. Needs to be static to be able to be referenced propperly
-    void streamHandler(){
-      Stream& stream = http.getStream();
-
-      this->songStreamCallback();
-      myLog("Callback completed, closing connection...");
-      http.end();
-    }
-
-
-    // returns -1 when no more data available
-    int readSongSample(){
-      return http.getStream().read();
-    } 
 };
 
 

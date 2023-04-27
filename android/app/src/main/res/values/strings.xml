@@ -1,12 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Home4U</string>
-    <string name="Scene_name">scene name</string>
-    <string name="SCENE_NAME">SCENE NAME</string>
-    <string name="Alarm">Alarm</string>
-    <string name="ROUTINES">ROUTINES</string>
-    <string name="SAVE">SAVE</string>
-    <string name="Scenes">Scenes</string>
-    <string name="ADD_SCENE">ADD SCENE</string>
-    <string name="MANAGE_SCENES">MANAGE SCENES</string>
-    <string name="Dark_mode">Dark mode</string>
+	<!-- newscenecreator strings -->
+
+	<string name="app_name">Add Scene</string>
+	<string name="ek_img_content">ExportKit Image</string>
+	<string name="new_scene_string">New Scene</string>
+	<string name="set_scene_duration_string">Set Scene duration</string>
+	<string name="play_music_string">Play Music</string>
+	<string name="___string">:</string>
+	<string name="___ek1_string">:</string>
+	<string name="start_string">Start</string>
+	<string name="end_string">End</string>
+	<string name="scene_name_string">Scene name</string>
+	<string name="set_security_string">Set Security </string>
+	<string name="w_string">W</string>
+	<string name="w_ek1_string">W</string>
+	<string name="save_string">Save</string>
+	<string name="sa_string">Sa</string>
+	<string name="su_string">Su</string>
+	<string name="th_string">Th</string>
+	<string name="f_string">F</string>
+	<string name="m_string">M</string>
+	<string name="t_string">T</string>
+    <string name="rectangle_7">End_time_box</string>
+	<string name="border_color">border_color</string>
+	<string name="monday">M</string>
+	<string name="wednesday">W</string>
+	<string name="thursday">Th</string>
+	<string name="tuesday">T</string>
+	<string name="saturday">S</string>
+	<string name="sunday">Su</string>
+	<string name="friday">F</string>
+    <string name="scene_name">Scene Name</string>
+	<string name="time">Time</string>
+	<string name="backbutton">backButton</string>
+    <string name="Scenes">Scenes\n</string>
 </resources>

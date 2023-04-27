@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
-import com.example.home4u.scenes.SceneActivity;
+import com.example.home4u.scenes.newscenecreator_activity;
 
 import org.json.JSONObject;
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         View();
 
         sceneMaker.setOnClickListener(v -> {
-            Intent sceneActivityIntent = new Intent(MainActivity.this, SceneActivity.class);
+            Intent sceneActivityIntent = new Intent(MainActivity.this, newscenecreator_activity.class);
             startActivity(sceneActivityIntent);
         });
 

@@ -22,4 +22,17 @@
 	<string name="f_string">F</string>
 	<string name="m_string">M</string>
 	<string name="t_string">T</string>
+    <string name="rectangle_7">End_time_box</string>
+	<string name="border_color">border_color</string>
+	<string name="monday">M</string>
+	<string name="wednesday">W</string>
+	<string name="thursday">Th</string>
+	<string name="tuesday">T</string>
+	<string name="saturday">S</string>
+	<string name="sunday">Su</string>
+	<string name="friday">F</string>
+    <string name="scene_name">Scene Name</string>
+	<string name="time">Time</string>
+	<string name="backbutton">backButton</string>
+    <string name="Scenes">Scenes\n</string>
 </resources>

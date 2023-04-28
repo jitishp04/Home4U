@@ -2848,6 +2848,7 @@ id BOTTOM_START
 id CTRL
 id FUNCTION
 id META
+id ModeState
 id NO_DEBUG
 id SHIFT
 id SHOW_ALL
@@ -2943,6 +2944,7 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id buttonPanel
+id button_to_music_select
 id cache_measures
 id callMeasure
 id cancel_button
@@ -3246,6 +3248,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id song_list_view
 id south
 id spacer
 id special_effects_controller_view_tag
@@ -3270,6 +3273,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switchSecurity
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3448,7 +3452,9 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_alarm
+layout activity_alarm_settings
 layout activity_main
+layout activity_music_select
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4962,3 +4968,4 @@ styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration
 styleable include constraintSet
 xml backup_rules
 xml data_extraction_rules
+xml network_security_config

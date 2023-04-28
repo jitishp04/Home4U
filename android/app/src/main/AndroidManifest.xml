@@ -31,11 +31,8 @@
             </intent-filter>
         </activity>
 
-<<<<<<< HEAD
         <activity android:name=".alarm.AlarmActivity"/>
-=======
         <activity android:name=".MusicSelectActivity"/>
->>>>>>> download-song-wio-terminal
 
         <service
             android:name=".alarm.AlarmNotifierService"

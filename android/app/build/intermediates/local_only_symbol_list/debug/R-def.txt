@@ -10,8 +10,14 @@ color white
 drawable ic_alarm_notification
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id ModeState
+id button_to_music_select
+id song_list_view
+id switchSecurity
 layout activity_alarm
+layout activity_alarm_settings
 layout activity_main
+layout activity_music_select
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
@@ -26,3 +32,4 @@ string project_id
 style Theme.Home4U
 xml backup_rules
 xml data_extraction_rules
+xml network_security_config

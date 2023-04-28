@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
+=======
         Button toMusicSelectBtn = findViewById(R.id.button_to_music_select);
         toMusicSelectBtn.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, MusicSelectActivity.class))
@@ -33,5 +35,6 @@ public class MainActivity extends AppCompatActivity {
         }*/
 
 
+>>>>>>> download-song-wio-terminal
     }
 }

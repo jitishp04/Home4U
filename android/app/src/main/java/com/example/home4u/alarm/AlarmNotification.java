@@ -9,7 +9,6 @@ import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
 
-import com.example.home4u.MainActivity;
 import com.example.home4u.R;
 
 public class AlarmNotification {
@@ -27,9 +26,15 @@ public class AlarmNotification {
     }
 
 
-    public static Notification create(Context context){
-        final Intent intent = new Intent(context, MainActivity.class);
-        final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    public static void post(Context context){
+        Notification notification = create(context);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_ID, notification);
+    }
+
+    private static Notification create(Context context){
+        final Intent intent = new Intent(context, AlarmActivity.class);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentText("Alarm has been triggered")
@@ -38,6 +43,11 @@ public class AlarmNotification {
                 .setContentIntent(pendingIntent);
 
         return builder.build();
+    }
+
+    public static void cancel(Context context){
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(NOTIFICATION_ID);
     }
 
 }

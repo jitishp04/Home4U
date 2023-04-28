@@ -1,21 +1,22 @@
 package com.example.home4u.alarm;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 public class AlarmNotifierService extends Service {
 
-    private static final String TAG = AlarmNotifierService.class.getName();
-    private static boolean isRunning = false;
-    private AlarmNotifierSub alarmNotifierSub;
+    private static final String TAG = AlarmNotifierService.class.getSimpleName();
 
-    public static boolean isRunning(){
-        return isRunning;
-    }
 
     @Nullable
     @Override
@@ -34,18 +35,36 @@ public class AlarmNotifierService extends Service {
 
         Log.v(TAG, "Service started");
 
-        assert !isRunning;
-        isRunning = true;
-
-        alarmNotifierSub = new AlarmNotifierSub(this);
-        alarmNotifierSub.connect();
+        watchAlarmIsTriggered();
     }
 
-    @Override
-    public void onDestroy() { //TODO: this might not be called, find safer lifecycle methods
-        super.onDestroy();
+    private void watchAlarmIsTriggered(){
+        final AlarmStateConnection watcher = AlarmStateConnection.getInstance();
+        final Context context = this; //TODO: might cause errors
 
-        alarmNotifierSub.disconnect();
-        isRunning = false;
+        watcher.watchAlarmIsTriggered(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final Boolean alarmIsTriggeredWrapped = snapshot.getValue(Boolean.class);
+
+                if(alarmIsTriggeredWrapped == null){
+                    Log.e(TAG, "alarmIsTriggered is null");
+                    return;
+                }
+                final boolean alarmIsTriggered = alarmIsTriggeredWrapped;
+                Log.v(TAG, "alarmIsTriggered: " + alarmIsTriggered);
+
+                if(alarmIsTriggered) {
+                    AlarmNotification.post(context);
+                } else {
+                    AlarmNotification.cancel(context);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e(TAG, "Firebase canceled");
+            }
+        });
     }
 }

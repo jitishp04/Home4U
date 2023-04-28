@@ -17,6 +17,7 @@ package com.example.home4u.scenes;
 
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 
@@ -25,11 +26,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.ImageView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.home4u.R;
+
+import java.util.Locale;
 
 public class newscenecreator_activity extends Activity {
 
@@ -40,13 +42,50 @@ public class newscenecreator_activity extends Activity {
 	private EditText startTimeText;
 	private EditText endTimeText;
 	private ImageButton backButtonNewScene;
+	private Button monButton;
+	private Button tueButton;
+	private Button wedButton;
+	private Button thuButton;
+	private Button friButton;
+	private Button satButton;
+	private Button sunButton;
+
+	private Button startTime;
+	private Button endTime;
+
+	private int hourStart, minuteStart;
+	private int hourEnd, minuteEnd;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.newscenecreator);
 
-		NewSceneView();
+		setSecuritySwitch = findViewById(R.id.setSecuritySwitch);
+		playMusicSwitch = findViewById(R.id.playMusicSwitch);
+		saveButton = findViewById(R.id.rectangle_11);
+		sceneNameTextInput = findViewById(R.id.sceneNameTextInput);
+		backButtonNewScene = findViewById(R.id.backButtonNewScene);
+
+		startTime = findViewById(R.id.startTime);
+		endTime = findViewById(R.id.endTime);
+
+		monButton = findViewById(R.id.monButton);
+		tueButton = findViewById(R.id.tueButton);
+		wedButton = findViewById(R.id.wedButton);
+		thuButton = findViewById(R.id.thuButton);
+		friButton = findViewById(R.id.friButton);
+		satButton = findViewById(R.id.satButton);
+		sunButton = findViewById(R.id.sunButton);
+
+		monButton.setOnClickListener(buttonClickListener);
+		tueButton.setOnClickListener(buttonClickListener);
+		wedButton.setOnClickListener(buttonClickListener);
+		thuButton.setOnClickListener(buttonClickListener);
+		friButton.setOnClickListener(buttonClickListener);
+		satButton.setOnClickListener(buttonClickListener);
+		sunButton.setOnClickListener(buttonClickListener);
 
 		setSecuritySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 			if(isChecked){
@@ -58,17 +97,15 @@ public class newscenecreator_activity extends Activity {
 
 		playMusicSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 			if(isChecked){
-				//TODO activate dark mode
+				//TODO play song
 			}else{
-				//TODO light mode
+				//TODO
 			}
 		});
 
 		saveButton.setOnClickListener(v -> {
 			checker();
 		});
-
-
 	}
 
 	private void checker() {
@@ -84,14 +121,55 @@ public class newscenecreator_activity extends Activity {
 
 }
 
-	private void NewSceneView() {
-		setSecuritySwitch = findViewById(R.id.setSecuritySwitch);
-		playMusicSwitch = findViewById(R.id.playMusicSwitch);
-		saveButton = findViewById(R.id.rectangle_11);
-		sceneNameTextInput = findViewById(R.id.sceneNameTextInput);
-		startTimeText = findViewById(R.id.startTimeText);
-		endTimeText = findViewById(R.id.endTimeText);
-		backButtonNewScene = findViewById(R.id.backButtonNewScene);
+	//inspired by Chat-gpt: using switch case instead of calling onClickListener multiple times
+	View.OnClickListener buttonClickListener = v -> {
+		// Do something when any of the buttons is clicked
+		switch (v.getId()) {
+			case R.id.monButton:
+
+				break;
+			case R.id.tueButton:
+
+				break;
+			case R.id.wedButton:
+
+				break;
+			case R.id.thuButton:
+
+				break;
+			case R.id.friButton:
+
+				break;
+			case R.id.satButton:
+
+				break;
+			case R.id.sunButton:
+
+				break;
+		}
+	};
+
+
+	public void timePickerStart(View view) {
+		TimePickerDialog.OnTimeSetListener onTimeSetListenerStart = (view1, selectHourStart, selectMinuteStart) -> {
+			hourStart = selectHourStart;
+			minuteStart = selectMinuteStart;
+			startTime.setText(String.format(Locale.getDefault(),"%02d:%02d",hourStart, minuteStart));
+		};
+		TimePickerDialog timePickerDialogStart = new TimePickerDialog(this, onTimeSetListenerStart,hourStart,minuteStart,true);
+		timePickerDialogStart.setTitle("Select Time");
+		timePickerDialogStart.show();
+	}
+
+	public void timePickerEnd(View view) {
+		TimePickerDialog.OnTimeSetListener onTimeSetListenerEnd = (view1, selectHourEnd, selectMinuteEnd) -> {
+			hourEnd = selectHourEnd;
+			minuteEnd = selectMinuteEnd;
+			endTime.setText(String.format(Locale.getDefault(),"%02d:%02d",hourEnd, minuteEnd));
+		};
+		TimePickerDialog timePickerDialogEnd = new TimePickerDialog(this, onTimeSetListenerEnd,hourEnd,minuteEnd,true);
+		timePickerDialogEnd.setTitle("Select Time");
+		timePickerDialogEnd.show();
 	}
 }
 	

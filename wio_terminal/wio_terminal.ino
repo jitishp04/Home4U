@@ -7,17 +7,20 @@ TFT_eSPI tft;
 
 void setup()
 {
-  Serial.begin(9600);
-  while(!Serial) ; //Wait until serial is open
-
-  Serial.println();
-  myLog("== Started ==");
-
+  setupSerial();
   setupWifi();
   //setupMotion();
   setupScreen();
 
   notifyAlarm();
+}
+
+void setupSerial(){
+  Serial.begin(9600);
+  while(!Serial) ; //Wait until serial is open
+
+  Serial.println();
+  myLog("== Started ==");
 }
 
 void setupScreen(){

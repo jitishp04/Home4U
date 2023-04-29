@@ -4,7 +4,7 @@ FROM arm32v7/ubuntu:latest
 
 # Install required packages
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y curl git libc-dev && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl git flex libc-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -24,9 +24,10 @@ RUN curl -LJO "https://github.com/Seeed-Studio/Seeed_Arduino_FreeRTOS/archive/re
 RUN curl -LJO "https://github.com/Seeed-Studio/Seeed_Arduino_LCD/archive/refs/heads/master.zip"
 
 
-# Copies sketch files into container
+# Setup file structure
 COPY . /wio_terminal
 WORKDIR /wio_terminal
+RUN mkdir /build
 
 # Adds board
 RUN arduino-cli config init --
@@ -50,4 +51,4 @@ RUN arduino-cli lib install "Seeed_Arduino_mbedtls"
 
 
 # Compile your sketches using the arduino-cli tool
-#RUN arduino-cli compile --fqbn Seeeduino:samd:seeed_wio_terminal wio_terminal.ino
+RUN arduino-cli compile -t --fqbn Seeeduino:samd:seeed_wio_terminal --build-path "/wio_terminal/build" .

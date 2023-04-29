@@ -1,6 +1,6 @@
 #include "TFT_eSPI.h"
 #include "myEnv.h"
-//#include <rpcWiFi.h>
+#include <rpcWiFi.h>
 
 
 void setupWifi() {

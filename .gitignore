@@ -15,7 +15,8 @@
 local.properties
 /.idea
 /.idea/*
-*/.idea/*
+/android/.idea/*
+/android/.idea
 
 /ignored
 

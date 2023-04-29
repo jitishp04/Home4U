@@ -4,7 +4,7 @@ FROM arm32v7/ubuntu:latest
 
 # Install required packages
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y curl git flex libc-dev && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl flex libc-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 

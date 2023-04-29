@@ -8,7 +8,8 @@
 
 class MusicPlayer : public SongDownloadCallback{
     public:
-        MusicPlayer(){            
+        MusicPlayer(){         
+            //TODO: parse this file   
             String* songInfo = songDownloader.getSongInfo();
         }
 

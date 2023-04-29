@@ -4,16 +4,19 @@
 #undef read
 
 TFT_eSPI tft;
+MusicPlayer musicPlayer;
 
 void setup()
 {
   setupSerial();
+
   setupWifi();
   //setupMotion();
   setupScreen();
 
-  notifyAlarm();
+  //notifyAlarm();
 }
+
 
 void setupSerial(){
   Serial.begin(9600);
@@ -23,6 +26,7 @@ void setupSerial(){
   myLog("== Started ==");
 }
 
+
 void setupScreen(){
   tft.begin();
   tft.setRotation(3);
@@ -31,6 +35,7 @@ void setupScreen(){
   tft.setTextColor(TFT_WHITE);
   tft.setTextSize(3); 
 }
+
 
 void loop()
 {

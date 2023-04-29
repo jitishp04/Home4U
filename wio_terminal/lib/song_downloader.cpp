@@ -6,8 +6,8 @@
 #undef min //Needed for included HTTPClient
 #include <HTTPClient.h>
 
-#define SONG_INFO_PATH "http://192.168.0.135:8080/info.json" //"http://home4u-fa13b.web.app/info.json";
-#define SONGS_DIR_PATH "http://192.168.0.135:8080/songs/"
+#define SONG_INFO_PATH "http://192.168.205.69:8081/info.json" //"http://home4u-fa13b.web.app/info.json";
+#define SONGS_DIR_PATH "http://192.168.205.69:8081/songs/"
 
 
 void startStreamHandler(void* params);
@@ -18,7 +18,7 @@ class SongDownloader{
     SongDownloader(){}
 
     String* getSongInfo(){
-      myLog("Downloading song info...");
+      myLog("Downloading song info from: " + String(SONG_INFO_PATH));
 
       HTTPClient http;
       http.begin(SONG_INFO_PATH);

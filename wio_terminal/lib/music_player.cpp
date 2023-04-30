@@ -26,7 +26,7 @@ class MusicPlayer : public SongDownloadCallback{
             do{
                 sample = songSampleReader->read();
                 audioPlayer.playSample(sample);
-            } while(sample != -1);
+            } while(sample != songSampleReader->NO_MORE_DATA);
         }
 };
 

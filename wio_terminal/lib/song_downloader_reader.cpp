@@ -9,7 +9,10 @@
 class SongDownloaderReader{
   private:
     Stream& stream;
+
   public:
+    static const int NO_MORE_DATA = -1;
+
     SongDownloaderReader(Stream& inputStream) : stream(inputStream) {}
 
     //returns -1 when there is no more data available

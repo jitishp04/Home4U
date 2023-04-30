@@ -20,8 +20,9 @@ void setup()
   setupScreen();
   setupAudioPlayer();
 
-  songDownloader.getSongInfo();
-  songDownloader.streamSong("bit.wav", songDownloadCallback);
+  notifyAlarm();
+  //songDownloader.getSongInfo();
+  //songDownloader.streamSong("bit.wav", songDownloadCallback);
 }
 
 

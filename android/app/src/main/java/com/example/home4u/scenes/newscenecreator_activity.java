@@ -16,6 +16,7 @@ package com.example.home4u.scenes;
 	
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -26,7 +27,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.home4u.R;
@@ -35,12 +35,10 @@ import java.util.Locale;
 
 public class newscenecreator_activity extends Activity {
 
+	@SuppressLint("UseSwitchCompatOrMaterialCode") //allows backwards compatibility for switches to work on older android
 	private Switch setSecuritySwitch;
-	private Switch playMusicSwitch;
 	private Button saveButton;
 	private EditText sceneNameTextInput;
-	private EditText startTimeText;
-	private EditText endTimeText;
 	private ImageButton backButtonNewScene;
 	private Button monButton;
 	private Button tueButton;
@@ -63,7 +61,7 @@ public class newscenecreator_activity extends Activity {
 		setContentView(R.layout.newscenecreator);
 
 		setSecuritySwitch = findViewById(R.id.setSecuritySwitch);
-		playMusicSwitch = findViewById(R.id.playMusicSwitch);
+		@SuppressLint("UseSwitchCompatOrMaterialCode") Switch playMusicSwitch = findViewById(R.id.playMusicSwitch);
 		saveButton = findViewById(R.id.rectangle_11);
 		sceneNameTextInput = findViewById(R.id.sceneNameTextInput);
 		backButtonNewScene = findViewById(R.id.backButtonNewScene);
@@ -102,10 +100,8 @@ public class newscenecreator_activity extends Activity {
 				//TODO
 			}
 		});
-
-		saveButton.setOnClickListener(v -> {
-			checker();
-		});
+		backButtonNewScene.setOnClickListener(v -> finish());
+		saveButton.setOnClickListener(v -> checker());
 	}
 
 	private void checker() {
@@ -149,7 +145,7 @@ public class newscenecreator_activity extends Activity {
 		}
 	};
 
-
+//inspired from: https://www.youtube.com/watch?v=c6c1giRekB4
 	public void timePickerStart(View view) {
 		TimePickerDialog.OnTimeSetListener onTimeSetListenerStart = (view1, selectHourStart, selectMinuteStart) -> {
 			hourStart = selectHourStart;

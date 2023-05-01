@@ -179,7 +179,7 @@
 					android:layout_marginTop="451dp"
 					android:layout_marginBottom="0dp"
 					android:layout_toEndOf="@+id/tueButton"
-					android:background="@drawable/ellipse_3_shape"
+					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/wednesday" />
 
 				<Button
@@ -190,7 +190,7 @@
 					android:layout_marginStart="188dp"
 					android:layout_marginTop="451dp"
 					android:layout_marginBottom="0dp"
-					android:background="@drawable/ellipse_4_shape"
+					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/thursday" />
 
 				<Button
@@ -202,7 +202,7 @@
 					android:layout_marginTop="451dp"
 					android:layout_marginBottom="0dp"
 					android:layout_toEndOf="@+id/monButton"
-					android:background="@drawable/ellipse_2_shape"
+					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/tuesday" />
 
 				<Button
@@ -214,7 +214,7 @@
 					android:layout_marginTop="451dp"
 					android:layout_marginBottom="0dp"
 					android:layout_toEndOf="@+id/friButton"
-					android:background="@drawable/ellipse_5_shape"
+					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/saturday" />
 
 				<Button
@@ -227,7 +227,7 @@
 					android:layout_marginTop="451dp"
 					android:layout_marginEnd="10dp"
 					android:layout_marginBottom="0dp"
-					android:background="@drawable/ellipse_6_shape"
+					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/sunday" />
 
 				<Button
@@ -239,7 +239,7 @@
 					android:layout_marginTop="451dp"
 					android:layout_marginBottom="0dp"
 					android:layout_toEndOf="@+id/thuButton"
-					android:background="@drawable/ellipse_7_shape"
+					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/friday" />
 
 				<Button
@@ -248,7 +248,8 @@
 					android:layout_height="57dp"
 					android:layout_marginStart="138dp"
 					android:layout_marginTop="737dp"
-					tools:text="save" />
+					android:background="@drawable/rectangle_11_shape"
+					tools:text="@string/save" />
 
 				<Switch
 					android:id="@+id/setSecuritySwitch"
@@ -295,9 +296,9 @@
 					android:layout_marginEnd="-50dp"
 					android:layout_marginBottom="-4dp"
 					android:layout_toStartOf="@+id/new_scene"
-					android:backgroundTint="#00FFFFFF"
+					android:background="#00FFFFFF"
 					android:contentDescription="@string/backbutton"
-					app:srcCompat="@drawable/reply" />
+					android:foreground="@drawable/reply" />
 
 
 			</RelativeLayout>

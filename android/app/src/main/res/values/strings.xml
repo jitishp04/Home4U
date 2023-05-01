@@ -45,5 +45,6 @@
 <string name="home4u_string">Home4U</string>
 <string name="song_name_string">Song name</string>
 <string name="artist_name_string">Artist name</string>
-	<string name="connect_your_phone_to_the_device_and_play_music_string1">connect_your_phone_to_the_device_and_play_music_string</string>
+<string name="connect_your_phone_to_the_device_and_play_music_string1">connect_your_phone_to_the_device_and_play_music_string</string>
+<string name="save">SAVE</string>
 </resources>

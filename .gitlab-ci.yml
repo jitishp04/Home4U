@@ -3,8 +3,11 @@ stages:
 
 build:
   stage: build
+  tags:
+    - docker
+    - docker-build
   image: docker:latest
   services:
     - docker:dind
   script:
-    - docker build -t arduino .
+    - docker build -t wio_terminal ./wio_terminal

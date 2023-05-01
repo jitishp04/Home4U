@@ -5,7 +5,6 @@ build:
   stage: build
   tags:
     - docker
-    - docker-build
   image: docker:latest
   services:
     - docker:dind

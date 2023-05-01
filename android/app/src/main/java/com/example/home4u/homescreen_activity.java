@@ -5,7 +5,7 @@ package com.example.home4u;
 	 *	(Alt+Shift+Ctrl+I).
 	 *
 	 *	@desc 		
-	 *	@file 		homescreen
+	 *	@file 		Home Screen
 	 *	@date 		Thursday 27th of April 2023 04:16:55 PM
 	 *	@title 		Home Screen
 	 *	@author 	
@@ -16,6 +16,7 @@ package com.example.home4u;
 	
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -50,6 +51,7 @@ public class homescreen_activity extends Activity {
 	private TextView song_name;
 	private TextView artist_name;
 
+	@SuppressLint("MissingInflatedId")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 
@@ -57,27 +59,25 @@ public class homescreen_activity extends Activity {
 		setContentView(R.layout.homescreen);
 
 		
-		_bg__homescreen_ek2 = (View) findViewById(R.id._bg__homescreen_ek2);
-		rectangle_21 = (View) findViewById(R.id.rectangle_21);
-		rectangle_81 = (View) findViewById(R.id.rectangle_81);
-		rectangle_51 = (View) findViewById(R.id.rectangle_51);
-		remotely_disable_your_alarm = (TextView) findViewById(R.id.remotely_disable_your_alarm);
-		rectangle_41 = (View) findViewById(R.id.rectangle_41);
-		rectangle_61 = (View) findViewById(R.id.rectangle_61);
-		create_a_scene_that_controls_your_home4u_device_ = (TextView) findViewById(R.id.create_a_scene_that_controls_your_home4u_device_);
-		connect_your_phone_to_the_device_and_play_music = (TextView) findViewById(R.id.connect_your_phone_to_the_device_and_play_music);
-		rectangle_31 = (View) findViewById(R.id.rectangle_31);
-		play_music = (TextView) findViewById(R.id.play_music);
-		manage_scenes = (TextView) findViewById(R.id.manage_scenes);
-		media_bluetooth_on = (ImageView) findViewById(R.id.media_bluetooth_on);
-		alarm_off = (ImageView) findViewById(R.id.alarm_off);
-		router = (ImageView) findViewById(R.id.router);
-		rectangle_71 = (View) findViewById(R.id.rectangle_71);
-		home4u = (TextView) findViewById(R.id.home4u);
-		rectangle_91 = (View) findViewById(R.id.rectangle_91);
-		rectangle_110 = (View) findViewById(R.id.rectangle_110);
-		song_name = (TextView) findViewById(R.id.song_name);
-		artist_name = (TextView) findViewById(R.id.artist_name);
+		_bg__homescreen_ek2 = findViewById(R.id._bg__homescreen_ek2);
+		rectangle_21 =  findViewById(R.id.rectangle_21);
+		rectangle_81 = findViewById(R.id.rectangle_81);
+		rectangle_51 =  findViewById(R.id.rectangle_51);
+		remotely_disable_your_alarm = findViewById(R.id.remotely_disable_your_alarm);
+		rectangle_41 =  findViewById(R.id.rectangle_41);
+		rectangle_61 = findViewById(R.id.rectangle_61);
+		create_a_scene_that_controls_your_home4u_device_ = findViewById(R.id.create_a_scene_that_controls_your_home4u_device_);
+		connect_your_phone_to_the_device_and_play_music = findViewById(R.id.connect_your_phone_to_the_device_and_play_music);
+		rectangle_31 =  findViewById(R.id.rectangle_31);
+		play_music =  findViewById(R.id.play_music);
+		media_bluetooth_on =  findViewById(R.id.media_bluetooth_on);
+		alarm_off = findViewById(R.id.alarm_off);
+		router =  findViewById(R.id.router);
+		home4u = findViewById(R.id.home4u);
+		rectangle_91 = findViewById(R.id.rectangle_91);
+		rectangle_110 = findViewById(R.id.rectangle_110);
+		song_name = findViewById(R.id.song_name);
+		artist_name = findViewById(R.id.artist_name);
 	
 		
 		//custom code goes here

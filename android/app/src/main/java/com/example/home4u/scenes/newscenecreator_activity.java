@@ -29,7 +29,9 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
+import com.example.home4u.SceneDataModel;
 
 import java.util.Locale;
 
@@ -37,6 +39,8 @@ public class newscenecreator_activity extends Activity {
 
 	@SuppressLint("UseSwitchCompatOrMaterialCode") //allows backwards compatibility for switches to work on older android
 	private Switch setSecuritySwitch;
+	@SuppressLint("UseSwitchCompatOrMaterialCode")
+	private Switch playMusicSwitch;
 	private Button saveButton;
 	private EditText sceneNameTextInput;
 	private ImageButton backButtonNewScene;
@@ -61,7 +65,8 @@ public class newscenecreator_activity extends Activity {
 		setContentView(R.layout.newscenecreator);
 
 		setSecuritySwitch = findViewById(R.id.setSecuritySwitch);
-		@SuppressLint("UseSwitchCompatOrMaterialCode") Switch playMusicSwitch = findViewById(R.id.playMusicSwitch);
+		playMusicSwitch = findViewById(R.id.playMusicSwitch);
+		playMusicSwitch = findViewById(R.id.playMusicSwitch);
 		saveButton = findViewById(R.id.rectangle_11);
 		sceneNameTextInput = findViewById(R.id.sceneNameTextInput);
 		backButtonNewScene = findViewById(R.id.backButtonNewScene);
@@ -87,35 +92,52 @@ public class newscenecreator_activity extends Activity {
 
 		setSecuritySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 			if(isChecked){
+
 				//TODO add the function to activate alarm
 			}else{
+
 				//TODO disactivate the alarm
 			}
 		});
 
 		playMusicSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 			if(isChecked){
+
 				//TODO play song
 			}else{
+
 				//TODO
 			}
 		});
 		backButtonNewScene.setOnClickListener(v -> finish());
 		saveButton.setOnClickListener(v -> checker());
+
+
 	}
 
 	private void checker() {
+		SceneDataModel sceneDataModel;
 		String sceneName = sceneNameTextInput.getText().toString();
-
 		if (sceneName.isEmpty()){
 			Toast.makeText(this, "Please enter a name for the scene", Toast.LENGTH_SHORT).show();
 		} else{
-			Toast.makeText(this, "Scene created successfully", Toast.LENGTH_SHORT).show();
+			 sceneDataModel = new SceneDataModel(sceneNameTextInput.getText().toString(),
+					startTime.getText().toString(),
+					endTime.getText().toString(),
+					setSecuritySwitch.isChecked(), playMusicSwitch.isChecked() );
+			Toast.makeText(this,sceneDataModel.toString(),Toast.LENGTH_LONG).show();
+
+			DatabaseHelper databaseHelper = new DatabaseHelper(newscenecreator_activity.this);
+
+			//test
+			boolean success = databaseHelper.addOne(sceneDataModel);
+			Toast.makeText(newscenecreator_activity.this, "success= "+ success, Toast.LENGTH_SHORT).show();
 			//add transition to other activity
 		}
 		//TODO create a else if to compare if the same name already exsists
 
-}
+	}
+
 
 	//inspired by Chat-gpt: using switch case instead of calling onClickListener multiple times
 	View.OnClickListener buttonClickListener = v -> {

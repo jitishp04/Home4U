@@ -5,11 +5,14 @@ stages:
 
 build_android:
   stage: build
-  image: docker:latest # Docker container containing docker
-  services:
-    - docker:dind
   script:
-    - docker build -t android ./android # Builds the docker android docker container
+    - docker build -t wio_terminal_image ./wio_terminal
+    - docker run --name wio_terminal_container wio_terminal_image
+    - docker cp wio_terminal_container:wio_terminal/build/wio_terminal.ino.bin .
+    - docker stop wio_terminal_container
+    - docker rm wio_terminal_container
+  tags:
+    - shell
   artifacts:
     paths:
-      - app/build/outputs/
+      - wio_terminal.ino.bin

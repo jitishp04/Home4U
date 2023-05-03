@@ -13,12 +13,16 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+
 /.idea
 /.idea/*
 /android/.idea/*
 /android/.idea
 
 /ignored
+/builds
+/builds/*
 
 #IMPORTANT!
 myEnv.h

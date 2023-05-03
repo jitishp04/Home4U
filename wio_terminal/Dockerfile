@@ -1,26 +1,8 @@
 
 # *Inspired by ChatGPT*
 
-# Download public key
 
-# FROM arm32v7/ubuntu:20.04 AS keyring
-
-# # download publ key
-# RUN apt-get update && apt-get install -y gnupg && \
-#     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C && \
-#     gpg --no-default-keyring --keyring /usr/share/keyrings/ubuntu-archive-keyring.gpg --export > /tmp/ubuntu-archive-keyring.gpg
-# RUN tar -czf /tmp/keyring.tar.gz /tmp/ubuntu-archive-keyring.gpg
-
-
-
-
-FROM arm32v7/ubuntu:20.04
-
-# get key
-# COPY --from=keyring /tmp/keyring.tar.gz /tmp/keyring.tar.gz
-# RUN tar -xzf /tmp/keyring.tar.gz -C /usr/share/keyrings/ && \
-#     rm /tmp/keyring.tar.gz && \
-#     apt-get update
+FROM arm32v7/debian:bookworm
 
 
 # Setup file structure
@@ -28,8 +10,7 @@ COPY . /wio_terminal
 WORKDIR /wio_terminal
 RUN mkdir /build
 
-# import key
-RUN apt-key add ubuntuPubKey.asc
+
 
 WORKDIR /
 
@@ -39,15 +20,6 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y curl flex libc-dev wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-
-# glibc
-# RUN wget https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/glibc/glibc-2.28.tar.gz
-# RUN tar -zxvf glibc-2.28.tar.gz && cd glibc-2.28
-# RUN mkdir build && cd build
-# RUN ../configure --prefix=/usr/local/glibc-2.28
-# RUN make && make install
-# ENV LD_LIBRARY_PATH=/usr/local/glibc-2.28/lib:$LD_LIBRARY_PATH
 
 
 # Download and extract the arduino-cli binary
@@ -64,7 +36,6 @@ RUN mv arduino-cli /usr/local/bin/arduino-cli && \
 WORKDIR /arduino_lib
 RUN curl -LJO "https://github.com/Seeed-Studio/Seeed_Arduino_FreeRTOS/archive/refs/tags/v1.1.zip"
 RUN curl -LJO "https://github.com/Seeed-Studio/Seeed_Arduino_LCD/archive/refs/heads/master.zip"
-
 
 
 

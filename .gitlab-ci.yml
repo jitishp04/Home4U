@@ -8,11 +8,7 @@ stages:
 
 build:
   stage: build
-  tags:
-    - docker
-  volumes:
-  - /var/run/docker.sock:/var/run/docker.sock
-  variables:
-    DOCKER_HOST: "tcp://docker:2375"
   script:
     - docker build -t wio_terminal ./wio_terminal
+  tags:
+    - shell

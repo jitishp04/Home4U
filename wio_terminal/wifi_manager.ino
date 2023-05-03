@@ -1,6 +1,9 @@
 #include "TFT_eSPI.h"
-#include "myEnv.h"
+//#include "myEnv.h"
 #include <rpcWiFi.h>
+
+#define M_SSID "testing"
+#define PASSWORD ""
 
 
 void setupWifi() {

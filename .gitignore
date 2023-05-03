@@ -13,11 +13,15 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+
 /.idea
 /.idea/*
 */.idea/*
 
 /ignored
+/builds
+/builds/*
 
 #IMPORTANT!
 myEnv.h

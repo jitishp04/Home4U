@@ -44,6 +44,8 @@ RUN curl -LJO "https://github.com/Seeed-Studio/Seeed_Arduino_LCD/archive/refs/he
 
 
 # Installs arduino libraries
+WORKDIR /wio_terminal
+
 RUN arduino-cli lib install --zip-path "/arduino_lib/Seeed_Arduino_FreeRTOS-1.1.zip"
 RUN arduino-cli lib install --zip-path "/arduino_lib/Seeed_Arduino_LCD-master.zip"
 

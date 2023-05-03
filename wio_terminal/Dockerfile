@@ -1,12 +1,44 @@
-FROM arm32v7/ubuntu:18.04
 
 # *Inspired by ChatGPT*
 
+# Download public key
+
+FROM arm32v7/ubuntu:20.04 AS keyring
+
+# download publ key
+RUN apt-get update && apt-get install -y gnupg && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C && \
+    gpg --no-default-keyring --keyring /usr/share/keyrings/ubuntu-archive-keyring.gpg --export > /tmp/ubuntu-archive-keyring.gpg
+RUN tar -czf /tmp/keyring.tar.gz /tmp/ubuntu-archive-keyring.gpg
+
+
+
+
+FROM arm32v7/ubuntu:20.04
+
+# get key
+COPY --from=keyring /tmp/keyring.tar.gz /tmp/keyring.tar.gz
+RUN tar -xzf /tmp/keyring.tar.gz -C /usr/share/keyrings/ && \
+    rm /tmp/keyring.tar.gz && \
+    apt-get update
+
+
+
 # Install required packages
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y curl flex libc-dev && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl flex libc-dev wget && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+
+# glibc
+# RUN wget https://www.mirrorservice.org/sites/ftp.gnu.org/gnu/glibc/glibc-2.28.tar.gz
+# RUN tar -zxvf glibc-2.28.tar.gz && cd glibc-2.28
+# RUN mkdir build && cd build
+# RUN ../configure --prefix=/usr/local/glibc-2.28
+# RUN make && make install
+# ENV LD_LIBRARY_PATH=/usr/local/glibc-2.28/lib:$LD_LIBRARY_PATH
+
 
 # Download and extract the arduino-cli binary
 RUN curl -fsSL https://downloads.arduino.cc/arduino-cli/arduino-cli_latest_Linux_ARMv7.tar.gz -o arduino-cli.tar.gz && \

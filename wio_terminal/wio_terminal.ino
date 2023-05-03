@@ -1,38 +1,31 @@
 #include "TFT_eSPI.h"
-#include "lib/song_downloader.cpp" //the file has to have a .cpp extension, not sure why
 #include "lib/logger.cpp"
-#include "lib/song_downloader_reader.cpp"
+#include "lib/music_player.cpp"
 #undef read
 
 TFT_eSPI tft;
-SongDownloader songDownloader;
+MusicPlayer musicPlayer;
 
 void setup()
 {
+  setupSerial();
+
+  setupWifi();
+  //setupMotion();
+  setupScreen();
+
+  //notifyAlarm();
+}
+
+
+void setupSerial(){
   Serial.begin(9600);
   while(!Serial) ; //Wait until serial is open
 
   Serial.println();
   myLog("== Started ==");
-
-  setupWifi();
-  //setupMotion();
-  setupScreen();
-  setupAudioPlayer();
-
-  notifyAlarm();
-  //songDownloader.getSongInfo();
-  //songDownloader.streamSong("bit.wav", songDownloadCallback);
 }
 
-
-void songDownloadCallback(SongDownloaderReader* songSampleReader){
-  int sample;
-  do{
-    sample = songSampleReader->read();
-    playSample(sample);
-  } while(sample != -1);
-}
 
 void setupScreen(){
   tft.begin();
@@ -42,6 +35,7 @@ void setupScreen(){
   tft.setTextColor(TFT_WHITE);
   tft.setTextSize(3); 
 }
+
 
 void loop()
 {

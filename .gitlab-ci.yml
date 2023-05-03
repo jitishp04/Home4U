@@ -1,7 +1,9 @@
+# *Inspired by chatGpt*
+
 stages:
   - build
 
-build:
+build_android:
   stage: build
   script:
     - docker build -t wio_terminal_image ./wio_terminal

@@ -1,4 +1,4 @@
-FROM arm32v7/ubuntu:latest
+FROM arm32v7/ubuntu:18.04
 
 # *Inspired by ChatGPT*
 

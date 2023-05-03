@@ -3,13 +3,13 @@
 
 # Download public key
 
-FROM arm32v7/ubuntu:20.04 AS keyring
+# FROM arm32v7/ubuntu:20.04 AS keyring
 
-# download publ key
-RUN apt-get update && apt-get install -y gnupg && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C && \
-    gpg --no-default-keyring --keyring /usr/share/keyrings/ubuntu-archive-keyring.gpg --export > /tmp/ubuntu-archive-keyring.gpg
-RUN tar -czf /tmp/keyring.tar.gz /tmp/ubuntu-archive-keyring.gpg
+# # download publ key
+# RUN apt-get update && apt-get install -y gnupg && \
+#     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C && \
+#     gpg --no-default-keyring --keyring /usr/share/keyrings/ubuntu-archive-keyring.gpg --export > /tmp/ubuntu-archive-keyring.gpg
+# RUN tar -czf /tmp/keyring.tar.gz /tmp/ubuntu-archive-keyring.gpg
 
 
 
@@ -17,10 +17,10 @@ RUN tar -czf /tmp/keyring.tar.gz /tmp/ubuntu-archive-keyring.gpg
 FROM arm32v7/ubuntu:20.04
 
 # get key
-COPY --from=keyring /tmp/keyring.tar.gz /tmp/keyring.tar.gz
-RUN tar -xzf /tmp/keyring.tar.gz -C /usr/share/keyrings/ && \
-    rm /tmp/keyring.tar.gz && \
-    apt-get update
+# COPY --from=keyring /tmp/keyring.tar.gz /tmp/keyring.tar.gz
+# RUN tar -xzf /tmp/keyring.tar.gz -C /usr/share/keyrings/ && \
+#     rm /tmp/keyring.tar.gz && \
+#     apt-get update
 
 
 

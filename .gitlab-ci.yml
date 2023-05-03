@@ -4,10 +4,13 @@ stages:
 build:
   stage: build
   script:
-    - docker build -t wio_terminal ./wio_terminal
-    - docker run wio_terminal /bin/sh -c "cp build/wio_terminal.ino.bin /build"
+    - docker build -t wio_terminal_image ./wio_terminal
+    - docker run --name wio_terminal_container wio_terminal_image
+    - docker cp wio_terminal_container:wio_terminal/build/wio_terminal.ino.bin .
+    - docker stop wio_terminal_container
+    - docker rm wio_terminal_container
   tags:
     - shell
   artifacts:
     paths:
-      - /build/wio_terminal.ino.bin
+      - wio_terminal.ino.bin

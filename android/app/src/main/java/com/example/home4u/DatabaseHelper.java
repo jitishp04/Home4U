@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+//Database implementation was inspired from: https://www.youtube.com/watch?v=312RhjfetP8
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SCENE_TABLE = "SCENE_TABLE";
@@ -52,4 +53,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    public void updateScene (SceneDataModel sceneDataModel){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+
+        contentValues.put(COLUMN_SCENE_NAME, sceneDataModel.getSceneName());
+        contentValues.put(COLUMN_START_TIME, sceneDataModel.getStartTime());
+        contentValues.put(COLUMN_END_TIME, sceneDataModel.getEndTime());
+        contentValues.put(COLUMN_PLAY_MUSIC, sceneDataModel.getPlayMusic());
+        contentValues.put(COLUMN_SET_SECURITY, sceneDataModel.getSetSecurity());
+
+        database.update(SCENE_TABLE,contentValues,"COLUMN_SCENE_NAME=?", new String[]{COLUMN_SCENE_NAME});
+        database.close();
+    }
 }
+
+//TODO issues: time is a string variable, work on CRUD, not sure to add the days of the week

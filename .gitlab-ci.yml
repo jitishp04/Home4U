@@ -3,7 +3,7 @@
 stages:
   - build
 
-build_android:
+build_arduino:
   stage: build
   script:
     - docker build -t wio_terminal_image ./wio_terminal

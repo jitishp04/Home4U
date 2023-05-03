@@ -2,7 +2,7 @@
 # *Inspired by ChatGPT*
 
 
-FROM arm32v7/debian:bookworm
+FROM arm32v7/debian:buster-slim
 
 
 # Setup file structure

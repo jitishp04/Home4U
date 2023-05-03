@@ -3,6 +3,7 @@
 
 #include "logger.cpp"
 #include "song_downloader_reader.cpp"
+#include "song_downloader_callback.cpp"
 #undef min //Needed for included HTTPClient
 #include <HTTPClient.h>
 
@@ -40,7 +41,7 @@ class SongDownloader{
       }
     }
 
-    void streamSong(String fileName, void (*songStreamCallback)(SongDownloaderReader*)){
+    void streamSong(String fileName, SongDownloadCallback* callback){
       const String path = SONGS_DIR_PATH + fileName;
       myLog("Started streaming " + path);
 
@@ -59,9 +60,9 @@ class SongDownloader{
           stream.read();
         }
 
-        //Calles callback
+        //Calls callback
         SongDownloaderReader* reader = new SongDownloaderReader(stream);
-        songStreamCallback(reader);
+        callback->songDownloaded(reader);
 
         //Closes connection and cleans up
         delete reader;

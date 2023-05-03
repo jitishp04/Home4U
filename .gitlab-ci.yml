@@ -1,10 +1,15 @@
+# *Inspired by chatGpt*
+
 stages:
   - build
 
-build:
+build_android:
   stage: build
-  image: docker:latest
+  image: docker:latest # Docker container containing docker
   services:
     - docker:dind
   script:
-    - docker build -t arduino .
+    - docker build -t android ./android # Builds the docker android docker container
+  artifacts:
+    paths:
+      - app/build/outputs/

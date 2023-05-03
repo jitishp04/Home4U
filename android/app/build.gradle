@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.home4u'
-    compileSdk 33
+    compileSdk 30
 
     defaultConfig {
         applicationId "com.example.home4u"
         minSdk 26
-        targetSdk 33
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 

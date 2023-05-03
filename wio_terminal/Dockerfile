@@ -23,6 +23,16 @@ FROM arm32v7/ubuntu:20.04
 #     apt-get update
 
 
+# Setup file structure
+COPY . /wio_terminal
+WORKDIR /wio_terminal
+RUN mkdir /build
+
+# import key
+RUN apt-key add ubuntuPubKey.asc
+
+WORKDIR /
+
 
 # Install required packages
 RUN apt-get update && \
@@ -56,10 +66,9 @@ RUN curl -LJO "https://github.com/Seeed-Studio/Seeed_Arduino_FreeRTOS/archive/re
 RUN curl -LJO "https://github.com/Seeed-Studio/Seeed_Arduino_LCD/archive/refs/heads/master.zip"
 
 
-# Setup file structure
-COPY . /wio_terminal
+
+
 WORKDIR /wio_terminal
-RUN mkdir /build
 
 # Adds board
 RUN arduino-cli config init --

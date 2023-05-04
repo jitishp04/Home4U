@@ -19,6 +19,7 @@ package com.example.home4u.scenes;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -32,6 +33,7 @@ import android.widget.Toast;
 import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
+import com.example.home4u.scene_manager_screen.SceneManagerScreenActivity;
 
 import java.util.Locale;
 
@@ -132,6 +134,7 @@ public class newscenecreator_activity extends Activity {
 			//test
 			boolean success = databaseHelper.addOne(sceneDataModel);
 			Toast.makeText(newscenecreator_activity.this, "success= "+ success, Toast.LENGTH_SHORT).show();
+			startActivity(new Intent(newscenecreator_activity.this, SceneManagerScreenActivity.class));
 			//add transition to other activity
 		}
 		//TODO create a else if to compare if the same name already exsists

@@ -1,11 +1,16 @@
 package com.example.home4u;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 //Database implementation was inspired from: https://www.youtube.com/watch?v=312RhjfetP8
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -67,6 +72,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         database.update(SCENE_TABLE,contentValues,"COLUMN_SCENE_NAME=?", new String[]{COLUMN_SCENE_NAME});
         database.close();
+    }
+
+    //Get all created Scenes stored in db
+    @SuppressLint("Range")
+    public List<SceneDataModel> getAllScenes() {
+        List<SceneDataModel> sceneList = new ArrayList<SceneDataModel>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SCENE_TABLE, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                SceneDataModel sceneDataModel = new SceneDataModel();
+                sceneDataModel.setSceneName(cursor.getString(cursor.getColumnIndex(COLUMN_SCENE_NAME)));
+                sceneList.add(sceneDataModel);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return sceneList;
+    }
+
+    //Delete a scene in db
+    public void deleteData(String sceneName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(SCENE_TABLE, "SCENE_NAME = ?", new String[]{sceneName});
     }
 }
 

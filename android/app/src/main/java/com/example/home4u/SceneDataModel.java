@@ -19,6 +19,8 @@ public class SceneDataModel {
         this.playMusic = playMusic;
     }
 
+    public SceneDataModel() {}
+
     //for testing
     @NonNull
     @Override

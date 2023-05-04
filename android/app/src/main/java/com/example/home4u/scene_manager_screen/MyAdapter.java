@@ -11,12 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.home4u.R;
+import com.example.home4u.SceneDataModel;
 
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    private ArrayList<SceneData> sceneData;
+    private ArrayList<SceneDataModel> sceneDataList;
     private Context context;
 
     private SceneManagerScreenActivity onClick;
@@ -28,8 +29,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public interface OnItemClicked {
         void onItemClick(int position);
     }
-    public MyAdapter(ArrayList<SceneData> sceneData, SceneManagerScreenActivity activity) {
-        this.sceneData = sceneData;
+    public MyAdapter(ArrayList<SceneDataModel> sceneData, SceneManagerScreenActivity activity) {
+        this.sceneDataList = sceneData;
         this.context = activity;
     }
 
@@ -45,10 +46,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
-        final SceneData sceneDataList = sceneData.get(position);
+        //final SceneData sceneDataList = sceneData.get(position);
+        final SceneDataModel sceneDataModel = sceneDataList.get(position);
         int pos = position;
-        holder.textViewSceneName.setText(sceneDataList.getSceneName());
-        holder.icon.setImageResource(sceneDataList.getSceneIcon());
+        holder.textViewSceneName.setText(sceneDataList.get(position).getSceneName());
+        //holder.textViewSceneName.setText(sceneDataList.getSceneName());
+        //holder.icon.setImageResource(sceneDataList.getSceneIcon());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +64,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return sceneData.size();
+        return sceneDataList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

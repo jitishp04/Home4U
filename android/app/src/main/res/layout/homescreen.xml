@@ -46,8 +46,8 @@
 					android:layout_height="146dp"
 					android:layout_below="@+id/_bg__homescreen_ek2"
 					android:layout_alignParentStart="true"
-					android:layout_marginStart="212dp"
-					android:layout_marginTop="210dp"
+					android:layout_marginStart="203dp"
+					android:layout_marginTop="156dp"
 					android:alpha="0.50999999046326"
 					android:background="@drawable/rectangle_21_shape" />
 
@@ -57,34 +57,34 @@
 					android:layout_height="144dp"
 					android:layout_below="@+id/_bg__homescreen_ek2"
 					android:layout_alignParentStart="true"
-					android:layout_marginStart="9dp"
-					android:layout_marginTop="210dp"
+					android:layout_marginStart="5dp"
+					android:layout_marginTop="158dp"
 					android:alpha="0.50999999046326"
 					android:background="@drawable/rectangle_81_shape" />
 
 				<View
 					android:id="@+id/rectangle_51"
-					android:layout_width="261dp"
-					android:layout_height="136dp"
+					android:layout_width="264dp"
+					android:layout_height="213dp"
 					android:layout_below="@+id/_bg__homescreen_ek2"
 					android:layout_alignParentStart="true"
 					android:layout_alignParentEnd="true"
-					android:layout_marginStart="64dp"
-					android:layout_marginTop="384dp"
-					android:layout_marginEnd="70dp"
+					android:layout_marginStart="67dp"
+					android:layout_marginTop="333dp"
+					android:layout_marginEnd="64dp"
 					android:alpha="0.34000000357628"
 					android:background="@drawable/rectangle_51_shape" />
 
 				<TextView
 					android:id="@+id/remotely_disable_your_alarm"
-					android:layout_width="235dp"
-					android:layout_height="25dp"
+					android:layout_width="242dp"
+					android:layout_height="34dp"
 					android:layout_alignStart="@+id/rectangle_51"
 					android:layout_alignTop="@+id/rectangle_51"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginStart="17dp"
+					android:layout_marginStart="15dp"
 					android:layout_marginLeft="105dp"
-					android:layout_marginTop="59dp"
+					android:layout_marginTop="117dp"
 					android:gravity="center"
 					android:text="@string/remotely_disable_your_alarm_string"
 					android:textColor="@color/remotely_disable_your_alarm_color"
@@ -103,7 +103,7 @@
 					android:layout_marginBottom="9dp"
 					android:background="@drawable/rectangle_41_shape"
 					android:text="manage scenes"
-					android:textSize="8sp" />
+					android:textSize="10sp" />
 
 				<Button
 					android:id="@+id/rectangle_61"
@@ -111,8 +111,8 @@
 					android:layout_height="48dp"
 					android:layout_alignStart="@+id/rectangle_51"
 					android:layout_alignTop="@+id/rectangle_51"
-					android:layout_marginStart="56dp"
-					android:layout_marginTop="80dp"
+					android:layout_marginStart="55dp"
+					android:layout_marginTop="156dp"
 					android:background="@drawable/rectangle_61_shape"
 					android:text="disable alarm"
 					android:textSize="12sp" />
@@ -205,10 +205,10 @@
 					android:layout_below="@+id/_bg__homescreen_ek2"
 					android:layout_alignParentStart="true"
 					android:layout_alignParentEnd="true"
-					android:layout_marginStart="105dp"
+					android:layout_marginStart="98dp"
 					android:layout_marginLeft="133dp"
-					android:layout_marginTop="92dp"
-					android:layout_marginEnd="73dp"
+					android:layout_marginTop="53dp"
+					android:layout_marginEnd="80dp"
 					android:text="@string/home4u_string"
 					android:textColor="@color/remotely_disable_your_alarm_color"
 					android:textSize="40sp"
@@ -220,7 +220,7 @@
 					android:layout_height="92dp"
 					android:layout_below="@+id/rectangle_51"
 					android:layout_marginStart="0dp"
-					android:layout_marginTop="30dp"
+					android:layout_marginTop="25dp"
 					android:background="@drawable/rectangle_91_shape" />
 
 				<View
@@ -229,7 +229,7 @@
 					android:layout_height="80dp"
 					android:layout_below="@+id/rectangle_51"
 					android:layout_marginStart="8dp"
-					android:layout_marginTop="39dp"
+					android:layout_marginTop="30dp"
 					android:background="@drawable/rectangle_110_shape" />
 
 				<TextView
@@ -239,7 +239,7 @@
 					android:layout_alignBottom="@+id/rectangle_51"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_marginLeft="94dp"
-					android:layout_marginBottom="-93dp"
+					android:layout_marginBottom="-83dp"
 					android:gravity="center"
 					android:text="@string/song_name_string"
 					android:textColor="@color/remotely_disable_your_alarm_color"
@@ -253,7 +253,7 @@
 					android:layout_below="@+id/rectangle_51"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_marginLeft="94dp"
-					android:layout_marginTop="48dp"
+					android:layout_marginTop="37dp"
 					android:gravity="center"
 					android:text="@string/artist_name_string"
 					android:textColor="@color/remotely_disable_your_alarm_color"
@@ -283,6 +283,19 @@
 					android:layout_toEndOf="@+id/play_arrow"
 					android:contentDescription="pause"
 					android:src="@drawable/pause" />
+
+				<Switch
+					android:id="@+id/switch2"
+					android:layout_width="wrap_content"
+					android:layout_height="48dp"
+					android:layout_below="@+id/alarm_off"
+					android:layout_alignEnd="@+id/rectangle_51"
+					android:layout_marginTop="11dp"
+					android:layout_marginEnd="25dp"
+					android:text="Enable Security system"
+					android:textOff="Off"
+					android:textOn="On"
+					android:textStyle="bold"/>
 
 			</RelativeLayout>
 

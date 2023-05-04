@@ -69,7 +69,7 @@ public class homescreen_activity extends Activity {
 		create_a_scene_that_controls_your_home4u_device_ = findViewById(R.id.create_a_scene_that_controls_your_home4u_device_);
 		connect_your_phone_to_the_device_and_play_music = findViewById(R.id.connect_your_phone_to_the_device_and_play_music);
 		rectangle_31 =  findViewById(R.id.rectangle_31);
-		play_music =  findViewById(R.id.play_music);
+		play_music = findViewById(R.id.play_music);
 		media_bluetooth_on =  findViewById(R.id.media_bluetooth_on);
 		alarm_off = findViewById(R.id.alarm_off);
 		router =  findViewById(R.id.router);

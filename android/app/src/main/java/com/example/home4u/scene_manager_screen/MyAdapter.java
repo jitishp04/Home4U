@@ -46,12 +46,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
-        //final SceneData sceneDataList = sceneData.get(position);
-        final SceneDataModel sceneDataModel = sceneDataList.get(position);
+        final SceneDataModel curSceneData = sceneDataList.get(position);
         int pos = position;
-        holder.textViewSceneName.setText(sceneDataList.get(position).getSceneName());
-        //holder.textViewSceneName.setText(sceneDataList.getSceneName());
-        //holder.icon.setImageResource(sceneDataList.getSceneIcon());
+        holder.textViewSceneName.setText(curSceneData.getSceneName());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +76,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             textViewSceneName = view.findViewById(R.id.newSceneName);
         }
     }
-
-
 }

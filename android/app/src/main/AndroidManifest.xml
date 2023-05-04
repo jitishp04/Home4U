@@ -24,6 +24,10 @@
             android:name=".scene_manager_screen.TestAddSceneActivity"
             android:exported="false" />
         <activity
+            android:name=".scenes.newscenecreator_activity"
+            android:exported="false"
+            />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity

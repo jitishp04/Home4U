@@ -135,6 +135,7 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
         }).attachToRecyclerView(recyclerView);
     }
 
+    //When user selects/clicks a specific scene, it will go to the add-scene screen with passing the scene name
     public void onItemClick(int position) {
         //SceneData sceneDataList = sceneDatas.get(position);
         SceneDataModel sceneData = sceneDataList.get(position);

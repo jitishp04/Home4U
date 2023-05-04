@@ -59,6 +59,7 @@ public class newscenecreator_activity extends Activity {
 
 	private int hourStart, minuteStart;
 	private int hourEnd, minuteEnd;
+	private DatabaseHelper dbHelper;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -111,9 +112,27 @@ public class newscenecreator_activity extends Activity {
 				//TODO
 			}
 		});
+
+
+		//Check whether it is from a existing/user-selected scene,
+		//by verifying the scene name is not empty;
+		//If yes, fill back the add-scene screen with all relevant data for the scene;
+		//Otherwise, start with an empty/plain add-scene screen.
+		Intent intent = getIntent();
+		String curSceneName = intent.getStringExtra("name");
+		if (curSceneName != null) {
+			dbHelper = new DatabaseHelper(getApplicationContext());
+			SceneDataModel curSceneData = dbHelper.retrieveDataOfAScene(curSceneName);
+
+			sceneNameTextInput.setText(curSceneData.getSceneName());
+			startTime.setText(curSceneData.getStartTime());
+			endTime.setText(curSceneData.getEndTime());
+			setSecuritySwitch.setChecked(curSceneData.getSetSecurity());
+			playMusicSwitch.setChecked(curSceneData.getPlayMusic());
+		}
+
 		backButtonNewScene.setOnClickListener(v -> finish());
 		saveButton.setOnClickListener(v -> checker());
-
 
 	}
 
@@ -134,6 +153,7 @@ public class newscenecreator_activity extends Activity {
 			//test
 			boolean success = databaseHelper.addOne(sceneDataModel);
 			Toast.makeText(newscenecreator_activity.this, "success= "+ success, Toast.LENGTH_SHORT).show();
+
 			startActivity(new Intent(newscenecreator_activity.this, SceneManagerScreenActivity.class));
 			//add transition to other activity
 		}

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.transition.Scene;
 
 import androidx.annotation.Nullable;
 
@@ -99,6 +100,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void deleteData(String sceneName) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(SCENE_TABLE, "SCENE_NAME = ?", new String[]{sceneName});
+    }
+
+    //Retrieve all relevant data of a scene in db
+    @SuppressLint("Range")
+    public SceneDataModel retrieveDataOfAScene (String sceneName) {
+        SceneDataModel sceneData = new SceneDataModel();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + SCENE_TABLE + " WHERE SCENE_NAME = '" + sceneName +"'", null);
+        cursor.moveToFirst();
+        sceneData.setSceneName(cursor.getString(cursor.getColumnIndex(COLUMN_SCENE_NAME)));
+        sceneData.setStartTime(cursor.getString(cursor.getColumnIndex(COLUMN_START_TIME)));
+        sceneData.setEndTime(cursor.getString(cursor.getColumnIndex(COLUMN_END_TIME)));
+        sceneData.setSetSecurity(cursor.getInt(cursor.getColumnIndex(COLUMN_SET_SECURITY)) > 0);
+        sceneData.setPlayMusic(cursor.getInt(cursor.getColumnIndex(COLUMN_PLAY_MUSIC)) > 0);
+        return sceneData;
     }
 }
 

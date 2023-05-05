@@ -129,11 +129,39 @@ public class newscenecreator_activity extends Activity {
 			endTime.setText(curSceneData.getEndTime());
 			setSecuritySwitch.setChecked(curSceneData.getSetSecurity());
 			playMusicSwitch.setChecked(curSceneData.getPlayMusic());
+			saveButton.setOnClickListener(v -> saveUpdates(curSceneData));
+		} else {
+			backButtonNewScene.setOnClickListener(v -> finish());
+			saveButton.setOnClickListener(v -> checker());
 		}
+	}
 
-		backButtonNewScene.setOnClickListener(v -> finish());
-		saveButton.setOnClickListener(v -> checker());
+	//Update and save data of an existing scene.
+	private void saveUpdates(SceneDataModel curSceneData) {
+		//If scene name got changed, auto update back to the initial scene name for the user and display a message
+		if (!curSceneData.getSceneName().equals(sceneNameTextInput.getText().toString())) {
+			sceneNameTextInput.setText(curSceneData.getSceneName());
+			Toast.makeText(this, "Sorry, you cannot change the scene name", Toast.LENGTH_SHORT).show();
+		} else {
+			if (!verifyNoChanges(curSceneData)) {
+				SceneDataModel sceneDataModel = new SceneDataModel(sceneNameTextInput.getText().toString(),
+						startTime.getText().toString(),
+						endTime.getText().toString(),
+						setSecuritySwitch.isChecked(), playMusicSwitch.isChecked());
+				dbHelper.updateScene(sceneDataModel);
+				Toast.makeText(getApplicationContext(), "update success", Toast.LENGTH_SHORT).show();
+			}
+			startActivity(new Intent(newscenecreator_activity.this, SceneManagerScreenActivity.class));
+		}
+	}
 
+	//Check any changes are made to the current existing scene.
+	private boolean verifyNoChanges(SceneDataModel curSceneData) {
+		boolean startTimeNoChange =  curSceneData.getStartTime() == startTime.getText().toString();
+		boolean endTimeNoChange = curSceneData.getEndTime() == endTime.getText().toString();
+		boolean SecurityNoChange = curSceneData.getSetSecurity() == setSecuritySwitch.isChecked();
+		boolean MusicNoChange = curSceneData.getPlayMusic() == playMusicSwitch.isChecked();
+		return startTimeNoChange && endTimeNoChange && SecurityNoChange && MusicNoChange;
 	}
 
 	private void checker() {
@@ -146,6 +174,7 @@ public class newscenecreator_activity extends Activity {
 					startTime.getText().toString(),
 					endTime.getText().toString(),
 					setSecuritySwitch.isChecked(), playMusicSwitch.isChecked() );
+
 			Toast.makeText(this,sceneDataModel.toString(),Toast.LENGTH_LONG).show();
 
 			DatabaseHelper databaseHelper = new DatabaseHelper(newscenecreator_activity.this);

@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.transition.Scene;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -71,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_PLAY_MUSIC, sceneDataModel.getPlayMusic());
         contentValues.put(COLUMN_SET_SECURITY, sceneDataModel.getSetSecurity());
 
-        database.update(SCENE_TABLE,contentValues,"COLUMN_SCENE_NAME=?", new String[]{COLUMN_SCENE_NAME});
+        database.update(SCENE_TABLE, contentValues,COLUMN_SCENE_NAME + " = ? ", new String[]{sceneDataModel.getSceneName()});
         database.close();
     }
 

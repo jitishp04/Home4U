@@ -15,6 +15,11 @@ import com.example.home4u.SceneDataModel;
 
 import java.util.ArrayList;
 
+/*
+Code based on CardView using RecyclerView in Android with Example
+Author: chaitanyamunje
+Source: https://www.geeksforgeeks.org/cardview-using-recyclerview-in-android-with-example/
+*/
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private ArrayList<SceneDataModel> sceneDataList;

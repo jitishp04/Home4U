@@ -6,6 +6,13 @@
             "artist": "Yukio Kaneoka",
             "album": null,
             "length": "1:21"
+        },
+        {
+            "fileName": "test_blip.wav",
+            "name": "Test blip",
+            "artist": null,
+            "album": null,
+            "length": "0:10"
         }
     ]
 }

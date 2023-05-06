@@ -1,10 +1,8 @@
 #include "TFT_eSPI.h"
 #include <rpcWiFi.h>
 #include <stdlib.h>
+#include "myEnv.h"
 
-
-const char* SSID = getenv("SSID");
-const char* WIFI_PASSWORD = getenv("WIFI_PASSWORD");
 
 
 void setupWifi() {

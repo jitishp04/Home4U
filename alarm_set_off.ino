@@ -54,10 +54,17 @@ void setSecurityMode(String message) {
   tft.setCursor((320 - tft.textWidth(message)) / 2, 120); 
   tft.print(message);
 
+
   if (message == "enable") {
     securityModeStateOn = true;
     alarmOffManually = false;
-  } else {
+  } else if (message == "alarm") {
+    if (securityModeStateOn == true) {
+      alarmOn = true; 
+      Serial.println("Alarm on"); 
+      motionSensorMsg = "Alarm turned on manually";
+    }
+  } else if (message == "disable") {
     securityModeStateOn = false;
   }
 }

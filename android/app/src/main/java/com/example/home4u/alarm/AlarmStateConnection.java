@@ -1,14 +1,19 @@
 package com.example.home4u.alarm;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import com.example.home4u.ServerHelper;
+
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class AlarmStateConnection {
     private static AlarmStateConnection instance;
+    private static final String SERVER_URL = "http://192.168.0.135:8081";
 
     private static final String TAG = AlarmStateConnection.class.getSimpleName();
-    private final DatabaseReference reference;
 
     public static AlarmStateConnection getInstance(){
         if(instance == null){
@@ -19,21 +24,33 @@ public class AlarmStateConnection {
     }
 
     private AlarmStateConnection(){
-        final String ALARM_TRIGGERED_KEY = "alarmTriggered";
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        reference = database.getReference(ALARM_TRIGGERED_KEY);
     }
 
-    public void watchAlarmIsTriggered(ValueEventListener listener){
-        reference.addValueEventListener(listener);
+    public void watchAlarmIsTriggered(AlarmStateListener listener){
+
     }
 
-    public void alarmIsTriggered(ValueEventListener listener){
-        reference.addListenerForSingleValueEvent(listener);
+    public void alarmIsTriggered(AlarmStateListener listener){
+        HttpURLConnection urlConnection = null;
+        try {
+            final URL url = new URL(SERVER_URL);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            final InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+            final String value = ServerHelper.readStringStream(in);
+
+            listener.onAlarmStateChanged(value.equals("true"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(urlConnection != null){
+                urlConnection.disconnect();
+            }
+        }
     }
 
     public void setAlarmIsTriggered(boolean value){
-        reference.setValue(value);
+        //reference.setValue(value);
     }
 }

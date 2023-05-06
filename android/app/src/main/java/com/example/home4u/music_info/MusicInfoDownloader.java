@@ -1,12 +1,11 @@
 package com.example.home4u.music_info;
 
+import com.example.home4u.ServerHelper;
+
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -34,7 +33,7 @@ public class MusicInfoDownloader {
             urlConnection = (HttpURLConnection) url.openConnection();
             final InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
-            final String jsonString = readStream(in);
+            final String jsonString = ServerHelper.readStringStream(in);
             return new JSONObject(jsonString);
 
         } catch (Exception e) {
@@ -47,18 +46,5 @@ public class MusicInfoDownloader {
         }
     }
 
-    // *Inspired by ChatGPT*
-    private static String readStream(InputStream inputStream) throws IOException {
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        final StringBuilder stringBuilder = new StringBuilder();
 
-        String line = reader.readLine();
-        while(line != null){
-            stringBuilder.append(line);
-            line = reader.readLine();
-        }
-
-        reader.close();
-        return stringBuilder.toString();
-    }
 }

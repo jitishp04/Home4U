@@ -42,28 +42,13 @@ public class AlarmNotifierService extends Service {
         final AlarmStateConnection watcher = AlarmStateConnection.getInstance();
         final Context context = this; //TODO: might cause errors
 
-        watcher.watchAlarmIsTriggered(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final Boolean alarmIsTriggeredWrapped = snapshot.getValue(Boolean.class);
+        watcher.watchAlarmIsTriggered(isTriggered -> {
+            Log.v(TAG, "alarmIsTriggered: " + isTriggered);
 
-                if(alarmIsTriggeredWrapped == null){
-                    Log.e(TAG, "alarmIsTriggered is null");
-                    return;
-                }
-                final boolean alarmIsTriggered = alarmIsTriggeredWrapped;
-                Log.v(TAG, "alarmIsTriggered: " + alarmIsTriggered);
-
-                if(alarmIsTriggered) {
-                    AlarmNotification.post(context);
-                } else {
-                    AlarmNotification.cancel(context);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e(TAG, "Firebase canceled");
+            if(isTriggered) {
+                AlarmNotification.post(context);
+            } else {
+                AlarmNotification.cancel(context);
             }
         });
     }

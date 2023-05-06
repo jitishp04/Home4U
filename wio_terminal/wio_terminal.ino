@@ -13,8 +13,8 @@ void setup()
   setupWifi();
   //setupMotion();
   setupScreen();
-
-  //notifyAlarm();
+  musicPlayer.playSong("super_mario_bros.wav");
+  notifyAlarm();
 }
 
 

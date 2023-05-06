@@ -13,13 +13,13 @@ class MusicPlayer : public SongDownloadCallback{
             String* songInfo = songDownloader.getSongInfo();
         }
 
-    private:
-        SongDownloader songDownloader;
-        AudioPlayer audioPlayer;
-
         void playSong(String fileName){
             songDownloader.streamSong(fileName, this);
         }
+
+    private:
+        SongDownloader songDownloader;
+        AudioPlayer audioPlayer;
 
         void songDownloaded(SongDownloaderReader* songSampleReader) override{
             int sample;

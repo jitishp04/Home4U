@@ -24,7 +24,7 @@
             android:name=".scenes.newscenecreator_activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".homescreen_activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,13 +33,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".homescreen_activity" android:configChanges="orientation|keyboardHidden|screenSize" android:label="@string/app_name" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
 
         <service
             android:name=".alarm.AlarmNotifierService"

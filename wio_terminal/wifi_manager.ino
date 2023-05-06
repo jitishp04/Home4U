@@ -1,9 +1,11 @@
 #include "TFT_eSPI.h"
 //#include "myEnv.h"
 #include <rpcWiFi.h>
+#include <stdlib.h>
 
-#define M_SSID "testing"
-#define PASSWORD ""
+
+const char* SSID = getenv("SSID");
+const char* WIFI_PASSWORD = getenv("WIFI_PASSWORD");
 
 
 void setupWifi() {
@@ -13,8 +15,8 @@ void setupWifi() {
   tft.print("Connecting to Wi-Fi..");
 
   Serial.print("Connecting to ");
-  Serial.println(M_SSID);
-  WiFi.begin(M_SSID, PASSWORD); // Connecting WiFi
+  Serial.println(SSID);
+  WiFi.begin(SSID, WIFI_PASSWORD); // Connecting WiFi
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);

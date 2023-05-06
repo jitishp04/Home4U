@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class MusicInfoDownloader {
     public static final String TAG = MusicInfoDownloader.class.getSimpleName();
-    public static final String MUSIC_LIBRARY_URL = "http://192.168.0.135:8080/info.json";
+    public static final String MUSIC_LIBRARY_URL = "https://home4u-fa13b.web.app/info.json";
 
 
     public static void downloadAsync(MusicInfoDownloaderCallback callback){

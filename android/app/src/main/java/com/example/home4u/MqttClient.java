@@ -10,8 +10,11 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 
-// Based on "com.quinstedt.speechtotext"
-
+/*
+   Code based on DIT113MqttWorkshop
+   Author: Nicole Quinstedt
+   Source: https://github.com/Quinstedt/DIT113MqttWorkshop
+*/
 public class MqttClient {
     private final MqttAndroidClient mMqttAndroidClient;
 
@@ -25,7 +28,7 @@ public class MqttClient {
         MqttConnectOptions options = new MqttConnectOptions();
         options.setUserName(username);
         options.setPassword(password.toCharArray());
-        options.setAutomaticReconnect(true);
+        //options.setAutomaticReconnect(true);
         options.setCleanSession(true);
 
         try {

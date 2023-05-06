@@ -7,7 +7,6 @@ app.use(bodyParser.text())
 
 const port = 8081;
 
-
 let isAlarmTriggered = false
 
 
@@ -15,7 +14,7 @@ let isAlarmTriggered = false
 app.use(express.static('public'));
 
 
-app.post("/setAlarmTriggered", (req, res) => {
+app.put("/setAlarmTriggered", (req, res) => {
     const input = req.body
 
     if(input === "true"){
@@ -25,7 +24,7 @@ app.post("/setAlarmTriggered", (req, res) => {
         setAlarmTriggered(false)
         res.send(`isAlarmTriggered set to false`)
     } else {
-        const errMsg = `ERR: input must be either "true” or "false”, but was "${input}"`
+        const errMsg = `ERR: input must be either "true” or "false”, but was "${JSON.stringify(input)}"`
 
         console.log(errMsg)
         res.send(errMsg)

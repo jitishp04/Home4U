@@ -23,6 +23,6 @@ local.properties
 /ignored
 /builds
 /builds/*
-
-#IMPORTANT!
+node_modules
+package-lock.json
 myEnv.h

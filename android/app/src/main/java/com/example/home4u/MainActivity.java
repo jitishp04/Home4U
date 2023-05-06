@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.home4u.alarm.AlarmStateConnection;
+import com.example.home4u.alarm.AlarmStateListener;
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
 
@@ -25,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         toMusicSelectBtn.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, MusicSelectActivity.class))
         );
+
+        AlarmStateConnection.getInstance().alarmIsTriggered(isTriggered -> {
+
+        });
 
         /*
         if(! AlarmNotifierService.isRunning()){

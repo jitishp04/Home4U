@@ -38,6 +38,11 @@ function setAlarmTriggered(bool){
 }
 
 
+app.get("/isAlarmTriggered", (req, res) => {
+    res.send(isAlarmTriggered)
+})
+
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 })

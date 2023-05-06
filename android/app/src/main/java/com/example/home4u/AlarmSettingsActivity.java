@@ -2,7 +2,10 @@ package com.example.home4u;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -12,11 +15,13 @@ import android.widget.Toast;
 public class AlarmSettingsActivity extends AppCompatActivity {
 
     private Switch securitySwitchBtn; // The switch button for security system activation
+    private Button alarmBtn; // The switch button for alarm activation
     private TextView modeState; // Used for the watching message
     private BrokerConnection brokerConnection; // Declare the brokerConnection
     int QOS = 0;
     public static final String PUB_TOPIC = "MotionDetector";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,7 @@ public class AlarmSettingsActivity extends AppCompatActivity {
 
         modeState = findViewById(R.id.ModeState);
         securitySwitchBtn = findViewById(R.id.switchSecurity);
+        alarmBtn = findViewById(R.id.btnAlarm);
         brokerConnection = new BrokerConnection(getApplicationContext());
         brokerConnection.connectToMqttBroker();
 
@@ -47,6 +53,20 @@ public class AlarmSettingsActivity extends AppCompatActivity {
                 brokerConnection.getMqttClient().publish(PUB_TOPIC, message, QOS, null);
                 Toast.makeText(getApplicationContext(), "Security system switch - " + secSwitch,
                         Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        /**
+         * Function that handles the event of turing on alarm manually while Security Mode is enabled
+         */
+        alarmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "alarm";
+                String secSwitch = alarmBtn.getText().toString();
+                brokerConnection.getMqttClient().publish(PUB_TOPIC, message, QOS, null);
+                Toast.makeText(getApplicationContext(), "Alarm - " + secSwitch, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

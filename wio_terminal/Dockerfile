@@ -6,6 +6,8 @@ FROM arm32v7/debian:buster-slim
 
 # Copies repo files to /wio_terminal dir in docker container
 COPY . /wio_terminal
+# Creates env files with requred variables
+RUN echo -e "#define SSID \"\"\n#define WIFI_PASSWORD \"\"" > myEnv.h
 
 
 # Install required packages

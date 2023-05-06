@@ -6,8 +6,6 @@ FROM arm32v7/debian:buster-slim
 
 # Copies repo files to /wio_terminal dir in docker container
 COPY . /wio_terminal
-# Creates env files with requred variables
-RUN echo -e "#define SSID \"\"\n#define WIFI_PASSWORD \"\"" > myEnv.h
 
 
 # Install required packages
@@ -58,6 +56,9 @@ RUN arduino-cli lib install "PubSubClient"
 RUN arduino-cli lib install "Seeed Arduino SFUD"
 RUN arduino-cli lib install "Seeed_Arduino_mbedtls"
 
+
+# Creates env files with requred variables
+RUN echo -e "#define SSID \"\"\n#define WIFI_PASSWORD \"\"" > myEnv.h
 
 # Compile
 RUN arduino-cli compile -t --fqbn Seeeduino:samd:seeed_wio_terminal --build-path "/wio_terminal/build" .

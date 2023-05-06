@@ -62,23 +62,26 @@
 					android:id="@+id/rectangle_5"
 					android:layout_width="386dp"
 					android:layout_height="304dp"
-					android:layout_marginStart="22dp"
+					android:layout_alignParentStart="true"
+					android:layout_marginStart="6dp"
 					android:layout_marginTop="203dp"
 					android:background="@drawable/rectangle_5_shape" />
 
 				<View
 					android:id="@+id/rectangle_9"
-					android:layout_width="386dp"
+					android:layout_width="323dp"
 					android:layout_height="68dp"
-					android:layout_marginStart="22dp"
+					android:layout_alignStart="@+id/rectangle_5"
+					android:layout_marginStart="0dp"
 					android:layout_marginTop="532dp"
 					android:background="@drawable/rectangle_9_shape" />
 
 				<View
 					android:id="@+id/rectangle_10"
-					android:layout_width="386dp"
+					android:layout_width="323dp"
 					android:layout_height="68dp"
-					android:layout_marginStart="22dp"
+					android:layout_alignParentStart="true"
+					android:layout_marginStart="7dp"
 					android:layout_marginTop="628dp"
 					android:background="@drawable/rectangle_10_shape" />
 
@@ -99,12 +102,12 @@
 					android:id="@+id/startTime"
 					android:layout_width="130dp"
 					android:layout_height="70dp"
+					android:layout_alignEnd="@+id/rectangle_5"
 					android:layout_alignBottom="@+id/rectangle_5"
-					android:layout_alignParentEnd="true"
 					android:layout_marginStart="52dp"
 					android:layout_marginTop="247dp"
-					android:layout_marginEnd="137dp"
-					android:layout_marginBottom="191dp"
+					android:layout_marginEnd="125dp"
+					android:layout_marginBottom="222dp"
 					android:onClick="timePickerStart"
 					android:text="@string/start_string"
 					android:textColor="@color/new_scene_color"
@@ -115,12 +118,12 @@
 					android:id="@+id/endTime"
 					android:layout_width="130dp"
 					android:layout_height="70dp"
+					android:layout_alignEnd="@+id/rectangle_5"
 					android:layout_alignBottom="@+id/rectangle_5"
-					android:layout_alignParentEnd="true"
 					android:layout_marginStart="58dp"
 					android:layout_marginTop="355dp"
-					android:layout_marginEnd="137dp"
-					android:layout_marginBottom="98dp"
+					android:layout_marginEnd="124dp"
+					android:layout_marginBottom="135dp"
 					android:onClick="timePickerEnd"
 					android:text="@string/end_string"
 					android:textColor="@color/new_scene_color"
@@ -163,7 +166,7 @@
 					android:layout_height="48dp"
 					android:layout_alignStart="@+id/rectangle_5"
 					android:layout_alignBottom="@+id/rectangle_5"
-					android:layout_marginStart="10dp"
+					android:layout_marginStart="5dp"
 					android:layout_marginTop="451dp"
 					android:layout_marginEnd="11dp"
 					android:layout_marginBottom="8dp"
@@ -187,9 +190,10 @@
 					android:layout_width="48dp"
 					android:layout_height="48dp"
 					android:layout_alignBottom="@+id/wedButton"
-					android:layout_marginStart="188dp"
+					android:layout_marginStart="5dp"
 					android:layout_marginTop="451dp"
 					android:layout_marginBottom="0dp"
+					android:layout_toEndOf="@+id/wedButton"
 					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/thursday" />
 
@@ -198,7 +202,7 @@
 					android:layout_width="48dp"
 					android:layout_height="48dp"
 					android:layout_alignBottom="@+id/monButton"
-					android:layout_marginStart="-5dp"
+					android:layout_marginStart="-4dp"
 					android:layout_marginTop="451dp"
 					android:layout_marginBottom="0dp"
 					android:layout_toEndOf="@+id/monButton"
@@ -225,7 +229,7 @@
 					android:layout_alignParentEnd="true"
 					android:layout_marginStart="10dp"
 					android:layout_marginTop="451dp"
-					android:layout_marginEnd="10dp"
+					android:layout_marginEnd="12dp"
 					android:layout_marginBottom="0dp"
 					android:background="@drawable/ellipse_1_shape"
 					android:text="@string/sunday" />
@@ -246,8 +250,9 @@
 					android:id="@+id/rectangle_11"
 					android:layout_width="141dp"
 					android:layout_height="57dp"
+					android:layout_below="@+id/rectangle_10"
 					android:layout_marginStart="138dp"
-					android:layout_marginTop="737dp"
+					android:layout_marginTop="16dp"
 					android:background="@drawable/rectangle_11_shape"
 					tools:text="@string/save" />
 
@@ -256,7 +261,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_alignBottom="@+id/rectangle_9"
-					android:layout_marginStart="130dp"
+					android:layout_marginStart="55dp"
 					android:layout_marginBottom="21dp"
 					android:layout_toEndOf="@+id/set_security"
 					android:scaleX="2"
@@ -268,8 +273,8 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_alignBottom="@+id/rectangle_10"
-					android:layout_marginStart="145dp"
-					android:layout_marginBottom="18dp"
+					android:layout_marginStart="69dp"
+					android:layout_marginBottom="21dp"
 					android:layout_toEndOf="@+id/play_music"
 					android:scaleX="2"
 					android:scaleY="2"
@@ -299,6 +304,27 @@
 					android:background="#00FFFFFF"
 					android:contentDescription="@string/backbutton"
 					android:foreground="@drawable/reply" />
+
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/selectCard"
+					android:layout_width="200dp"
+					android:layout_height="50dp"
+					android:layout_alignBottom="@+id/rectangle_5"
+					android:layout_alignParentStart="true"
+					android:layout_marginStart="116dp"
+
+					android:layout_marginBottom="73dp"
+					android:elevation="10dp"
+					app:cardBackgroundColor="@color/white"
+					app:cardCornerRadius="8dp">
+
+					<TextView
+						android:id="@+id/selectDays"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/select_days" />
+
+				</com.google.android.material.card.MaterialCardView>
 
 
 			</RelativeLayout>

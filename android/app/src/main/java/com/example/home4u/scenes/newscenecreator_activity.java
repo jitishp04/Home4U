@@ -28,13 +28,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
 import com.example.home4u.scene_manager_screen.SceneManagerScreenActivity;
+import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class newscenecreator_activity extends Activity {
@@ -54,8 +59,17 @@ public class newscenecreator_activity extends Activity {
 	private Button satButton;
 	private Button sunButton;
 
+
 	private Button startTime;
 	private Button endTime;
+
+	private MaterialCardView selectCard;
+	private TextView selectDays;
+	private boolean [] selectedDays;
+	private ArrayList<Integer> daysList = new ArrayList<>();
+	private String [] daysArray = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+
+
 
 	private int hourStart, minuteStart;
 	private int hourEnd, minuteEnd;
@@ -77,6 +91,14 @@ public class newscenecreator_activity extends Activity {
 		startTime = findViewById(R.id.startTime);
 		endTime = findViewById(R.id.endTime);
 
+		selectCard = findViewById(R.id.selectCard);
+		selectedDays = new boolean[daysArray.length];
+		selectDays = findViewById(R.id.selectDays);
+
+		selectCard.setOnClickListener(v -> {
+			showDaysDialog();
+		});
+
 		monButton = findViewById(R.id.monButton);
 		tueButton = findViewById(R.id.tueButton);
 		wedButton = findViewById(R.id.wedButton);
@@ -84,7 +106,7 @@ public class newscenecreator_activity extends Activity {
 		friButton = findViewById(R.id.friButton);
 		satButton = findViewById(R.id.satButton);
 		sunButton = findViewById(R.id.sunButton);
-
+/*
 		monButton.setOnClickListener(buttonClickListener);
 		tueButton.setOnClickListener(buttonClickListener);
 		wedButton.setOnClickListener(buttonClickListener);
@@ -92,6 +114,8 @@ public class newscenecreator_activity extends Activity {
 		friButton.setOnClickListener(buttonClickListener);
 		satButton.setOnClickListener(buttonClickListener);
 		sunButton.setOnClickListener(buttonClickListener);
+
+ */
 
 		setSecuritySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 			if(isChecked){
@@ -134,6 +158,33 @@ public class newscenecreator_activity extends Activity {
 			backButtonNewScene.setOnClickListener(v -> finish());
 			saveButton.setOnClickListener(v -> checker());
 		}
+	}
+
+	//https://www.youtube.com/watch?v=4GdbCl-47wE
+	private void showDaysDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(newscenecreator_activity.this);
+		builder.setTitle("Select days");
+		builder.setCancelable(false);
+		builder.setMultiChoiceItems(daysArray, selectedDays, (dialog, which, isChecked) -> {
+			if(isChecked){
+				daysList.add(which);
+			}else{
+				daysList.remove(which);
+			}
+		}).setPositiveButton("ok", (dialog, which) -> {
+			StringBuilder stringBuilder = new StringBuilder();
+
+			for(int i = 0; i< daysList.size(); i++){
+
+				stringBuilder.append(daysArray[daysList.get(i)]);
+
+				if(i != daysList.size() -1){
+					stringBuilder.append(", ");
+				}
+				selectDays.setText(stringBuilder.toString());
+			}
+		}).setNegativeButton("cancel", (dialog, which) -> dialog.dismiss());
+		builder.show();
 	}
 
 	//Update and save data of an existing scene.
@@ -190,7 +241,7 @@ public class newscenecreator_activity extends Activity {
 
 	}
 
-
+/*
 	//inspired by Chat-gpt: using switch case instead of calling onClickListener multiple times
 	View.OnClickListener buttonClickListener = v -> {
 		// Do something when any of the buttons is clicked
@@ -218,6 +269,8 @@ public class newscenecreator_activity extends Activity {
 				break;
 		}
 	};
+
+ */
 
 //inspired from: https://www.youtube.com/watch?v=c6c1giRekB4
 	public void timePickerStart(View view) {

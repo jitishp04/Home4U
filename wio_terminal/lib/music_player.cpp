@@ -1,34 +1,46 @@
 #ifndef MUSIC_PLAYER_H
 #define MUSIC_PLAYER_H
 
-#include "audio_player.cpp"
 #include "song_downloader.cpp"
+
+#define SPEAKER PIN_WIRE_SCL
+
+#define MUSIC_TEMPO 200
 
 class MusicPlayer{
     public:
         MusicPlayer(){         
             //TODO: parse this file   
-            String* songInfo = songDownloader.getSongInfo();
+            String songInfo = songDownloader.downloadString("/info.json");
         }
 
         void playSong(String fileName){
-            songDownloader.streamSong(fileName, MusicPlayer::onSongDownload, this);
-            myLog("Finished playing song");
+            String song = songDownloader.downloadString("/songs/" + fileName);
+            int songStrLength = song.length();
+
+            for(int i = 0; i < songStrLength; i+=5){
+                String frequencyStr = song.substring(i, i+4);
+                if(frequencyStr == "0000"){
+                    delay(MUSIC_TEMPO);
+                } else {
+                    playTone(frequencyStr.toInt());
+                }
+            }
         }
 
-        static void onSongDownload(void* payload){
-            MusicPlayer* instance = static_cast<MusicPlayer*>(payload);
-
-            int sample;
-            do{
-                sample = instance->songDownloader.read();
-                instance->audioPlayer.playSample(sample);
-            } while(sample != instance->songDownloader.NO_MORE_DATA);
-        }
 
     private:
         SongDownloader songDownloader;
-        AudioPlayer audioPlayer;
+
+        // Inspired by https://wiki.seeedstudio.com/Wio-Terminal-Buzzer/
+        void playTone(int tone) {
+            for (long i = 0; i < MUSIC_TEMPO * 1000; i += tone * 2) {
+                digitalWrite(SPEAKER, HIGH);
+                delayMicroseconds(tone);
+                digitalWrite(SPEAKER, LOW);
+                delayMicroseconds(tone);
+            }
+        }
 };
 
 #endif

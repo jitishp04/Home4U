@@ -10,6 +10,14 @@ const port = 8081;
 let isAlarmTriggered = false
 
 
+//just for logging
+app.use((req, res, next) => {
+    if (req.method === 'GET') {
+      console.log(`Received GET request for ${req.url}`);
+    }
+    next();
+});
+
 // Host songs and song info
 app.use(express.static('public'));
 

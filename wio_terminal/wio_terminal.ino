@@ -16,9 +16,10 @@ void setup()
   myLog("Initial setup done");
   delay(200);
 
-  //setupMotion();
-  musicPlayer = new MusicPlayer();
-  musicPlayer->playSong("test_blip.wav");
+  setupMotion();
+  // musicPlayer = new MusicPlayer();
+  // delay(4000);
+  // musicPlayer->playSong("scale.txt");
   //notifyAlarm();
 }
 
@@ -44,11 +45,18 @@ void setupScreen(){
 
 void loop()
 {
-  // myLog("Looping");
-  // delay(5000);
-  /*
   if(detectsMotion()){
     myLog("Motion detected");
-    delay(500);
-  }*/
+    bool success = notifyAlarm();
+    if(success){
+      delay(120000);
+    } else {
+      delay(1000);
+    }
+  } else {
+    myLog("Watching...");
+    delay(1000);
+  }
+  
+  
 }

@@ -18,7 +18,7 @@ public class AlarmServiceStarter {
         final AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
 
         final Intent intent = new Intent(context, AlarmStatusListener.class);
-        final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         final long intervalMillis = 60 * 1000;
         final long firstMillis = System.currentTimeMillis() + 500;

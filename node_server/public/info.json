@@ -1,18 +1,18 @@
 {
     "songs": [
         {
-            "fileName": "super_mario_bros.wav",
-            "name": "Super Mario Bros",
-            "artist": "Yukio Kaneoka",
+            "fileName": "scale.txt",
+            "name": "Music Scale",
+            "artist": "Henrik Lagrosen",
             "album": null,
-            "length": "1:21"
+            "length": null
         },
         {
-            "fileName": "test_blip.wav",
-            "name": "Test blip",
-            "artist": null,
+            "fileName": "twinkle_twinkle.txt",
+            "name": "Twinkle Twinkle",
+            "artist": "Jane Taylor",
             "album": null,
-            "length": "0:10"
+            "length": null
         }
     ]
 }

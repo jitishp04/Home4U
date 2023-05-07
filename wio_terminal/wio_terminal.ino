@@ -18,7 +18,7 @@ void setup()
 
   //setupMotion();
   musicPlayer = new MusicPlayer();
-  musicPlayer->playSong("twinkle_twinkle.txt");
+  musicPlayer->playSong("scale.txt");
   //notifyAlarm();
 }
 

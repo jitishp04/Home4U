@@ -8,12 +8,11 @@ class MusicPlayer{
     public:
         MusicPlayer(){         
             //TODO: parse this file   
-            String* songInfo = songDownloader.getSongInfo();
+            String songInfo = songDownloader.downloadString("/info.json");
         }
 
         void playSong(String fileName){
-            songDownloader.streamSong(fileName, MusicPlayer::onSongDownload, this);
-            myLog("Finished playing song");
+            String song = songDownloader.downloadString("/songs/" + fileName);
         }
 
         static void onSongDownload(void* payload){
@@ -21,9 +20,9 @@ class MusicPlayer{
 
             int sample;
             do{
-                sample = instance->songDownloader.read();
+                //sample = instance->songDownloader.read();
                 instance->audioPlayer.playSample(sample);
-            } while(sample != instance->songDownloader.NO_MORE_DATA);
+            } while(sample != -1);
         }
 
     private:

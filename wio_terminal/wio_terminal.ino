@@ -18,7 +18,7 @@ void setup()
 
   //setupMotion();
   musicPlayer = new MusicPlayer();
-  musicPlayer->playSong("test_blip.wav");
+  musicPlayer->playSong("twinkle_twinkle.txt");
   //notifyAlarm();
 }
 

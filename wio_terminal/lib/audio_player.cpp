@@ -30,7 +30,7 @@ class AudioPlayer{
 
     void playSound(int value){
       digitalWrite(SPEAKER, value);
-      delayMicroseconds(90);
+      delayMicroseconds(130);
     }
 };
 

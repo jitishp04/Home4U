@@ -51,6 +51,7 @@ public class newscenecreator_activity extends Activity {
 	private Button saveButton;
 	private EditText sceneNameTextInput;
 	private ImageButton backButtonNewScene;
+	/*
 	private Button monButton;
 	private Button tueButton;
 	private Button wedButton;
@@ -58,6 +59,8 @@ public class newscenecreator_activity extends Activity {
 	private Button friButton;
 	private Button satButton;
 	private Button sunButton;
+
+	 */
 
 
 	private Button startTime;
@@ -98,7 +101,7 @@ public class newscenecreator_activity extends Activity {
 		selectCard.setOnClickListener(v -> {
 			showDaysDialog();
 		});
-
+/*
 		monButton = findViewById(R.id.monButton);
 		tueButton = findViewById(R.id.tueButton);
 		wedButton = findViewById(R.id.wedButton);
@@ -106,6 +109,8 @@ public class newscenecreator_activity extends Activity {
 		friButton = findViewById(R.id.friButton);
 		satButton = findViewById(R.id.satButton);
 		sunButton = findViewById(R.id.sunButton);
+
+ */
 /*
 		monButton.setOnClickListener(buttonClickListener);
 		tueButton.setOnClickListener(buttonClickListener);

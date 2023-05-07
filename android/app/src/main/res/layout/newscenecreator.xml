@@ -37,8 +37,8 @@
 					android:id="@+id/new_scene"
 					android:layout_width="135dp"
 					android:layout_height="38dp"
-					android:layout_above="@+id/rectangle_8"
-					android:layout_marginStart="156dp"
+					android:layout_alignStart="@+id/rectangle_8"
+					android:layout_marginStart="47dp"
 					android:layout_marginTop="12dp"
 					android:layout_marginBottom="-50dp"
 					android:text="@string/new_scene_string"
@@ -60,8 +60,8 @@
 
 				<View
 					android:id="@+id/rectangle_5"
-					android:layout_width="386dp"
-					android:layout_height="304dp"
+					android:layout_width="350dp"
+					android:layout_height="299dp"
 					android:layout_alignParentStart="true"
 					android:layout_marginStart="6dp"
 					android:layout_marginTop="203dp"
@@ -69,8 +69,8 @@
 
 				<View
 					android:id="@+id/rectangle_9"
-					android:layout_width="323dp"
-					android:layout_height="68dp"
+					android:layout_width="350dp"
+					android:layout_height="74dp"
 					android:layout_alignStart="@+id/rectangle_5"
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="532dp"
@@ -78,7 +78,7 @@
 
 				<View
 					android:id="@+id/rectangle_10"
-					android:layout_width="323dp"
+					android:layout_width="349dp"
 					android:layout_height="68dp"
 					android:layout_alignParentStart="true"
 					android:layout_marginStart="7dp"
@@ -106,8 +106,8 @@
 					android:layout_alignBottom="@+id/rectangle_5"
 					android:layout_marginStart="52dp"
 					android:layout_marginTop="247dp"
-					android:layout_marginEnd="125dp"
-					android:layout_marginBottom="222dp"
+					android:layout_marginEnd="113dp"
+					android:layout_marginBottom="216dp"
 					android:onClick="timePickerStart"
 					android:text="@string/start_string"
 					android:textColor="@color/new_scene_color"
@@ -122,8 +122,8 @@
 					android:layout_alignBottom="@+id/rectangle_5"
 					android:layout_marginStart="58dp"
 					android:layout_marginTop="355dp"
-					android:layout_marginEnd="124dp"
-					android:layout_marginBottom="135dp"
+					android:layout_marginEnd="113dp"
+					android:layout_marginBottom="131dp"
 					android:onClick="timePickerEnd"
 					android:text="@string/end_string"
 					android:textColor="@color/new_scene_color"
@@ -134,7 +134,8 @@
 					android:id="@+id/rectangle_8"
 					android:layout_width="203dp"
 					android:layout_height="53dp"
-					android:layout_marginStart="115dp"
+					android:layout_alignStart="@+id/set_scene_duration"
+					android:layout_marginStart="68dp"
 					android:layout_marginTop="78dp"
 					android:background="@drawable/rectangle_8_shape" />
 
@@ -142,8 +143,11 @@
 					android:id="@+id/border_color"
 					android:layout_width="24dp"
 					android:layout_height="24dp"
-					android:layout_marginStart="279dp"
+					android:layout_alignStart="@+id/rectangle_8"
+					android:layout_alignBottom="@+id/rectangle_8"
+					android:layout_marginStart="172dp"
 					android:layout_marginTop="92dp"
+					android:layout_marginBottom="10dp"
 					android:contentDescription="@string/border_color"
 					android:src="@drawable/border_color" />
 
@@ -159,102 +163,104 @@
 					android:textColor="@color/new_scene_color"
 					android:textSize="20sp"
 					android:textStyle="bold" />
+				<!--
+                                <Button
+                                    android:id="@+id/monButton"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_alignStart="@+id/rectangle_5"
+                                    android:layout_alignBottom="@+id/rectangle_5"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="451dp"
+                                    android:layout_marginEnd="11dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@drawable/ellipse_1_shape"
+                                    android:text="@string/monday" />
 
-				<Button
-					android:id="@+id/monButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignStart="@+id/rectangle_5"
-					android:layout_alignBottom="@+id/rectangle_5"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginEnd="11dp"
-					android:layout_marginBottom="8dp"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/monday" />
+                                <Button
+                                    android:id="@+id/wedButton"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_alignBottom="@+id/tueButton"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="451dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:layout_toEndOf="@+id/tueButton"
+                                    android:background="@drawable/ellipse_1_shape"
+                                    android:text="@string/wednesday" />
 
-				<Button
-					android:id="@+id/wedButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/tueButton"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/tueButton"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/wednesday" />
+                                <Button
+                                    android:id="@+id/thuButton"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_alignBottom="@+id/wedButton"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="451dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:layout_toEndOf="@+id/wedButton"
+                                    android:background="@drawable/ellipse_1_shape"
+                                    android:text="@string/thursday" />
 
-				<Button
-					android:id="@+id/thuButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/wedButton"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/wedButton"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/thursday" />
+                                <Button
+                                    android:id="@+id/tueButton"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_alignBottom="@+id/monButton"
+                                    android:layout_marginStart="-4dp"
+                                    android:layout_marginTop="451dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:layout_toEndOf="@+id/monButton"
+                                    android:background="@drawable/ellipse_1_shape"
+                                    android:text="@string/tuesday" />
 
-				<Button
-					android:id="@+id/tueButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/monButton"
-					android:layout_marginStart="-4dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/monButton"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/tuesday" />
+                                <Button
+                                    android:id="@+id/satButton"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_alignBottom="@+id/friButton"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="451dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:layout_toEndOf="@+id/friButton"
+                                    android:background="@drawable/ellipse_1_shape"
+                                    android:text="@string/saturday" />
 
-				<Button
-					android:id="@+id/satButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/friButton"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/friButton"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/saturday" />
+                                <Button
+                                    android:id="@+id/sunButton"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_alignBottom="@+id/satButton"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="451dp"
+                                    android:layout_marginEnd="12dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:background="@drawable/ellipse_1_shape"
+                                    android:text="@string/sunday" />
 
-				<Button
-					android:id="@+id/sunButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/satButton"
-					android:layout_alignParentEnd="true"
-					android:layout_marginStart="10dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginEnd="12dp"
-					android:layout_marginBottom="0dp"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/sunday" />
-
-				<Button
-					android:id="@+id/friButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/thuButton"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/thuButton"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/friday" />
+                                <Button
+                                    android:id="@+id/friButton"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
+                                    android:layout_alignBottom="@+id/thuButton"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginTop="451dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:layout_toEndOf="@+id/thuButton"
+                                    android:background="@drawable/ellipse_1_shape"
+                                    android:text="@string/friday" />
+                -->
 
 				<Button
 					android:id="@+id/rectangle_11"
 					android:layout_width="141dp"
 					android:layout_height="57dp"
 					android:layout_below="@+id/rectangle_10"
-					android:layout_marginStart="138dp"
-					android:layout_marginTop="16dp"
+					android:layout_alignStart="@+id/rectangle_10"
+					android:layout_marginStart="99dp"
+					android:layout_marginTop="17dp"
 					android:background="@drawable/rectangle_11_shape"
-					tools:text="@string/save" />
+					android:text="@string/save" />
 
 				<Switch
 					android:id="@+id/setSecuritySwitch"
@@ -286,8 +292,8 @@
 					android:layout_height="59dp"
 					android:layout_alignEnd="@+id/rectangle_8"
 					android:layout_alignBottom="@+id/rectangle_8"
-					android:layout_marginEnd="2dp"
-					android:layout_marginBottom="-2dp"
+					android:layout_marginEnd="1dp"
+					android:layout_marginBottom="-4dp"
 					android:autofillHints="Scene1"
 					android:ems="10"
 					android:hint="@string/scene_name"
@@ -295,11 +301,11 @@
 
 				<ImageButton
 					android:id="@+id/backButtonNewScene"
-					android:layout_width="50dp"
+					android:layout_width="95dp"
 					android:layout_height="50dp"
 					android:layout_alignBottom="@+id/new_scene"
-					android:layout_marginEnd="-50dp"
-					android:layout_marginBottom="-4dp"
+					android:layout_marginEnd="27dp"
+					android:layout_marginBottom="-5dp"
 					android:layout_toStartOf="@+id/new_scene"
 					android:background="#00FFFFFF"
 					android:contentDescription="@string/backbutton"
@@ -311,9 +317,9 @@
 					android:layout_height="50dp"
 					android:layout_alignBottom="@+id/rectangle_5"
 					android:layout_alignParentStart="true"
-					android:layout_marginStart="116dp"
+					android:layout_marginStart="77dp"
 
-					android:layout_marginBottom="73dp"
+					android:layout_marginBottom="55dp"
 					android:elevation="10dp"
 					app:cardBackgroundColor="@color/white"
 					app:cardCornerRadius="8dp">
@@ -331,5 +337,5 @@
 
 		</RelativeLayout>
 
-	</ScrollView>
-</HorizontalScrollView>
+                    </ScrollView>
+                </HorizontalScrollView>

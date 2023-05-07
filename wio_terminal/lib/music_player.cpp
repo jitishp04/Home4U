@@ -13,6 +13,7 @@ class MusicPlayer{
 
         void playSong(String fileName){
             songDownloader.streamSong(fileName, MusicPlayer::onSongDownload, this);
+            myLog("Finished playing song");
         }
 
         static void onSongDownload(void* payload){

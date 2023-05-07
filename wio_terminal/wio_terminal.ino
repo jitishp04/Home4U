@@ -4,17 +4,22 @@
 #undef read
 
 TFT_eSPI tft;
-MusicPlayer musicPlayer;
+MusicPlayer* musicPlayer;
 
 void setup()
 {
+  //do first!
   setupSerial();
-
   setupWifi();
-  //setupMotion();
   setupScreen();
-  musicPlayer.playSong("super_mario_bros.wav");
-  notifyAlarm();
+
+  myLog("Initial setup done");
+  delay(200);
+
+  //setupMotion();
+  musicPlayer = new MusicPlayer();
+  musicPlayer->playSong("test_blip.wav");
+  //notifyAlarm();
 }
 
 

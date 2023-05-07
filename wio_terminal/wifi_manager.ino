@@ -5,7 +5,6 @@
 
 
 void setupWifi() {
-
   tft.setTextSize(2);
   tft.setCursor((320 - tft.textWidth("Connecting to Wi-Fi..")) / 2, 120);
   tft.print("Connecting to Wi-Fi..");

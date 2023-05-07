@@ -1,21 +1,24 @@
 #ifndef SONG_DOWNLOADER_H
 #define SONG_DOWNLOADER_H
 
+#include "music_player.cpp"
 #include "logger.cpp"
-#include "song_downloader_reader.cpp"
-#include "song_downloader_callback.cpp"
 #undef min //Needed for included HTTPClient
 #include <HTTPClient.h>
 
-#define SONG_INFO_PATH "http://192.168.205.69:8081/info.json" //"http://home4u-fa13b.web.app/info.json";
-#define SONGS_DIR_PATH "http://192.168.205.69:8081/songs/"
+#define SONG_INFO_PATH "http://192.168.0.135:8081/info.json"
+#define SONGS_DIR_PATH "http://192.168.0.135:8081/songs/"
 
 
 void startStreamHandler(void* params);
 
 class SongDownloader{
+  private:
+    Stream* stream;
 
   public:
+    static const int NO_MORE_DATA = -1;
+
     SongDownloader(){}
 
     String* getSongInfo(){
@@ -41,7 +44,7 @@ class SongDownloader{
       }
     }
 
-    void streamSong(String fileName, SongDownloadCallback* callback){
+    void streamSong(String fileName, void (*callback)(void*), void* payload){
       const String path = SONGS_DIR_PATH + fileName;
       myLog("Started streaming " + path);
 
@@ -60,21 +63,21 @@ class SongDownloader{
           stream.read();
         }
 
-        //Calls callback
-        SongDownloaderReader* reader = new SongDownloaderReader(stream);
-        callback->songDownloaded(reader);
+        this->stream = &stream;
+        callback(payload);
 
-        //Closes connection and cleans up
-        delete reader;
         http.end();
 
       } else {
         myLog("Failed to download song: " + String(resCode));
       }
     }
+
+    //returns -1 when there is no more data available
+    int read(){
+      return stream->read();
+    }
 };
-
-
 
 
 

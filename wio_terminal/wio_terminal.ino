@@ -1,10 +1,10 @@
 #include "TFT_eSPI.h"
 #include "lib/logger.cpp"
-//#include "lib/music_player.cpp"
+#include "lib/music_player.cpp"
 #undef read
 
 TFT_eSPI tft;
-//MusicPlayer musicPlayer;
+MusicPlayer musicPlayer;
 
 void setup()
 {
@@ -13,7 +13,7 @@ void setup()
   setupWifi();
   //setupMotion();
   setupScreen();
-  //musicPlayer.playSong("super_mario_bros.wav");
+  musicPlayer.playSong("super_mario_bros.wav");
   notifyAlarm();
 }
 

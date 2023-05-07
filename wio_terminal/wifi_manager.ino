@@ -1,6 +1,5 @@
 #include "TFT_eSPI.h"
 #include <rpcWiFi.h>
-#include <stdlib.h>
 #include "myEnv.h"
 
 

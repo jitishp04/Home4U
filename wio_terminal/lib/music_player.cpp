@@ -3,10 +3,8 @@
 
 #include "audio_player.cpp"
 #include "song_downloader.cpp"
-#include "song_downloader_reader.cpp"
-#include "song_downloader_callback.cpp"
 
-class MusicPlayer : public SongDownloadCallback{
+class MusicPlayer{
     public:
         MusicPlayer(){         
             //TODO: parse this file   
@@ -14,20 +12,22 @@ class MusicPlayer : public SongDownloadCallback{
         }
 
         void playSong(String fileName){
-            songDownloader.streamSong(fileName, this);
+            songDownloader.streamSong(fileName, MusicPlayer::onSongDownload, this);
+        }
+
+        static void onSongDownload(void* payload){
+            MusicPlayer* instance = static_cast<MusicPlayer*>(payload);
+
+            int sample;
+            do{
+                sample = instance->songDownloader.read();
+                instance->audioPlayer.playSample(sample);
+            } while(sample != instance->songDownloader.NO_MORE_DATA);
         }
 
     private:
         SongDownloader songDownloader;
         AudioPlayer audioPlayer;
-
-        void songDownloaded(SongDownloaderReader* songSampleReader) override{
-            int sample;
-            do{
-                sample = songSampleReader->read();
-                audioPlayer.playSample(sample);
-            } while(sample != songSampleReader->NO_MORE_DATA);
-        }
 };
 
 #endif

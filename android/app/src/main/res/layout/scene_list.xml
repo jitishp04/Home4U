@@ -46,8 +46,8 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/modeViewBtn"
+            <ImageView
+                android:id="@+id/arrowIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="false"

@@ -158,6 +158,7 @@ public class newscenecreator_activity extends Activity {
 			endTime.setText(curSceneData.getEndTime());
 			setSecuritySwitch.setChecked(curSceneData.getSetSecurity());
 			playMusicSwitch.setChecked(curSceneData.getPlayMusic());
+			backButtonNewScene.setOnClickListener(v -> finish());
 			saveButton.setOnClickListener(v -> saveUpdates(curSceneData));
 		} else {
 			backButtonNewScene.setOnClickListener(v -> finish());

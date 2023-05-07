@@ -3,65 +3,58 @@ package com.example.home4u.alarm;
 
 import android.util.Log;
 
-import com.example.home4u.ServerHelper;
+import com.example.home4u.server_manager.ServerHelper;
+import com.example.home4u.server_manager.ServerRequestCallback;
 
 import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class AlarmStateConnection {
     private static AlarmStateConnection instance;
-    private static final String SERVER_URL = "http://192.168.0.135:8081";
+
 
     private static final String TAG = AlarmStateConnection.class.getSimpleName();
 
-    public static AlarmStateConnection getInstance(){
-        if(instance == null){
+    public static AlarmStateConnection getInstance() {
+        if (instance == null) {
             instance = new AlarmStateConnection();
         }
 
         return instance;
     }
 
-    private AlarmStateConnection(){
-
+    private AlarmStateConnection() {
     }
 
-    public void watchAlarmIsTriggered(AlarmStateListener listener){
 
-    }
-
-    public void alarmIsTriggered(AlarmStateListener listener){
-        new Thread(() -> {
-            HttpURLConnection urlConnection = null;
-            try {
-                final URL url = new URL(SERVER_URL + "/isAlarmTriggered");
-                urlConnection = (HttpURLConnection) url.openConnection();
+    public void alarmIsTriggered(AlarmStateListener listener) {
+        ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
+            @Override
+            public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
                 final InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
                 final String value = ServerHelper.readStringStream(in);
                 Log.v(TAG, "alarmIsTriggered: " + value);
 
-                listener.onAlarmStateChanged(value.equals("true"));
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
+                listener.onAlarmState(value.equals("true"));
             }
-        }).start();
+
+            @Override
+            public void onConnectionError() {
+
+            }
+        });
     }
 
-    public void setAlarmIsTriggered(boolean value){
-        new Thread(() -> {
-            HttpURLConnection urlConnection = null;
-            try {
-                final URL url = new URL(SERVER_URL + "/setAlarmTriggered");
-                Log.v(TAG, "Setting " + url + " to " + value);
-                urlConnection = (HttpURLConnection) url.openConnection();
+    public void setAlarmIsTriggered(boolean value) {
+        ServerHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {
+            @Override
+            public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
                 urlConnection.setRequestMethod("PUT");
                 urlConnection.setRequestProperty("Content-Type", "text/plain");
                 urlConnection.setDoOutput(true);
@@ -69,17 +62,12 @@ public class AlarmStateConnection {
                 final OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
                 out.write(Boolean.toString(value));
                 out.close();
-
-                final int responseCode = urlConnection.getResponseCode();
-                Log.v(TAG, "/setAlarmTriggered resCode: " + responseCode);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
             }
-        }).start();
+
+            @Override
+            public void onConnectionError() {
+
+            }
+        });
     }
 }

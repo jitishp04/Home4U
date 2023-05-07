@@ -27,7 +27,7 @@ public class MusicSelectActivity extends AppCompatActivity {
     }
 
     private void downloadSongs(){
-        MusicInfoDownloader.downloadAsync(new MusicInfoDownloaderCallback() {
+        MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
             @Override
             public void onSuccess(JSONObject jsonObject) {
                 String[] songs = MusicInfoParser.getSongs(jsonObject);

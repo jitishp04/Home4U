@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 public class AlarmActivity extends AppCompatActivity {
-    private static final String TAG = AppCompatActivity.class.getSimpleName();
+    private static final String TAG = AlarmActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 public class AlarmActivity extends AppCompatActivity {
-    private static final String TAG = AppCompatActivity.class.getSimpleName();
+    private static final String TAG = AlarmActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,18 +21,9 @@ public class AlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm);
 
         AlarmStateConnection alarmStateConnection = AlarmStateConnection.getInstance();
-        alarmStateConnection.alarmIsTriggered(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final Boolean alarmIsTriggeredWrapped = snapshot.getValue(Boolean.class);
-                if(Boolean.TRUE.equals(alarmIsTriggeredWrapped)){
-                    alarmStateConnection.setAlarmIsTriggered(false);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e(TAG, "Firebase canceled");
+        alarmStateConnection.alarmIsTriggered(isTriggered -> {
+            if (isTriggered) {
+                alarmStateConnection.setAlarmIsTriggered(false);
             }
         });
     }

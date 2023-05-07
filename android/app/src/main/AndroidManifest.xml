@@ -33,11 +33,9 @@
 
         <activity android:name=".alarm.AlarmActivity"/>
         <activity android:name=".MusicSelectActivity"/>
-
-        <service
-            android:name=".alarm.AlarmNotifierService"
-            android:launchMode="singleInstance"
-            />
+        <receiver android:name="com.example.home4u.alarm.AlarmStatusListener"
+            android:enabled="true"
+            android:exported="true"/>
 
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 

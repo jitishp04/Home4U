@@ -3,31 +3,32 @@
 
 #include "audio_player.cpp"
 #include "song_downloader.cpp"
-#include "song_downloader_reader.cpp"
-#include "song_downloader_callback.cpp"
 
-class MusicPlayer : public SongDownloadCallback{
+class MusicPlayer{
     public:
         MusicPlayer(){         
             //TODO: parse this file   
             String* songInfo = songDownloader.getSongInfo();
         }
 
+        void playSong(String fileName){
+            songDownloader.streamSong(fileName, MusicPlayer::onSongDownload, this);
+            myLog("Finished playing song");
+        }
+
+        static void onSongDownload(void* payload){
+            MusicPlayer* instance = static_cast<MusicPlayer*>(payload);
+
+            int sample;
+            do{
+                sample = instance->songDownloader.read();
+                instance->audioPlayer.playSample(sample);
+            } while(sample != instance->songDownloader.NO_MORE_DATA);
+        }
+
     private:
         SongDownloader songDownloader;
         AudioPlayer audioPlayer;
-
-        void playSong(String fileName){
-            songDownloader.streamSong(fileName, this);
-        }
-
-        void songDownloaded(SongDownloaderReader* songSampleReader) override{
-            int sample;
-            do{
-                sample = songSampleReader->read();
-                audioPlayer.playSample(sample);
-            } while(sample != songSampleReader->NO_MORE_DATA);
-        }
 };
 
 #endif

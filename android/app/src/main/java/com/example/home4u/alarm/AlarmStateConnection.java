@@ -1,39 +1,73 @@
 package com.example.home4u.alarm;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import android.util.Log;
+
+import com.example.home4u.server_manager.ServerHelper;
+import com.example.home4u.server_manager.ServerRequestCallback;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class AlarmStateConnection {
     private static AlarmStateConnection instance;
 
-    private static final String TAG = AlarmStateConnection.class.getSimpleName();
-    private final DatabaseReference reference;
 
-    public static AlarmStateConnection getInstance(){
-        if(instance == null){
+    private static final String TAG = AlarmStateConnection.class.getSimpleName();
+
+    public static AlarmStateConnection getInstance() {
+        if (instance == null) {
             instance = new AlarmStateConnection();
         }
 
         return instance;
     }
 
-    private AlarmStateConnection(){
-        final String ALARM_TRIGGERED_KEY = "alarmTriggered";
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        reference = database.getReference(ALARM_TRIGGERED_KEY);
+    private AlarmStateConnection() {
     }
 
-    public void watchAlarmIsTriggered(ValueEventListener listener){
-        reference.addValueEventListener(listener);
+
+    public void alarmIsTriggered(AlarmStateListener listener) {
+        ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
+            @Override
+            public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
+                final InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+
+                final String value = ServerHelper.readStringStream(in);
+                Log.v(TAG, "alarmIsTriggered: " + value);
+
+                listener.onAlarmState(value.equals("true"));
+            }
+
+            @Override
+            public void onConnectionError() {
+
+            }
+        });
     }
 
-    public void alarmIsTriggered(ValueEventListener listener){
-        reference.addListenerForSingleValueEvent(listener);
-    }
+    public void setAlarmIsTriggered(boolean value) {
+        ServerHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {
+            @Override
+            public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
+                urlConnection.setRequestMethod("PUT");
+                urlConnection.setRequestProperty("Content-Type", "text/plain");
+                urlConnection.setDoOutput(true);
 
-    public void setAlarmIsTriggered(boolean value){
-        reference.setValue(value);
+                final OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                out.write(Boolean.toString(value));
+                out.close();
+            }
+
+            @Override
+            public void onConnectionError() {
+
+            }
+        });
     }
 }

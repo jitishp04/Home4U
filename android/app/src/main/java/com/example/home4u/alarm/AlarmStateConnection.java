@@ -7,6 +7,7 @@ import com.example.home4u.ServerHelper;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -55,6 +56,30 @@ public class AlarmStateConnection {
     }
 
     public void setAlarmIsTriggered(boolean value){
-        //reference.setValue(value);
+        new Thread(() -> {
+            HttpURLConnection urlConnection = null;
+            try {
+                final URL url = new URL(SERVER_URL + "/setAlarmTriggered");
+                Log.v(TAG, "Setting " + url + " to " + value);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("PUT");
+                urlConnection.setRequestProperty("Content-Type", "text/plain");
+                urlConnection.setDoOutput(true);
+
+                final OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                out.write(Boolean.toString(value));
+                out.close();
+
+                final int responseCode = urlConnection.getResponseCode();
+                Log.v(TAG, "/setAlarmTriggered resCode: " + responseCode);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+            }
+        }).start();
     }
 }

@@ -47,9 +47,11 @@
         <activity android:name="com.example.home4u.alarm.AlarmActivity" />
         <activity android:name="com.example.home4u.MusicSelectActivity" />
 
-        <service
-            android:name="com.example.home4u.alarm.AlarmNotifierService"
-            android:launchMode="singleInstance" />
+        <receiver
+            android:name="com.example.home4u.alarm.AlarmStatusListener"
+            android:enabled="true"
+            android:exported="true" />
+
         <service android:name="org.eclipse.paho.android.service.MqttService" />
 
         <!-- Inspired by ChatGPT -->

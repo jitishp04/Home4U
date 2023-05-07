@@ -3,7 +3,7 @@
 #include "lib/myEnv.h"
 
 
-void notifyAlarm(){
+bool notifyAlarm(){
   String path = String(SERVER_URL) + "/setAlarmTriggered";
   myLog("Sending request to: " + path);
 
@@ -18,7 +18,9 @@ void notifyAlarm(){
   int resCode = http.PUT("true");
   if(resCode == HTTP_CODE_OK){
     myLog("Notify alarm success");
+    return true;
   } else {
     myLog("Notify alarm failure: " + String(resCode));
+    return false;
   }
 }

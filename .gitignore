@@ -19,6 +19,7 @@ local.properties
 /.idea/*
 /android/.idea/*
 /android/.idea
+.gradle
 
 /ignored
 /builds

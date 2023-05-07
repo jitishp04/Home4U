@@ -40,6 +40,7 @@ public class AlarmNotification {
                 .setContentText("Alarm has been triggered")
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.ic_alarm_notification)
+                .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
         return builder.build();

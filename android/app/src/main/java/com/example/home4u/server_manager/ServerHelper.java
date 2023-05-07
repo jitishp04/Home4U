@@ -1,5 +1,7 @@
 package com.example.home4u.server_manager;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +18,9 @@ public class ServerHelper {
         new Thread(() -> {
             HttpURLConnection urlConnection = null;
             try {
-                final URL url = new URL(ServerHelper.URL + endpoint);
+                final String path = ServerHelper.URL + endpoint;
+                Log.v(TAG, "Making connection with " + path);
+                final URL url = new URL(path);
                 urlConnection = (HttpURLConnection) url.openConnection();
 
                 requestCallback.onMakeConnection(urlConnection);

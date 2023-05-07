@@ -62,6 +62,9 @@ public class AlarmStateConnection {
                 final OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
                 out.write(Boolean.toString(value));
                 out.close();
+
+                final int responseCode = urlConnection.getResponseCode();
+                Log.v(TAG, "/setAlarmTriggered resCode: " + responseCode);
             }
 
             @Override

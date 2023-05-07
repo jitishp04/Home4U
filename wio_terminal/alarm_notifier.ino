@@ -1,15 +1,15 @@
 #undef min
 #include <HTTPClient.h>
-
-#define SET_ALARM_TRIGGERED_ENDPOINT "http://192.168.0.135:8081/setAlarmTriggered"
+#include "lib/myEnv.h"
 
 
 void notifyAlarm(){
-  myLog("Sending request to: " + String(SET_ALARM_TRIGGERED_ENDPOINT));
+  String path = SERVER_URL + "/setAlarmTriggered"
+  myLog("Sending request to: " + path);
 
   HTTPClient http;
 
-  http.begin(SET_ALARM_TRIGGERED_ENDPOINT);
+  http.begin(path);
 
   http.addHeader("Content-Type", "text/plain");
   http.addHeader("Content-Length", "5");

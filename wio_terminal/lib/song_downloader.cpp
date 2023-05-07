@@ -7,8 +7,6 @@
 #include <HTTPClient.h>
 #include "myEnv.h"
 
-#define SONG_INFO_PATH "http://192.168.0.135:8081/info.json"
-#define SONGS_DIR_PATH "http://192.168.0.135:8081/songs/"
 
 
 void startStreamHandler(void* params);

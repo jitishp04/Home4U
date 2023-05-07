@@ -20,8 +20,9 @@ const table = {
 
 function notesToFreqs(notes){
     let output = ""
-    for(note of notes){
-        output += `${table[note]} `
+    for(const note of notes){
+        const freq = note == " " ? "0000" : table[note]
+        output += `${freq} `
     }
 
     return output

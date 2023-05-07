@@ -5,6 +5,7 @@
 
 #define SPEAKER PIN_WIRE_SCL
 
+#define MUSIC_TEMPO 200
 
 class MusicPlayer{
     public:
@@ -19,7 +20,11 @@ class MusicPlayer{
 
             for(int i = 0; i < songStrLength; i+=5){
                 String frequencyStr = song.substring(i, i+4);
-                playTone(frequencyStr.toInt());
+                if(frequencyStr == "0000"){
+                    delay(MUSIC_TEMPO);
+                } else {
+                    playTone(frequencyStr.toInt());
+                }
             }
         }
 
@@ -29,7 +34,7 @@ class MusicPlayer{
 
         // Inspired by https://wiki.seeedstudio.com/Wio-Terminal-Buzzer/
         void playTone(int tone) {
-            for (long i = 0; i < 300000; i += tone * 2) {
+            for (long i = 0; i < MUSIC_TEMPO * 1000; i += tone * 2) {
                 digitalWrite(SPEAKER, HIGH);
                 delayMicroseconds(tone);
                 digitalWrite(SPEAKER, LOW);

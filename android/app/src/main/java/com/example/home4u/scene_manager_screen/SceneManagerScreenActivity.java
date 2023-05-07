@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
@@ -76,10 +77,10 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                //SceneData deletedScene = sceneDatas.get(viewHolder.getAdapterPosition());
                 SceneDataModel deletedScene = sceneDataList.get(viewHolder.getAdapterPosition());
                 int position = viewHolder.getAdapterPosition();
-                //sceneDatas.remove(viewHolder.getAdapterPosition());
+                SceneDataModel deletedSceneData = dbHelper.retrieveDataOfAScene(deletedScene.getSceneName());
+
                 sceneDataList.remove(viewHolder.getAdapterPosition());
                 myAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                 myAdapter.notifyDataSetChanged();
@@ -88,18 +89,18 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
                 dbHelper.deleteData(deletedScene.getSceneName());
                 Snackbar.make(recyclerView, deletedScene.getSceneName(), Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
                     public void onClick(View v) {
-                        //sceneDatas.add(position, deletedScene);
                         sceneDataList.add(position, deletedScene);
 
                         myAdapter.notifyItemInserted(position);
                         myAdapter.notifyDataSetChanged();
 
                         //Add a deleted scene back
-                        SceneDataModel deletedSceneData = new SceneDataModel(deletedScene.getSceneName(),
-                                deletedScene.getStartTime(),
-                                deletedScene.getEndTime(),
-                                deletedScene.getSetSecurity(), deletedScene.getPlayMusic());
-                        dbHelper.addOne(deletedSceneData);
+                        SceneDataModel deletedScene = new SceneDataModel(deletedSceneData.getSceneName(),
+                                deletedSceneData.getStartTime(),
+                                deletedSceneData.getEndTime(),
+                                deletedSceneData.getSetSecurity(), deletedSceneData.getPlayMusic());
+                        dbHelper.addOne(deletedScene);
+                        System.out.println(deletedScene.getStartTime());
                     }
                 }).show();
             }

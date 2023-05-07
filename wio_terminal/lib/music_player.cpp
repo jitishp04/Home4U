@@ -1,8 +1,10 @@
 #ifndef MUSIC_PLAYER_H
 #define MUSIC_PLAYER_H
 
-#include "audio_player.cpp"
 #include "song_downloader.cpp"
+
+#define SPEAKER PIN_WIRE_SCL
+
 
 class MusicPlayer{
     public:
@@ -13,21 +15,27 @@ class MusicPlayer{
 
         void playSong(String fileName){
             String song = songDownloader.downloadString("/songs/" + fileName);
+            int songStrLength = song.length();
+
+            for(int i = 0; i < songStrLength; i+=5){
+                String frequencyStr = song.substring(i, i+4);
+                playTone(frequencyStr.toInt());
+            }
         }
 
-        static void onSongDownload(void* payload){
-            MusicPlayer* instance = static_cast<MusicPlayer*>(payload);
-
-            int sample;
-            do{
-                //sample = instance->songDownloader.read();
-                instance->audioPlayer.playSample(sample);
-            } while(sample != -1);
-        }
 
     private:
         SongDownloader songDownloader;
-        AudioPlayer audioPlayer;
+
+        // Inspired by https://wiki.seeedstudio.com/Wio-Terminal-Buzzer/
+        void playTone(int tone) {
+            for (long i = 0; i < 300000; i += tone * 2) {
+                digitalWrite(SPEAKER, HIGH);
+                delayMicroseconds(tone);
+                digitalWrite(SPEAKER, LOW);
+                delayMicroseconds(tone);
+            }
+        }
 };
 
 #endif

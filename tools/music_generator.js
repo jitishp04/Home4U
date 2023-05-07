@@ -6,16 +6,15 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-
 const table = {
-    c: 1915,
-    d: 1700,
-    e: 1519,
-    f: 1432,
-    g: 1275,
-    a: 1136,
-    b: 1014,
-    C: 956
+    c: "1915",
+    d: "1700",
+    e: "1519",
+    f: "1432",
+    g: "1275",
+    a: "1136",
+    b: "1014",
+    C: "0956"
 }
 
 function notesToFreqs(notes){
@@ -28,8 +27,12 @@ function notesToFreqs(notes){
     return output
 }
 
-rl.question("Enter notes: ", (notes) => {
-    const freqs = notesToFreqs(notes)
-    console.log(freqs)
-})
+function ui(){
+    rl.question("Enter notes: ", (notes) => {
+        const freqs = notesToFreqs(notes)
+        console.log(freqs + "\n")
+        ui()
+    })
+}
 
+ui()

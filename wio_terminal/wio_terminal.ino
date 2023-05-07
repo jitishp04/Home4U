@@ -18,6 +18,7 @@ void setup()
 
   //setupMotion();
   musicPlayer = new MusicPlayer();
+  delay(4000);
   musicPlayer->playSong("scale.txt");
   //notifyAlarm();
 }

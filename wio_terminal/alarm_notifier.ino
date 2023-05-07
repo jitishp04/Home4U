@@ -4,7 +4,7 @@
 
 
 void notifyAlarm(){
-  String path = SERVER_URL + "/setAlarmTriggered"
+  String path = String(SERVER_URL) + "/setAlarmTriggered";
   myLog("Sending request to: " + path);
 
   HTTPClient http;

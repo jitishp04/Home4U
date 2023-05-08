@@ -29,7 +29,7 @@ public class AlarmSettingsActivity extends AppCompatActivity {
 
         modeState = findViewById(R.id.ModeState);
         securitySwitchBtn = findViewById(R.id.switchSecurity);
-        alarmBtn = findViewById(R.id.btnAlarm);
+        //alarmBtn = findViewById(R.id.btnAlarm);
         brokerConnection = new BrokerConnection(getApplicationContext());
         brokerConnection.connectToMqttBroker();
 

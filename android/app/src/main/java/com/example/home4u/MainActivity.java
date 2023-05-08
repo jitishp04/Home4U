@@ -1,19 +1,14 @@
 package com.example.home4u;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-<<<<<<< HEAD
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.home4u.alarm.AlarmActivity;
 import com.example.home4u.alarm.AlarmStateConnection;
-import com.example.home4u.alarm.AlarmStateListener;
-=======
->>>>>>> home-screen-android
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
 import com.example.home4u.scenes.newscenecreator_activity;
@@ -29,10 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
         Button toMusicSelectBtn = findViewById(R.id.button_to_music_select);
         toMusicSelectBtn.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, AlarmActivity.class))
-        );
+        );*/
 
         AlarmStateConnection.getInstance().alarmIsTriggered(isTriggered -> {
 
@@ -44,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             this.startService(newIntent);
         }*/
 
-        MusicInfoDownloader.downloadAsync(new MusicInfoDownloaderCallback() {
+        MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
              @Override
              public void onSuccess(JSONObject jsonObject) {
 

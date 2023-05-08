@@ -11,10 +11,11 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.home4u.R;
 
-public class AlarmNotification {
-    public static final int NOTIFICATION_ID = 3562988;
-    public static final String CHANNEL_NAME = "Alarm notifications";
-    public static final String CHANNEL_ID = "alarm_notification_channel";
+public class AlarmNotificationHandler {
+    private static final String CHANNEL_NAME = "Alarm notifications";
+    private static final String CHANNEL_ID = "alarm_notification_channel";
+    private static final int NOTIFICATION_ID = 3562988;
+
 
 
     public static void createChannel(Context context){
@@ -26,13 +27,14 @@ public class AlarmNotification {
     }
 
 
-    public static void post(Context context){
+    static void post(Context context){
         Notification notification = create(context);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, notification);
     }
 
-    private static Notification create(Context context){
+
+    static Notification create(Context context){
         final Intent intent = new Intent(context, AlarmActivity.class);
         final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
@@ -46,7 +48,7 @@ public class AlarmNotification {
         return builder.build();
     }
 
-    public static void cancel(Context context){
+    static void cancel(Context context){
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(NOTIFICATION_ID);
     }

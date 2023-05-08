@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -37,7 +37,7 @@
         <activity android:name=".MusicSelectActivity"/>
 
         <service
-            android:name=".alarm.AlarmNotifierService"
+            android:name=".alarm.AlarmStateWatcher$AlarmStateWatcherReceiver"
             android:launchMode="singleInstance" />
         <service android:name="org.eclipse.paho.android.service.MqttService" /> <!-- Inspired by ChatGPT -->
         <receiver

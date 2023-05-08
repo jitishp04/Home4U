@@ -15,23 +15,9 @@ import java.net.HttpURLConnection;
 public class AlarmStateConnection {
     private static final String TAG = AlarmStateConnection.class.getSimpleName();
 
-    private static AlarmStateConnection instance;
 
 
-    public static AlarmStateConnection getInstance() {
-        if (instance == null) {
-            instance = new AlarmStateConnection();
-        }
-
-        return instance;
-    }
-
-
-    private AlarmStateConnection() {
-    }
-
-
-    public void isAlarmTriggered(AlarmStateConnListener listener) {
+    public static void isAlarmTriggered(AlarmStateConnListener listener) {
         ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
@@ -52,7 +38,7 @@ public class AlarmStateConnection {
     }
 
 
-    public void setAlarmIsTriggered(boolean value) {
+    public static void setAlarmIsTriggered(boolean value) {
         ServerHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {

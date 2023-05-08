@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AlarmActivity.class))
         );*/
 
-        AlarmStateConnection.getInstance().isAlarmTriggered(isTriggered -> {
+        AlarmStateConnection.isAlarmTriggered(isTriggered -> {
 
         });
 

@@ -16,10 +16,9 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-        final AlarmStateConnection alarmStateConnection = AlarmStateConnection.getInstance();
-        alarmStateConnection.isAlarmTriggered(isTriggered -> {
+        AlarmStateConnection.isAlarmTriggered(isTriggered -> {
             if (isTriggered) {
-                alarmStateConnection.setAlarmIsTriggered(false);
+                AlarmStateConnection.setAlarmIsTriggered(false);
             }
         });
     }

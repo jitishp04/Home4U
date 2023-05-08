@@ -18,6 +18,8 @@ public class AlarmActivity extends AppCompatActivity {
 
         AlarmStateConnection.isAlarmTriggered(isTriggered -> {
             if (isTriggered) {
+
+                //Opening this activity means the user has acknowledged the alarm
                 AlarmStateConnection.setAlarmIsTriggered(false);
             }
         });

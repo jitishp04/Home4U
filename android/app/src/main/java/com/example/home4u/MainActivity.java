@@ -1,27 +1,37 @@
 package com.example.home4u;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.home4u.alarm.AlarmActivity;
+import com.example.home4u.alarm.AlarmNotificationHandler;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
 import com.example.home4u.scenes.newscenecreator_activity;
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission;
+import androidx.core.app.ActivityCompat;
 
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private Button sceneMaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.homescreen);
+
+        goToAlarmActivityIfTriggered();
+        handleNotificationPermission();
+
 
         /*
         Button toMusicSelectBtn = findViewById(R.id.button_to_music_select);
@@ -29,15 +39,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AlarmActivity.class))
         );*/
 
-        AlarmStateConnection.isAlarmTriggered(isTriggered -> {
-
-        });
-
-        /*
-        if(! AlarmNotifierService.isRunning()){
-            final Intent newIntent = new Intent(this, AlarmNotifierService.class);
-            this.startService(newIntent);
-        }*/
 
         MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
              @Override
@@ -51,16 +52,23 @@ public class MainActivity extends AppCompatActivity {
              }
          });
 
-        View();
-
-        sceneMaker.setOnClickListener(v -> {
-            Intent sceneActivityIntent = new Intent(MainActivity.this, newscenecreator_activity.class);
-            startActivity(sceneActivityIntent);
-        });
-
     }
 
-    private void View() {
-        sceneMaker = findViewById(R.id.sceneMaker);
+    private void goToAlarmActivityIfTriggered(){
+        AlarmStateConnection.isAlarmTriggered(isTriggered -> {
+            if(isTriggered){
+                final Intent newIntent = new Intent(this, AlarmActivity.class);
+                startActivity(newIntent);
+            }
+        });
+    }
+
+    private void handleNotificationPermission(){
+        if(!AlarmNotificationHandler.hasNotificationPermission(this)){
+            final String[] permissions = new String[]{
+                Manifest.permission.POST_NOTIFICATIONS
+            };
+            ActivityCompat.requestPermissions(this, permissions, 0);
+        }
     }
 }

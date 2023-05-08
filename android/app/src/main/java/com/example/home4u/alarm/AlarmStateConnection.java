@@ -16,7 +16,6 @@ public class AlarmStateConnection {
     private static final String TAG = AlarmStateConnection.class.getSimpleName();
 
 
-
     public static void isAlarmTriggered(AlarmStateConnListener listener) {
         ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
             @Override

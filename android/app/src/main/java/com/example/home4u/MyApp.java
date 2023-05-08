@@ -1,6 +1,7 @@
 package com.example.home4u;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -8,6 +9,7 @@ import com.example.home4u.alarm.AlarmNotificationHandler;
 import com.example.home4u.alarm.AlarmStateWatcherHandler;
 
 public class MyApp extends Application {
+    private static final String spName = "preferences";
     public static final String HAS_REGISTERED_NOTIFICATION_CHANNEL = "has registered notification channel";
 
     @Override
@@ -24,7 +26,7 @@ public class MyApp extends Application {
     }
 
     private boolean hasRegisteredNotificationChannels(){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = this.getSharedPreferences(spName, Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(HAS_REGISTERED_NOTIFICATION_CHANNEL, false);
     }
 
@@ -33,7 +35,7 @@ public class MyApp extends Application {
     }
 
     private void setHasRegisteredNotificationChannels(){
-        PreferenceManager.getDefaultSharedPreferences(this)
+        this.getSharedPreferences(spName, Context.MODE_PRIVATE)
                 .edit()
                 .putBoolean(HAS_REGISTERED_NOTIFICATION_CHANNEL, true)
                 .apply();

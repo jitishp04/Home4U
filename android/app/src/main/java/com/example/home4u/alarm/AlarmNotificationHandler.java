@@ -1,5 +1,8 @@
 package com.example.home4u.alarm;
 
+import static android.Manifest.permission.POST_NOTIFICATIONS;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -8,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.home4u.R;
 
@@ -18,6 +22,7 @@ public class AlarmNotificationHandler {
     private static final int CHANNEL_IMPORTANCE = NotificationManager.IMPORTANCE_HIGH;
 
 
+
     public static void createChannel(Context context){
         final NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, CHANNEL_IMPORTANCE);
 
@@ -25,10 +30,21 @@ public class AlarmNotificationHandler {
         notificationManager.createNotificationChannel(channel);
     }
 
+    public static boolean hasNotificationPermission(Context context){
+        return
+            android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.TIRAMISU ||
+            ContextCompat.checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED;
+    }
+
 
     static void post(Context context){
+        if(!hasNotificationPermission(context)){
+            return;
+        }
+
         final Notification notification = create(context);
-        final NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        final NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(NOTIFICATION_ID, notification);
     }
@@ -36,7 +52,8 @@ public class AlarmNotificationHandler {
 
     static Notification create(Context context){
         final Intent intent = new Intent(context, AlarmActivity.class);
-        final PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        final PendingIntent pendingIntent =
+                PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setContentText("Alarm has been triggered")
@@ -50,7 +67,8 @@ public class AlarmNotificationHandler {
     }
 
     static void cancel(Context context){
-        final NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        final NotificationManager notificationManager =
+                (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(NOTIFICATION_ID);
     }
 

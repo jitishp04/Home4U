@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.home4u.R;
-import com.example.home4u.connection.BrokerConnection;
+import com.example.home4u.connectivity.BrokerConnection;
 
 
 public class AlarmSettingsActivity extends AppCompatActivity {

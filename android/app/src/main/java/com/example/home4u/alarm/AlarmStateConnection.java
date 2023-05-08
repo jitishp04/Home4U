@@ -3,8 +3,8 @@ package com.example.home4u.alarm;
 
 import android.util.Log;
 
-import com.example.home4u.connection.ServerConnectionHelper;
-import com.example.home4u.connection.ServerRequestCallback;
+import com.example.home4u.connectivity.ServerConnectionHelper;
+import com.example.home4u.connectivity.ServerRequestCallback;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

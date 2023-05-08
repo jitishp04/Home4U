@@ -1,7 +1,7 @@
 package com.example.home4u.music_info;
 
-import com.example.home4u.connection.ServerConnectionHelper;
-import com.example.home4u.connection.ServerRequestCallback;
+import com.example.home4u.connectivity.ServerConnectionHelper;
+import com.example.home4u.connectivity.ServerRequestCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;

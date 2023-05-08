@@ -1,4 +1,4 @@
-package com.example.home4u.server_manager;
+package com.example.home4u.connection;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;

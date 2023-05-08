@@ -24,7 +24,7 @@
             android:name=".scenes.newscenecreator_activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,8 +33,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".alarm.AlarmActivity"/>
-        <activity android:name=".MusicSelectActivity"/>
+        <activity android:name=".activity.AlarmActivity"/>
+        <activity android:name=".activity.MusicSelectActivity"/>
 
         <receiver
             android:name=".alarm.AlarmStateWatcher"

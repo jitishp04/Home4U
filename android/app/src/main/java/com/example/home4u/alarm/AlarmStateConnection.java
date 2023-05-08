@@ -3,8 +3,8 @@ package com.example.home4u.alarm;
 
 import android.util.Log;
 
-import com.example.home4u.server_manager.ServerHelper;
-import com.example.home4u.server_manager.ServerRequestCallback;
+import com.example.home4u.connection.ServerConnectionHelper;
+import com.example.home4u.connection.ServerRequestCallback;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -16,13 +16,13 @@ public class AlarmStateConnection {
     private static final String TAG = AlarmStateConnection.class.getSimpleName();
 
 
-    public static void isAlarmTriggered(AlarmStateConnListener listener) {
-        ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
+    public static void isAlarmTriggered(AlarmStateConnCallback listener) {
+        ServerConnectionHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
                 final InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
-                final String value = ServerHelper.readStringStream(in);
+                final String value = ServerConnectionHelper.readStringStream(in);
                 Log.v(TAG, "isAlarmTriggered: " + value);
 
                 final boolean isTriggered = value.equals("true");
@@ -38,7 +38,7 @@ public class AlarmStateConnection {
 
 
     public static void setAlarmIsTriggered(boolean value) {
-        ServerHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {
+        ServerConnectionHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
                 urlConnection.setRequestMethod("PUT");

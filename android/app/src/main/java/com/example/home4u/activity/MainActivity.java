@@ -1,22 +1,18 @@
-package com.example.home4u;
+package com.example.home4u.activity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.home4u.alarm.AlarmActivity;
+import com.example.home4u.R;
 import com.example.home4u.alarm.AlarmNotificationHandler;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
-import com.example.home4u.scenes.newscenecreator_activity;
-import androidx.activity.result.contract.ActivityResultContracts.RequestPermission;
+
 import androidx.core.app.ActivityCompat;
 
 import org.json.JSONObject;

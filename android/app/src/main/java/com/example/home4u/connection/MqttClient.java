@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.connection;
 
 import android.content.Context;
 

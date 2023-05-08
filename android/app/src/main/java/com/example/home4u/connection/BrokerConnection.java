@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.connection;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,6 +12,8 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+
+//TODO: improve this - why is it an activity?
 
 /*
    Code based on DIT113MqttWorkshop

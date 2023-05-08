@@ -1,5 +1,6 @@
 package com.example.home4u;
 
+import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,8 @@ public class OnBootedReceiver extends BroadcastReceiver {
     }
 
     private void startAlarmNotifierService(Context context){
-        AlarmStateWatcherHandler.start(context);
+        final Application applicationContext = (Application) context.getApplicationContext();
+        final AlarmStateWatcherHandler alarmStateWatcherHandler = AlarmStateWatcherHandler.getInstance(applicationContext);
+        alarmStateWatcherHandler.start();
     }
 }

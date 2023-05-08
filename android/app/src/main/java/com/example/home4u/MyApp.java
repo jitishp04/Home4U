@@ -19,7 +19,8 @@ public class MyApp extends Application {
             setHasRegisteredNotificationChannels();
         }
 
-        AlarmStateWatcherHandler.start(this);
+        AlarmStateWatcherHandler alarmStateWatcherHandler = AlarmStateWatcherHandler.getInstance(this);
+        alarmStateWatcherHandler.start();
     }
 
     private boolean hasRegisteredNotificationChannels(){

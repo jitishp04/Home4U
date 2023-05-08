@@ -18,7 +18,6 @@ public class AlarmNotificationHandler {
     private static final int CHANNEL_IMPORTANCE = NotificationManager.IMPORTANCE_HIGH;
 
 
-
     public static void createChannel(Context context){
         final NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, CHANNEL_IMPORTANCE);
 
@@ -30,6 +29,7 @@ public class AlarmNotificationHandler {
     static void post(Context context){
         final Notification notification = create(context);
         final NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
         notificationManager.notify(NOTIFICATION_ID, notification);
     }
 
@@ -43,6 +43,7 @@ public class AlarmNotificationHandler {
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setSmallIcon(R.drawable.ic_alarm_notification)
                 .setAutoCancel(true)
+                .setOnlyAlertOnce(true)
                 .setContentIntent(pendingIntent);
 
         return builder.build();

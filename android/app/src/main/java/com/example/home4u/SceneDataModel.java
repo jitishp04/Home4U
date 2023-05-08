@@ -10,13 +10,15 @@ public class SceneDataModel {
     private String endTime;
     private Boolean setSecurity;
     private Boolean playMusic;
+    private String daysOfTheWeek;
 
-    public SceneDataModel(String sceneName, String startTime, String endTime, Boolean setSecurity, Boolean playMusic) {
+    public SceneDataModel(String sceneName, String startTime, String endTime, Boolean setSecurity, Boolean playMusic, String daysOfTheWeek) {
         this.sceneName = sceneName;
         this.startTime = startTime;
         this.endTime = endTime;
         this.setSecurity = setSecurity;
         this.playMusic = playMusic;
+        this.daysOfTheWeek = daysOfTheWeek;
     }
 
     public SceneDataModel() {}
@@ -31,7 +33,16 @@ public class SceneDataModel {
                 ", endTime=" + endTime +
                 ", setSecurity=" + setSecurity +
                 ", playMusic=" + playMusic +
+                ", daysOfTheWeek =" + daysOfTheWeek +
                 '}';
+    }
+
+    public String getDaysOfTheWeek(){
+        return daysOfTheWeek;
+    }
+
+    public void setDaysOfTheWeek(String daysOfTheWeek) {
+        this.daysOfTheWeek = daysOfTheWeek;
     }
 
     public String getSceneName() {

@@ -23,6 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_END_TIME = "END_TIME";
     private static final String COLUMN_SET_SECURITY = "SET_SECURITY";
     private static final String COLUMN_PLAY_MUSIC = "PLAY_MUSIC";
+    private static final String COLUMN_DAYS_OF_THE_WEEK = "DAYS_OF_THE_WEEK";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "sceneManager.db", null, 1);
@@ -31,8 +32,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //first time a database is accessed
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + SCENE_TABLE + " (" + COLUMN_SCENE_NAME + " TEXT PRIMARY KEY, " + COLUMN_START_TIME + " INTEGER, " +
-                COLUMN_END_TIME + " INTEGER, " + COLUMN_SET_SECURITY + " BOOLEAN, " + COLUMN_PLAY_MUSIC + " BOOLEAN)";
+        String createTableStatement = "CREATE TABLE " + SCENE_TABLE + " (" + COLUMN_SCENE_NAME + " TEXT PRIMARY KEY, "
+                + COLUMN_START_TIME + " INTEGER, " +
+                COLUMN_END_TIME + " INTEGER, " + COLUMN_SET_SECURITY + " BOOLEAN, " + COLUMN_PLAY_MUSIC + " BOOLEAN, "
+                + COLUMN_DAYS_OF_THE_WEEK + " TEXT)";
 
         db.execSQL(createTableStatement);
     }
@@ -40,6 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //For updating
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     }
 
     public boolean addOne(SceneDataModel sceneDataModel){
@@ -51,6 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_END_TIME, sceneDataModel.getEndTime());
         contentValues.put(COLUMN_PLAY_MUSIC, sceneDataModel.getPlayMusic());
         contentValues.put(COLUMN_SET_SECURITY, sceneDataModel.getSetSecurity());
+        contentValues.put(COLUMN_DAYS_OF_THE_WEEK,sceneDataModel.getDaysOfTheWeek());
 
         long insert = database.insert(SCENE_TABLE, null, contentValues);
         //test:
@@ -71,6 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_END_TIME, sceneDataModel.getEndTime());
         contentValues.put(COLUMN_PLAY_MUSIC, sceneDataModel.getPlayMusic());
         contentValues.put(COLUMN_SET_SECURITY, sceneDataModel.getSetSecurity());
+        contentValues.put(COLUMN_DAYS_OF_THE_WEEK, sceneDataModel.getDaysOfTheWeek());
 
         database.update(SCENE_TABLE, contentValues,COLUMN_SCENE_NAME + " = ? ", new String[]{sceneDataModel.getSceneName()});
         database.close();
@@ -115,6 +121,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sceneData.setEndTime(cursor.getString(cursor.getColumnIndex(COLUMN_END_TIME)));
         sceneData.setSetSecurity(cursor.getInt(cursor.getColumnIndex(COLUMN_SET_SECURITY)) > 0);
         sceneData.setPlayMusic(cursor.getInt(cursor.getColumnIndex(COLUMN_PLAY_MUSIC)) > 0);
+        sceneData.setDaysOfTheWeek(cursor.getString(cursor.getColumnIndex(COLUMN_DAYS_OF_THE_WEEK)));
+
         return sceneData;
     }
 }

@@ -51,5 +51,9 @@
 =======
     <string name="save">SAVE</string>
     <string name="select_days">Select days</string>
+<<<<<<< HEAD
 >>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
+=======
+    <string name="Home4u">Home4U</string>
+>>>>>>> ae43c1e (add days of the week from newscenecreator_activity to SQLite db and it's function)
 </resources>

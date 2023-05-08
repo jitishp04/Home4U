@@ -98,7 +98,7 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
                         SceneDataModel deletedScene = new SceneDataModel(deletedSceneData.getSceneName(),
                                 deletedSceneData.getStartTime(),
                                 deletedSceneData.getEndTime(),
-                                deletedSceneData.getSetSecurity(), deletedSceneData.getPlayMusic());
+                                deletedSceneData.getSetSecurity(), deletedSceneData.getPlayMusic(), deletedSceneData.getDaysOfTheWeek());
                         dbHelper.addOne(deletedScene);
                         System.out.println(deletedScene.getStartTime());
                     }

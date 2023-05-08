@@ -158,6 +158,7 @@ public class newscenecreator_activity extends Activity {
 			endTime.setText(curSceneData.getEndTime());
 			setSecuritySwitch.setChecked(curSceneData.getSetSecurity());
 			playMusicSwitch.setChecked(curSceneData.getPlayMusic());
+			selectDays.setText(curSceneData.getDaysOfTheWeek());
 			backButtonNewScene.setOnClickListener(v -> finish());
 			saveButton.setOnClickListener(v -> saveUpdates(curSceneData));
 		} else {
@@ -204,7 +205,7 @@ public class newscenecreator_activity extends Activity {
 				SceneDataModel sceneDataModel = new SceneDataModel(sceneNameTextInput.getText().toString(),
 						startTime.getText().toString(),
 						endTime.getText().toString(),
-						setSecuritySwitch.isChecked(), playMusicSwitch.isChecked());
+						setSecuritySwitch.isChecked(), playMusicSwitch.isChecked(), selectDays.getText().toString());
 				dbHelper.updateScene(sceneDataModel);
 				Toast.makeText(getApplicationContext(), "update success", Toast.LENGTH_SHORT).show();
 			}
@@ -218,7 +219,8 @@ public class newscenecreator_activity extends Activity {
 		boolean endTimeNoChange = curSceneData.getEndTime() == endTime.getText().toString();
 		boolean SecurityNoChange = curSceneData.getSetSecurity() == setSecuritySwitch.isChecked();
 		boolean MusicNoChange = curSceneData.getPlayMusic() == playMusicSwitch.isChecked();
-		return startTimeNoChange && endTimeNoChange && SecurityNoChange && MusicNoChange;
+		boolean daysSelectedNoChange = curSceneData.getDaysOfTheWeek().equals(selectDays.getText().toString());
+		return startTimeNoChange && endTimeNoChange && SecurityNoChange && MusicNoChange && daysSelectedNoChange;
 	}
 
 	private void checker() {
@@ -230,7 +232,7 @@ public class newscenecreator_activity extends Activity {
 			 sceneDataModel = new SceneDataModel(sceneNameTextInput.getText().toString(),
 					startTime.getText().toString(),
 					endTime.getText().toString(),
-					setSecuritySwitch.isChecked(), playMusicSwitch.isChecked() );
+					setSecuritySwitch.isChecked(), playMusicSwitch.isChecked(), selectDays.getText().toString());
 
 			Toast.makeText(this,sceneDataModel.toString(),Toast.LENGTH_LONG).show();
 

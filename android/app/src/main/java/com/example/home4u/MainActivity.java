@@ -7,17 +7,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 
 import com.example.home4u.alarm.AlarmActivity;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.alarm.AlarmStateListener;
+=======
+>>>>>>> home-screen-android
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
+import com.example.home4u.scenes.newscenecreator_activity;
 
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+    private Button sceneMaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,28 @@ public class MainActivity extends AppCompatActivity {
             this.startService(newIntent);
         }*/
 
+        MusicInfoDownloader.downloadAsync(new MusicInfoDownloaderCallback() {
+             @Override
+             public void onSuccess(JSONObject jsonObject) {
 
+             }
+
+             @Override
+             public void onFailure() {
+                 Log.e(TAG, "Failed to download music info");
+             }
+         });
+
+        View();
+
+        sceneMaker.setOnClickListener(v -> {
+            Intent sceneActivityIntent = new Intent(MainActivity.this, newscenecreator_activity.class);
+            startActivity(sceneActivityIntent);
+        });
+
+    }
+
+    private void View() {
+        sceneMaker = findViewById(R.id.sceneMaker);
     }
 }

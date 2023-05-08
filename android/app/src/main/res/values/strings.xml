@@ -1,3 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Home4U</string>
+	<!-- newscenecreator strings -->
+
+	<string name="app_name">Add Scene</string>
+	<string name="ek_img_content">ExportKit Image</string>
+	<string name="new_scene_string">New Scene</string>
+	<string name="set_scene_duration_string">Set Scene duration</string>
+	<string name="play_music_string">Play Music</string>
+	<string name="___string">:</string>
+	<string name="___ek1_string">:</string>
+	<string name="start_string">Start</string>
+	<string name="end_string">End</string>
+	<string name="scene_name_string">Scene name</string>
+	<string name="set_security_string">Set Security </string>
+	<string name="w_string">W</string>
+	<string name="w_ek1_string">W</string>
+	<string name="save_string">Save</string>
+	<string name="sa_string">Sa</string>
+	<string name="su_string">Su</string>
+	<string name="th_string">Th</string>
+	<string name="f_string">F</string>
+	<string name="m_string">M</string>
+	<string name="t_string">T</string>
+    <string name="rectangle_7">End_time_box</string>
+	<string name="border_color">border_color</string>
+	<string name="monday">M</string>
+	<string name="wednesday">W</string>
+	<string name="thursday">Th</string>
+	<string name="tuesday">T</string>
+	<string name="saturday">S</string>
+	<string name="sunday">Su</string>
+	<string name="friday">F</string>
+    <string name="scene_name">Scene Name</string>
+	<string name="time">Time</string>
+	<string name="backbutton">backButton</string>
+    <string name="Scenes">Scenes\n</string>
+
+ <!--  homescreen strings  -->
+<string name="remotely_disable_your_alarm_string">Remotely disable your alarm </string>
+<string name="disable_alarm_string">Disable alarm</string>
+<string name="create_a_scene_that_controls_your_home4u_device__string">Create a Scene that controls your Home4U device.</string>
+<string name="play_music_string1">Play Music</string>
+<string name="manage_scenes_string">Manage Scenes</string>
+<string name="home4u_string">Home4U</string>
+<string name="song_name_string">Song name</string>
+<string name="artist_name_string">Artist name</string>
+	<string name="connect_your_phone_to_the_device_and_play_music_string1">connect_your_phone_to_the_device_and_play_music_string</string>
 </resources>

@@ -36,8 +36,10 @@
         <activity android:name=".alarm.AlarmActivity"/>
         <activity android:name=".MusicSelectActivity"/>
 
-        <service
-            android:name=".alarm.AlarmStateWatcher$AlarmStateWatcherReceiver"
+        <receiver
+            android:name=".alarm.AlarmStateWatcher"
+            android:enabled="true"
+            android:exported="false"
             android:launchMode="singleInstance" />
         <service android:name="org.eclipse.paho.android.service.MqttService" /> <!-- Inspired by ChatGPT -->
         <receiver

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.home4u.alarm.AlarmNotificationHandler;
-import com.example.home4u.alarm.AlarmStateWatcher;
+import com.example.home4u.alarm.AlarmStateWatcherHandler;
 
 public class MyApp extends Application {
     public static final String HAS_REGISTERED_NOTIFICATION_CHANNEL = "has registered notification channel";
@@ -19,7 +19,7 @@ public class MyApp extends Application {
             setHasRegisteredNotificationChannels();
         }
 
-        AlarmStateWatcher.start(this);
+        AlarmStateWatcherHandler.start(this);
     }
 
     private boolean hasRegisteredNotificationChannels(){

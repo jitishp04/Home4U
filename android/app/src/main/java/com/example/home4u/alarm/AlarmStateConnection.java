@@ -11,8 +11,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 
 public class AlarmStateConnection {
     private static AlarmStateConnection instance;
@@ -32,7 +30,7 @@ public class AlarmStateConnection {
     }
 
 
-    public void alarmIsTriggered(AlarmStateListener listener) {
+    public void alarmIsTriggered(AlarmStateConnListener listener) {
         ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {

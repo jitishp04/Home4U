@@ -1,21 +1,5 @@
 package com.example.home4u.scenes;
 
-/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc 		
-	 *	@file 		newscenecreator
-	 *	@date 		Wednesday 26th of April 2023 10:42:12 AM
-	 *	@title 		Add Scene
-	 *	@author 	
-	 *	@keywords 	
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-	
-
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.TimePickerDialog;
@@ -51,29 +35,13 @@ public class newscenecreator_activity extends Activity {
 	private Button saveButton;
 	private EditText sceneNameTextInput;
 	private ImageButton backButtonNewScene;
-	/*
-	private Button monButton;
-	private Button tueButton;
-	private Button wedButton;
-	private Button thuButton;
-	private Button friButton;
-	private Button satButton;
-	private Button sunButton;
-
-	 */
-
-
 	private Button startTime;
 	private Button endTime;
-
 	private MaterialCardView selectCard;
 	private TextView selectDays;
 	private boolean [] selectedDays;
 	private ArrayList<Integer> daysList = new ArrayList<>();
 	private String [] daysArray = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-
-
-
 	private int hourStart, minuteStart;
 	private int hourEnd, minuteEnd;
 	private DatabaseHelper dbHelper;
@@ -101,26 +69,6 @@ public class newscenecreator_activity extends Activity {
 		selectCard.setOnClickListener(v -> {
 			showDaysDialog();
 		});
-/*
-		monButton = findViewById(R.id.monButton);
-		tueButton = findViewById(R.id.tueButton);
-		wedButton = findViewById(R.id.wedButton);
-		thuButton = findViewById(R.id.thuButton);
-		friButton = findViewById(R.id.friButton);
-		satButton = findViewById(R.id.satButton);
-		sunButton = findViewById(R.id.sunButton);
-
- */
-/*
-		monButton.setOnClickListener(buttonClickListener);
-		tueButton.setOnClickListener(buttonClickListener);
-		wedButton.setOnClickListener(buttonClickListener);
-		thuButton.setOnClickListener(buttonClickListener);
-		friButton.setOnClickListener(buttonClickListener);
-		satButton.setOnClickListener(buttonClickListener);
-		sunButton.setOnClickListener(buttonClickListener);
-
- */
 
 		setSecuritySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 			if(isChecked){
@@ -167,9 +115,10 @@ public class newscenecreator_activity extends Activity {
 		}
 	}
 
+	//MultiSelect pop-up to allow picking of days for the scene
 	//https://www.youtube.com/watch?v=4GdbCl-47wE
 	private void showDaysDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(newscenecreator_activity.this);
+		AlertDialog.Builder builder = new AlertDialog.Builder(newscenecreator_activity.this); //used for pop-up over the activity
 		builder.setTitle("Select days");
 		builder.setCancelable(false);
 		builder.setMultiChoiceItems(daysArray, selectedDays, (dialog, which, isChecked) -> {
@@ -178,7 +127,7 @@ public class newscenecreator_activity extends Activity {
 			}else{
 				daysList.remove(which);
 			}
-		}).setPositiveButton("ok", (dialog, which) -> {
+		}).setPositiveButton("ok", (dialog, which) -> { //Confirm button
 			StringBuilder stringBuilder = new StringBuilder();
 
 			for(int i = 0; i< daysList.size(); i++){
@@ -186,11 +135,11 @@ public class newscenecreator_activity extends Activity {
 				stringBuilder.append(daysArray[daysList.get(i)]);
 
 				if(i != daysList.size() -1){
-					stringBuilder.append(", ");
+					stringBuilder.append(", "); //used .append to create into a list form for the selectDays TextView
 				}
 				selectDays.setText(stringBuilder.toString());
 			}
-		}).setNegativeButton("cancel", (dialog, which) -> dialog.dismiss());
+		}).setNegativeButton("cancel", (dialog, which) -> dialog.dismiss()); //cancel button
 		builder.show();
 	}
 
@@ -223,6 +172,7 @@ public class newscenecreator_activity extends Activity {
 		return startTimeNoChange && endTimeNoChange && SecurityNoChange && MusicNoChange && daysSelectedNoChange;
 	}
 
+	//Check to create a valid scene and its connection with the database
 	private void checker() {
 		SceneDataModel sceneDataModel;
 		String sceneName = sceneNameTextInput.getText().toString();
@@ -249,38 +199,9 @@ public class newscenecreator_activity extends Activity {
 
 	}
 
-/*
-	//inspired by Chat-gpt: using switch case instead of calling onClickListener multiple times
-	View.OnClickListener buttonClickListener = v -> {
-		// Do something when any of the buttons is clicked
-		switch (v.getId()) {
-			case R.id.monButton:
-
-				break;
-			case R.id.tueButton:
-
-				break;
-			case R.id.wedButton:
-
-				break;
-			case R.id.thuButton:
-
-				break;
-			case R.id.friButton:
-
-				break;
-			case R.id.satButton:
-
-				break;
-			case R.id.sunButton:
-
-				break;
-		}
-	};
-
- */
-
+// The two functions below work to get the start and end time for the scenes:
 //inspired from: https://www.youtube.com/watch?v=c6c1giRekB4
+
 	public void timePickerStart(View view) {
 		TimePickerDialog.OnTimeSetListener onTimeSetListenerStart = (view1, selectHourStart, selectMinuteStart) -> {
 			hourStart = selectHourStart;

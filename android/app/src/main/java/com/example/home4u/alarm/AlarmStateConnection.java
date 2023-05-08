@@ -13,10 +13,10 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 
 public class AlarmStateConnection {
+    private static final String TAG = AlarmStateConnection.class.getSimpleName();
+
     private static AlarmStateConnection instance;
 
-
-    private static final String TAG = AlarmStateConnection.class.getSimpleName();
 
     public static AlarmStateConnection getInstance() {
         if (instance == null) {
@@ -26,20 +26,22 @@ public class AlarmStateConnection {
         return instance;
     }
 
+
     private AlarmStateConnection() {
     }
 
 
-    public void alarmIsTriggered(AlarmStateConnListener listener) {
+    public void isAlarmTriggered(AlarmStateConnListener listener) {
         ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
                 final InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
                 final String value = ServerHelper.readStringStream(in);
-                Log.v(TAG, "alarmIsTriggered: " + value);
+                Log.v(TAG, "isAlarmTriggered: " + value);
 
-                listener.onAlarmState(value.equals("true"));
+                final boolean isTriggered = value.equals("true");
+                listener.onAlarmState(isTriggered);
             }
 
             @Override
@@ -48,6 +50,7 @@ public class AlarmStateConnection {
             }
         });
     }
+
 
     public void setAlarmIsTriggered(boolean value) {
         ServerHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {

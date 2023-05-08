@@ -15,12 +15,12 @@ public class AlarmNotificationHandler {
     private static final String CHANNEL_NAME = "Alarm notifications";
     private static final String CHANNEL_ID = "alarm_notification_channel";
     private static final int NOTIFICATION_ID = 3562988;
+    private static final int CHANNEL_IMPORTANCE = NotificationManager.IMPORTANCE_HIGH;
 
 
 
     public static void createChannel(Context context){
-        final int importance = NotificationManager.IMPORTANCE_HIGH;
-        final NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, importance);
+        final NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_NAME, CHANNEL_IMPORTANCE);
 
         final NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
@@ -28,8 +28,8 @@ public class AlarmNotificationHandler {
 
 
     static void post(Context context){
-        Notification notification = create(context);
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        final Notification notification = create(context);
+        final NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, notification);
     }
 
@@ -49,7 +49,7 @@ public class AlarmNotificationHandler {
     }
 
     static void cancel(Context context){
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        final NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(NOTIFICATION_ID);
     }
 

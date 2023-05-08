@@ -7,7 +7,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.home4u.alarm.AlarmActivity;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, AlarmActivity.class))
         );*/
 
-        AlarmStateConnection.getInstance().alarmIsTriggered(isTriggered -> {
+        AlarmStateConnection.getInstance().isAlarmTriggered(isTriggered -> {
 
         });
 

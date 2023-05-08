@@ -13,7 +13,7 @@ public class AlarmStateWatcher extends BroadcastReceiver {
         Log.v(TAG, "Checking alarm state...");
 
         final AlarmStateConnection alarmStateConnection = AlarmStateConnection.getInstance();
-        alarmStateConnection.alarmIsTriggered(isTriggered -> {
+        alarmStateConnection.isAlarmTriggered(isTriggered -> {
             Log.v(TAG, "alarmIsTriggered: " + isTriggered);
 
             if(isTriggered) {

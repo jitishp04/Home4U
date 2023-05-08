@@ -1,9 +1,7 @@
 package com.example.home4u.alarm;
 
 import android.os.Bundle;
-import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +16,8 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-        AlarmStateConnection alarmStateConnection = AlarmStateConnection.getInstance();
-        alarmStateConnection.alarmIsTriggered(isTriggered -> {
+        final AlarmStateConnection alarmStateConnection = AlarmStateConnection.getInstance();
+        alarmStateConnection.isAlarmTriggered(isTriggered -> {
             if (isTriggered) {
                 alarmStateConnection.setAlarmIsTriggered(false);
             }

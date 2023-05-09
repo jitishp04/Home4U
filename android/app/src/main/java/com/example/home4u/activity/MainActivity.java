@@ -29,12 +29,6 @@ public class MainActivity extends AppCompatActivity {
         handleNotificationPermission();
 
 
-        /*
-        Button toMusicSelectBtn = findViewById(R.id.button_to_music_select);
-        toMusicSelectBtn.setOnClickListener(view ->
-                startActivity(new Intent(MainActivity.this, AlarmActivity.class))
-        );*/
-
 
         MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
              @Override

@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 
 public class MusicInfoDownloader {
-    public static final String TAG = MusicInfoDownloader.class.getSimpleName();
+    private static final String TAG = MusicInfoDownloader.class.getSimpleName();
 
 
     public static void download(MusicInfoDownloaderCallback callback) {

@@ -17,9 +17,10 @@ import java.util.List;
 public class MusicInfo {
     private final List<SongInfo> songs = new ArrayList<>();
 
-    public MusicInfo() {
-
+    public List<SongInfo> getSongs() {
+        return songs;
     }
+
 
     public void download(MusicInfoDownloaderCallback callback){
         ServerConnectionHelper.makeRequest("/info.json", new ServerRequestCallback() {
@@ -44,6 +45,7 @@ public class MusicInfo {
         });
     }
 
+
     private void parseDownload(String jsonString) throws JSONException {
         final JSONObject jsonObject = new JSONObject(jsonString);
         final JSONArray jsonSongs = jsonObject.getJSONArray("songs");
@@ -60,23 +62,6 @@ public class MusicInfo {
                     jsonSongInfo.getString("length")
             );
             songs.add(songInfo);
-        }
-    }
-
-    class SongInfo {
-        private final String fileName;
-        private final String name;
-        private final String artist;
-        private final String album;
-        private final String length;
-
-
-        SongInfo(String fileName, String name, String artist, String album, String length) {
-            this.fileName = fileName;
-            this.name = name;
-            this.artist = artist;
-            this.album = album;
-            this.length = length;
         }
     }
 }

@@ -5,7 +5,7 @@ import com.example.home4u.music.MusicInfo;
 public class MusicPlayer {
     private MusicInfo musicInfo;
 
-    public MusicPlayer(){
+    public MusicPlayer(MusicInfo musicInfo){
 
     }
 

@@ -1,4 +1,4 @@
-package com.example.home4u.server_manager;
+package com.example.home4u.connectivity;
 
 import android.util.Log;
 
@@ -9,25 +9,25 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class ServerHelper {
-    private static final String TAG = ServerHelper.class.getSimpleName();
+public class ServerConnectionHelper {
+    private static final String TAG = ServerConnectionHelper.class.getSimpleName();
     private static final String URL = "http://192.168.0.135:8081";
 
 
-    public static void makeRequest(String endpoint, ServerRequestCallback requestCallback){
+    // *Inspired by ChatGPT*
+    public static void makeRequest(String endpoint, ServerRequestCallback callback){
         new Thread(() -> {
             HttpURLConnection urlConnection = null;
             try {
-                final String path = ServerHelper.URL + endpoint;
+                final String path = ServerConnectionHelper.URL + endpoint;
                 Log.v(TAG, "Making connection with " + path);
                 final URL url = new URL(path);
                 urlConnection = (HttpURLConnection) url.openConnection();
 
-                requestCallback.onMakeConnection(urlConnection);
-
+                callback.onMakeConnection(urlConnection);
             } catch (IOException e) {
                 e.printStackTrace();
-                requestCallback.onConnectionError();
+                callback.onConnectionError();
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();

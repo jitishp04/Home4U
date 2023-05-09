@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +8,7 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.home4u.R;
 import com.example.home4u.music_info.MusicInfoDownloader;
 import com.example.home4u.music_info.MusicInfoDownloaderCallback;
 import com.example.home4u.music_info.MusicInfoParser;

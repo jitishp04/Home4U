@@ -1,11 +1,9 @@
-package com.example.home4u;
+package com.example.home4u.connectivity;
 
 import android.content.Context;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -18,7 +16,8 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
    Author: Nicole Quinstedt
    Source: https://github.com/Quinstedt/DIT113MqttWorkshop
 */
-public class BrokerConnection extends AppCompatActivity {
+
+public class BrokerConnection{
     public static final String SUB_TOPIC = "MotionDetector/Connection"; // topic to subscribe to
     public static final String LOCALHOST = "10.0.2.2"; // Ip address of the local host
     private static final String MQTT_server = "tcp://" + LOCALHOST + ":1883"; // the server uses tcp protocol on the local host ip and listens to the port 1883
@@ -26,10 +25,10 @@ public class BrokerConnection extends AppCompatActivity {
     public static final int QOS = 0; // quality of service
 
     private boolean isConnected = false;
-    private MqttClient mqttClient;
-    Context context;
-    TextView connectionMessage;
+    private final MqttClient mqttClient;
+    private final Context context;
 
+    //IMPORTANT! - PASSING ACTIVITY CONTEXT WILL CAUSE MEMORY LEAK
     public BrokerConnection(Context context) {
         this.context = context;
         mqttClient = new MqttClient(context, MQTT_server, CLIENT_ID);
@@ -77,7 +76,6 @@ public class BrokerConnection extends AppCompatActivity {
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     if (topic.equals(SUB_TOPIC)) {
                         String messageMQTT = message.toString();
-                        connectionMessage.setText(messageMQTT);
                         Log.i(CLIENT_ID, "Message " + messageMQTT);  // prints in the console
                     } else {
                         // prints in the console
@@ -91,14 +89,6 @@ public class BrokerConnection extends AppCompatActivity {
                 }
             });
         }
-    }
-    /**
-     * Function that set the textview reference from the MainActivity to the connectionMessage textview
-     * in the brokerConnection.
-     * @param textView
-     */
-    public void setConnectionMessage(TextView textView) {
-        this.connectionMessage = textView;
     }
 
     public MqttClient getMqttClient() {

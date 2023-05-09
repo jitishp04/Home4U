@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.connectivity;
 
 import android.content.Context;
 
@@ -15,10 +15,10 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
    Author: Nicole Quinstedt
    Source: https://github.com/Quinstedt/DIT113MqttWorkshop
 */
-public class MqttClient {
+ public class MqttClient {
     private final MqttAndroidClient mMqttAndroidClient;
 
-    public MqttClient(Context context, String serverUrl, String clientId) {
+    MqttClient(Context context, String serverUrl, String clientId) {
         mMqttAndroidClient = new MqttAndroidClient(context, serverUrl, clientId);
     }
 

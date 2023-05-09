@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.home4u.R;
+import com.example.home4u.connectivity.BrokerConnection;
 
 
 public class AlarmSettingsActivity extends AppCompatActivity {
@@ -29,7 +32,7 @@ public class AlarmSettingsActivity extends AppCompatActivity {
 
         modeState = findViewById(R.id.ModeState);
         securitySwitchBtn = findViewById(R.id.switchSecurity);
-        alarmBtn = findViewById(R.id.btnAlarm);
+        //alarmBtn = findViewById(R.id.btnAlarm);
         brokerConnection = new BrokerConnection(getApplicationContext());
         brokerConnection.connectToMqttBroker();
 

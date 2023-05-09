@@ -2,7 +2,7 @@
 <resources>
 	<!-- newscenecreator strings -->
 
-	<string name="app_name">Add Scene</string>
+	<string name="app_name">Home4U</string>
 	<string name="ek_img_content">ExportKit Image</string>
 	<string name="new_scene_string">New Scene</string>
 	<string name="set_scene_duration_string">Set Scene duration</string>

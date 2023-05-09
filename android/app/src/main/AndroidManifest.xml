@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -24,7 +24,7 @@
             android:name=".scenes.newscenecreator_activity"
             android:exported="false" />
         <activity
-            android:name=".homescreen_activity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,11 +33,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".alarm.AlarmActivity"/>
-        <activity android:name=".MusicSelectActivity"/>
+        <activity android:name=".activity.AlarmActivity"/>
+        <activity android:name=".activity.MusicSelectActivity"/>
 
-        <service
-            android:name=".alarm.AlarmNotifierService"
+        <receiver
+            android:name=".alarm.AlarmStateWatcher"
+            android:enabled="true"
+            android:exported="false"
             android:launchMode="singleInstance" />
         <service android:name="org.eclipse.paho.android.service.MqttService" /> <!-- Inspired by ChatGPT -->
         <receiver

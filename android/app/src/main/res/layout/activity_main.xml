@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <Button
         android:id="@+id/sceneMaker"
         android:layout_width="137dp"
         android:layout_height="116dp"
         android:layout_marginTop="232dp"
-        android:text="@string/Scenes"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"

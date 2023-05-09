@@ -3,45 +3,30 @@ package com.example.home4u.alarm;
 
 import android.util.Log;
 
-import com.example.home4u.server_manager.ServerHelper;
-import com.example.home4u.server_manager.ServerRequestCallback;
+import com.example.home4u.connectivity.ServerConnectionHelper;
+import com.example.home4u.connectivity.ServerRequestCallback;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 
 public class AlarmStateConnection {
-    private static AlarmStateConnection instance;
-
-
     private static final String TAG = AlarmStateConnection.class.getSimpleName();
 
-    public static AlarmStateConnection getInstance() {
-        if (instance == null) {
-            instance = new AlarmStateConnection();
-        }
 
-        return instance;
-    }
-
-    private AlarmStateConnection() {
-    }
-
-
-    public void alarmIsTriggered(AlarmStateListener listener) {
-        ServerHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
+    public static void isAlarmTriggered(AlarmStateConnCallback listener) {
+        ServerConnectionHelper.makeRequest("/isAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
                 final InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
-                final String value = ServerHelper.readStringStream(in);
-                Log.v(TAG, "alarmIsTriggered: " + value);
+                final String value = ServerConnectionHelper.readStringStream(in);
+                Log.v(TAG, "isAlarmTriggered: " + value);
 
-                listener.onAlarmState(value.equals("true"));
+                final boolean isTriggered = value.equals("true");
+                listener.onAlarmState(isTriggered);
             }
 
             @Override
@@ -51,8 +36,9 @@ public class AlarmStateConnection {
         });
     }
 
-    public void setAlarmIsTriggered(boolean value) {
-        ServerHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {
+
+    public static void setAlarmIsTriggered(boolean value) {
+        ServerConnectionHelper.makeRequest("/setAlarmTriggered", new ServerRequestCallback() {
             @Override
             public void onMakeConnection(HttpURLConnection urlConnection) throws IOException {
                 urlConnection.setRequestMethod("PUT");

@@ -1,7 +1,6 @@
 package com.example.home4u.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -9,11 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.home4u.R;
-import com.example.home4u.music_info.MusicInfoDownloader;
-import com.example.home4u.music_info.MusicInfoDownloaderCallback;
-import com.example.home4u.music_info.MusicInfoParser;
-
-import org.json.JSONObject;
 
 public class MusicSelectActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -28,6 +22,7 @@ public class MusicSelectActivity extends AppCompatActivity {
     }
 
     private void downloadSongs(){
+        /*
         MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
             @Override
             public void onSuccess(JSONObject jsonObject) {
@@ -44,6 +39,8 @@ public class MusicSelectActivity extends AppCompatActivity {
                 Log.e(TAG, "Failed to download music info");
             }
         });
+
+         */
     }
 
     private void populateSongView(String[] items){

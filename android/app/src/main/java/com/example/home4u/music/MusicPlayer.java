@@ -1,6 +1,6 @@
-package com.example.home4u;
+package com.example.home4u.music;
 
-import com.example.home4u.music_info.MusicInfo;
+import com.example.home4u.music.MusicInfo;
 
 public class MusicPlayer {
     private MusicInfo musicInfo;

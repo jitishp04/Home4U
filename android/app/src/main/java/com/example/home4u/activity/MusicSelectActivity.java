@@ -23,7 +23,7 @@ public class MusicSelectActivity extends AppCompatActivity {
     private static final String TAG = MusicSelectActivity.class.getSimpleName();
 
     private final MusicInfo musicInfo = new MusicInfo();
-    private final MusicPlayer musicPlayer = new MusicPlayer(musicInfo, this);
+    private MusicPlayer musicPlayer;
 
 
     @Override
@@ -31,6 +31,7 @@ public class MusicSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_select);
 
+        musicPlayer = new MusicPlayer(musicInfo, this);
         handleSongs();
 
         final ListView songListView = findViewById(R.id.song_list_view);

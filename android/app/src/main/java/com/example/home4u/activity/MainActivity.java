@@ -7,6 +7,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.home4u.NotificationHandler;
 import com.example.home4u.R;
 import com.example.home4u.alarm.AlarmNotificationHandler;
 import com.example.home4u.alarm.AlarmStateConnection;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.homescreen);
 
         goToAlarmActivityIfTriggered();
-        handleNotificationPermission();
+        NotificationHandler.handleNotificationPermission(this);
 
 
 
@@ -53,12 +54,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void handleNotificationPermission(){
-        if(!AlarmNotificationHandler.hasNotificationPermission(this)){
-            final String[] permissions = new String[]{
-                Manifest.permission.POST_NOTIFICATIONS
-            };
-            ActivityCompat.requestPermissions(this, permissions, 0);
-        }
-    }
+
 }

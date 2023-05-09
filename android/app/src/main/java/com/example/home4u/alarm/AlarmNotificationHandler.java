@@ -1,7 +1,6 @@
 package com.example.home4u.alarm;
 
-import static android.Manifest.permission.POST_NOTIFICATIONS;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static com.example.home4u.NotificationHandler.hasNotificationPermission;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -11,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
 import com.example.home4u.R;
 import com.example.home4u.activity.AlarmActivity;
@@ -29,12 +27,6 @@ public class AlarmNotificationHandler {
 
         final NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
-    }
-
-    public static boolean hasNotificationPermission(Context context){
-        return
-            android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.TIRAMISU ||
-            ContextCompat.checkSelfPermission(context, POST_NOTIFICATIONS) == PERMISSION_GRANTED;
     }
 
 

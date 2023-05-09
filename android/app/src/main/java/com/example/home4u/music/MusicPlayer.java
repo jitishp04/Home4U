@@ -18,7 +18,7 @@ public class MusicPlayer {
 
     public MusicPlayer(MusicInfo musicInfo, Context context){
         this.musicInfo = musicInfo;
-        this.brokerConnection = new BrokerConnection(context.getApplicationContext());
+        this.brokerConnection = BrokerConnection.getInstance(context);
     }
 
     public void play(SongInfo song){
@@ -39,7 +39,7 @@ public class MusicPlayer {
     }
 
     private void publishCommand(String msg, int attemptNo){
-        brokerConnection.getMqttClient().publish(MQTT_TOPIC, msg, MQTT_QOS, new IMqttActionListener() {
+        brokerConnection.getMqttClient(mqttClient -> mqttClient.publish(MQTT_TOPIC, msg, MQTT_QOS, new IMqttActionListener() {
             @Override
             public void onSuccess(IMqttToken asyncActionToken) {
             }
@@ -52,6 +52,6 @@ public class MusicPlayer {
                     publishCommand(msg, attemptNo+1);
                 }
             }
-        });
+        }));
     }
 }

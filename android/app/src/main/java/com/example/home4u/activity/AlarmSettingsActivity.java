@@ -1,5 +1,6 @@
 package com.example.home4u.activity;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -17,6 +18,7 @@ import com.example.home4u.connectivity.BrokerConnection;
 
 public class AlarmSettingsActivity extends AppCompatActivity {
 
+    private static final String SUB_TOPIC = "MotionDetector/Connection"; // topic to subscribe to
     private Switch securitySwitchBtn; // The switch button for security system activation
     private Button alarmBtn; // The switch button for alarm activation
     private TextView modeState; // Used for the watching message
@@ -33,7 +35,11 @@ public class AlarmSettingsActivity extends AppCompatActivity {
         modeState = findViewById(R.id.ModeState);
         securitySwitchBtn = findViewById(R.id.switchSecurity);
         //alarmBtn = findViewById(R.id.btnAlarm);
-        brokerConnection = new BrokerConnection(getApplicationContext());
+        brokerConnection = BrokerConnection.getInstance(this);
+        brokerConnection.getMqttClient(mqttClient -> {
+            mqttClient.subscribe(SUB_TOPIC, QOS, null);
+        });
+
 
         /**
          *  Function that handles the event of the securitySwitchBtn being checked or unchecked
@@ -41,18 +47,20 @@ public class AlarmSettingsActivity extends AppCompatActivity {
         securitySwitchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                String message = "";
+                final String message = isChecked ? "enable" : "disable";
                 String secSwitch = "";
                 if (isChecked) {
                     modeState.setText("Security mode is on");
-                    message = "enable";
                     secSwitch = securitySwitchBtn.getTextOn().toString();
                 } else {
                     modeState.setText("Security mode is off");
-                    message = "disable";
                     secSwitch = securitySwitchBtn.getTextOff().toString();
                 }
-                brokerConnection.getMqttClient().publish(PUB_TOPIC, message, QOS, null);
+
+                brokerConnection.getMqttClient(mqttClient -> {
+                    mqttClient.publish(PUB_TOPIC, message, QOS, null);
+                });
+
                 Toast.makeText(getApplicationContext(), "Security system switch - " + secSwitch,
                         Toast.LENGTH_SHORT).show();
             }
@@ -66,7 +74,7 @@ public class AlarmSettingsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String message = "alarm";
                 String secSwitch = alarmBtn.getText().toString();
-                brokerConnection.getMqttClient().publish(PUB_TOPIC, message, QOS, null);
+                brokerConnection.getMqttClient(mqttClient -> mqttClient.publish(PUB_TOPIC, message, QOS, null));
                 Toast.makeText(getApplicationContext(), "Alarm - " + secSwitch, Toast.LENGTH_SHORT).show();
 
             }

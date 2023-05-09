@@ -34,7 +34,6 @@ public class AlarmSettingsActivity extends AppCompatActivity {
         securitySwitchBtn = findViewById(R.id.switchSecurity);
         //alarmBtn = findViewById(R.id.btnAlarm);
         brokerConnection = new BrokerConnection(getApplicationContext());
-        brokerConnection.connectToMqttBroker();
 
         /**
          *  Function that handles the event of the securitySwitchBtn being checked or unchecked

@@ -21,7 +21,7 @@ public class MusicSelectActivity extends AppCompatActivity {
     private static final String TAG = MusicSelectActivity.class.getSimpleName();
 
     private final MusicInfo musicInfo = new MusicInfo();
-    private final MusicPlayer musicPlayer = new MusicPlayer(musicInfo);
+    private final MusicPlayer musicPlayer = new MusicPlayer(musicInfo, this);
 
 
     @Override

@@ -28,14 +28,14 @@ public class BrokerConnection{
     private final MqttClient mqttClient;
     private final Context context;
 
-    //IMPORTANT! - PASSING ACTIVITY CONTEXT WILL CAUSE MEMORY LEAK
+
     public BrokerConnection(Context context) {
-        this.context = context;
-        mqttClient = new MqttClient(context, MQTT_server, CLIENT_ID);
+        this.context = context.getApplicationContext();
+        mqttClient = new MqttClient(this.context, MQTT_server, CLIENT_ID);
         connectToMqttBroker();
     }
 
-    public void connectToMqttBroker() {
+    private void connectToMqttBroker() {
         if (!isConnected) {
             mqttClient.connect(CLIENT_ID, "", new IMqttActionListener() {
 

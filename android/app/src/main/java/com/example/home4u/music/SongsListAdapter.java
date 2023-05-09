@@ -18,6 +18,7 @@ public class SongsListAdapter extends ArrayAdapter<SongInfo> {
     private final LayoutInflater inflater;
     private final List<SongInfo> songs;
 
+
     public SongsListAdapter(@NonNull Context context, int resource, List<SongInfo> songs) {
         super(context, resource, songs);
 
@@ -40,14 +41,14 @@ public class SongsListAdapter extends ArrayAdapter<SongInfo> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        SongInfo songInfo = songs.get(pos);
+        final SongInfo songInfo = songs.get(pos);
         viewHolder.nameView.setText(songInfo.getName());
-        Log.e(TAG, songInfo.getName());
 
         return convertView;
     }
 
+
     private static class ViewHolder{
-        TextView nameView;
+        private TextView nameView;
     }
 }

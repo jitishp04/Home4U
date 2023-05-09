@@ -2,6 +2,8 @@ package com.example.home4u.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -30,6 +32,11 @@ public class MusicSelectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_music_select);
 
         handleSongs();
+
+        final ListView songListView = findViewById(R.id.song_list_view);
+        songListView.setOnItemClickListener((adapterView, view, i, l) -> {
+            musicPlayer.play(i);
+        });
     }
 
     private void handleSongs(){

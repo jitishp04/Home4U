@@ -16,14 +16,19 @@ public class MusicPlayer {
     private final MusicInfo musicInfo;
     private final BrokerConnection brokerConnection;
 
+    private int lastPlayedI = -1;
+
     public MusicPlayer(MusicInfo musicInfo, Context context){
         this.musicInfo = musicInfo;
         this.brokerConnection = new BrokerConnection(context.getApplicationContext());
     }
 
-    public void play(SongInfo song){
-        final String command = "play " + song.getFileName();
+    public void play(int i){
+        final SongInfo songInfo = musicInfo.getSongs().get(i);
+        final String command = "play " + songInfo.getFileName();
+
         publishCommand(command, 1);
+        lastPlayedI = i;
     }
 
     public void pause(){
@@ -31,11 +36,14 @@ public class MusicPlayer {
     }
 
     public void next(){
-
+        lastPlayedI = lastPlayedI+1 % musicInfo.getSongs().size();
+        play(lastPlayedI);
     }
 
     public void previous(){
-
+        final int songsAmt = musicInfo.getSongs().size();
+        lastPlayedI = (lastPlayedI-1 + songsAmt) % songsAmt;
+        play(lastPlayedI);
     }
 
     private void publishCommand(String msg, int attemptNo){

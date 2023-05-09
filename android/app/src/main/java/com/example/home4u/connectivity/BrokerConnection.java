@@ -99,8 +99,6 @@ public class BrokerConnection implements MqttCallback{
         Toast.makeText(context, connectionLost, Toast.LENGTH_SHORT).show();
 
         isConnected = false;
-
-        reconnect();
     }
 
     @Override

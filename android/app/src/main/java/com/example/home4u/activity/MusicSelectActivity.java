@@ -2,6 +2,8 @@ package com.example.home4u.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -9,14 +11,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.home4u.R;
-import com.example.home4u.music_info.MusicInfoDownloader;
-import com.example.home4u.music_info.MusicInfoDownloaderCallback;
-import com.example.home4u.music_info.MusicInfoParser;
+import com.example.home4u.music.MusicInfo;
+import com.example.home4u.music.MusicInfoDownloaderCallback;
+import com.example.home4u.music.MusicPlayer;
+import com.example.home4u.music.SongInfo;
+import com.example.home4u.music.SongsListAdapter;
 
-import org.json.JSONObject;
+import java.util.List;
 
 public class MusicSelectActivity extends AppCompatActivity {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MusicSelectActivity.class.getSimpleName();
+
+    private final MusicInfo musicInfo = new MusicInfo();
+    private MusicPlayer musicPlayer;
 
 
     @Override
@@ -24,31 +31,35 @@ public class MusicSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_select);
 
-        downloadSongs();
+        musicPlayer = new MusicPlayer(musicInfo, this);
+        handleSongs();
+
+        final ListView songListView = findViewById(R.id.song_list_view);
+        songListView.setOnItemClickListener((adapterView, view, i, l) -> {
+            musicPlayer.play(i);
+        });
     }
 
-    private void downloadSongs(){
-        MusicInfoDownloader.download(new MusicInfoDownloaderCallback() {
+    private void handleSongs(){
+        musicInfo.download(new MusicInfoDownloaderCallback() {
             @Override
-            public void onSuccess(JSONObject jsonObject) {
-                String[] songs = MusicInfoParser.getSongs(jsonObject);
+            public void onDownloaded() {
                 runOnUiThread(() -> {
-                    populateSongView(songs);
+                    populateSongView(musicInfo.getSongs());
                 });
-
-                Log.v(TAG, jsonObject.toString());
             }
 
             @Override
             public void onFailure() {
-                Log.e(TAG, "Failed to download music info");
+
             }
         });
     }
 
-    private void populateSongView(String[] items){
+    private void populateSongView(List<SongInfo> songs){
         final ListView songListView = findViewById(R.id.song_list_view);
-        final ArrayAdapter<String> songListAdapter = new ArrayAdapter<>(MusicSelectActivity.this, android.R.layout.simple_list_item_1, items);
+        final SongsListAdapter songListAdapter =
+                new SongsListAdapter(MusicSelectActivity.this, android.R.layout.simple_list_item_1, songs);
         songListView.setAdapter(songListAdapter);
     }
 }

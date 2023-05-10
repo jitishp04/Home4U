@@ -37,8 +37,8 @@
 					android:id="@+id/new_scene"
 					android:layout_width="135dp"
 					android:layout_height="38dp"
-					android:layout_above="@+id/rectangle_8"
-					android:layout_marginStart="156dp"
+					android:layout_alignStart="@+id/rectangle_8"
+					android:layout_marginStart="47dp"
 					android:layout_marginTop="12dp"
 					android:layout_marginBottom="-50dp"
 					android:text="@string/new_scene_string"
@@ -60,25 +60,28 @@
 
 				<View
 					android:id="@+id/rectangle_5"
-					android:layout_width="386dp"
-					android:layout_height="304dp"
-					android:layout_marginStart="22dp"
+					android:layout_width="350dp"
+					android:layout_height="299dp"
+					android:layout_alignParentStart="true"
+					android:layout_marginStart="6dp"
 					android:layout_marginTop="203dp"
 					android:background="@drawable/rectangle_5_shape" />
 
 				<View
 					android:id="@+id/rectangle_9"
-					android:layout_width="386dp"
-					android:layout_height="68dp"
-					android:layout_marginStart="22dp"
+					android:layout_width="350dp"
+					android:layout_height="74dp"
+					android:layout_alignStart="@+id/rectangle_5"
+					android:layout_marginStart="0dp"
 					android:layout_marginTop="532dp"
 					android:background="@drawable/rectangle_9_shape" />
 
 				<View
 					android:id="@+id/rectangle_10"
-					android:layout_width="386dp"
+					android:layout_width="349dp"
 					android:layout_height="68dp"
-					android:layout_marginStart="22dp"
+					android:layout_alignParentStart="true"
+					android:layout_marginStart="7dp"
 					android:layout_marginTop="628dp"
 					android:background="@drawable/rectangle_10_shape" />
 
@@ -95,78 +98,44 @@
 					android:textSize="20sp"
 					android:textStyle="bold" />
 
-				<ImageView
-					android:id="@+id/rectangle_7"
-					android:layout_width="214dp"
-					android:layout_height="77dp"
+				<Button
+					android:id="@+id/startTime"
+					android:layout_width="130dp"
+					android:layout_height="70dp"
+					android:layout_alignEnd="@+id/rectangle_5"
 					android:layout_alignBottom="@+id/rectangle_5"
-					android:layout_marginStart="23dp"
-					android:layout_marginTop="265dp"
-					android:layout_marginBottom="85dp"
-					android:layout_toEndOf="@+id/end"
-					android:contentDescription="@string/rectangle_7"
-					android:src="@drawable/rectangle_7" />
-
-				<TextView
-					android:id="@+id/__"
-					android:layout_width="44dp"
-					android:layout_height="45dp"
-					android:layout_marginStart="242dp"
-					android:layout_marginTop="360dp"
-					android:text="@string/___string"
-					android:textColor="@color/new_scene_color"
-					android:textSize="30sp"
-					android:textStyle="bold" />
-
-				<View
-					android:id="@+id/rectangle_6"
-					android:layout_width="214dp"
-					android:layout_height="77dp"
-					android:layout_alignBottom="@+id/rectangle_5"
-					android:layout_marginStart="18dp"
-					android:layout_marginTop="151dp"
-					android:layout_marginBottom="197dp"
-					android:layout_toEndOf="@+id/start"
-					android:background="@drawable/rectangle_6_shape" />
-
-				<TextView
-					android:id="@+id/___ek1"
-					android:layout_width="44dp"
-					android:layout_height="45dp"
-					android:layout_marginStart="242dp"
-					android:layout_marginTop="247dp"
-					android:text="@string/___ek1_string"
-					android:textColor="@color/new_scene_color"
-					android:textSize="30sp"
-					android:textStyle="bold" />
-
-				<TextView
-					android:id="@+id/start"
-					android:layout_width="74dp"
-					android:layout_height="38dp"
 					android:layout_marginStart="52dp"
 					android:layout_marginTop="247dp"
+					android:layout_marginEnd="113dp"
+					android:layout_marginBottom="216dp"
+					android:onClick="timePickerStart"
 					android:text="@string/start_string"
 					android:textColor="@color/new_scene_color"
-					android:textSize="20sp"
+					android:textSize="15sp"
 					android:textStyle="bold" />
 
-				<TextView
-					android:id="@+id/end"
-					android:layout_width="63dp"
-					android:layout_height="38dp"
+				<Button
+					android:id="@+id/endTime"
+					android:layout_width="130dp"
+					android:layout_height="70dp"
+					android:layout_alignEnd="@+id/rectangle_5"
+					android:layout_alignBottom="@+id/rectangle_5"
 					android:layout_marginStart="58dp"
 					android:layout_marginTop="355dp"
+					android:layout_marginEnd="113dp"
+					android:layout_marginBottom="131dp"
+					android:onClick="timePickerEnd"
 					android:text="@string/end_string"
 					android:textColor="@color/new_scene_color"
-					android:textSize="20sp"
+					android:textSize="15sp"
 					android:textStyle="bold" />
 
 				<View
 					android:id="@+id/rectangle_8"
 					android:layout_width="203dp"
 					android:layout_height="53dp"
-					android:layout_marginStart="115dp"
+					android:layout_alignStart="@+id/set_scene_duration"
+					android:layout_marginStart="68dp"
 					android:layout_marginTop="78dp"
 					android:background="@drawable/rectangle_8_shape" />
 
@@ -174,8 +143,11 @@
 					android:id="@+id/border_color"
 					android:layout_width="24dp"
 					android:layout_height="24dp"
-					android:layout_marginStart="279dp"
+					android:layout_alignStart="@+id/rectangle_8"
+					android:layout_alignBottom="@+id/rectangle_8"
+					android:layout_marginStart="172dp"
 					android:layout_marginTop="92dp"
+					android:layout_marginBottom="10dp"
 					android:contentDescription="@string/border_color"
 					android:src="@drawable/border_color" />
 
@@ -193,104 +165,22 @@
 					android:textStyle="bold" />
 
 				<Button
-					android:id="@+id/monButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignStart="@+id/rectangle_5"
-					android:layout_alignBottom="@+id/rectangle_5"
-					android:layout_marginStart="10dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginEnd="11dp"
-					android:layout_marginBottom="8dp"
-					android:background="@drawable/ellipse_1_shape"
-					android:text="@string/monday" />
-
-				<Button
-					android:id="@+id/wedButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/tueButton"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/tueButton"
-					android:background="@drawable/ellipse_3_shape"
-					android:text="@string/wednesday" />
-
-				<Button
-					android:id="@+id/thuButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/wedButton"
-					android:layout_marginStart="188dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:background="@drawable/ellipse_4_shape"
-					android:text="@string/thursday" />
-
-				<Button
-					android:id="@+id/tueButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/monButton"
-					android:layout_marginStart="-5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/monButton"
-					android:background="@drawable/ellipse_2_shape"
-					android:text="@string/tuesday" />
-
-				<Button
-					android:id="@+id/satButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/friButton"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/friButton"
-					android:background="@drawable/ellipse_5_shape"
-					android:text="@string/saturday" />
-
-				<Button
-					android:id="@+id/sunButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/satButton"
-					android:layout_alignParentEnd="true"
-					android:layout_marginStart="10dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginEnd="10dp"
-					android:layout_marginBottom="0dp"
-					android:background="@drawable/ellipse_6_shape"
-					android:text="@string/sunday" />
-
-				<Button
-					android:id="@+id/friButton"
-					android:layout_width="48dp"
-					android:layout_height="48dp"
-					android:layout_alignBottom="@+id/thuButton"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="451dp"
-					android:layout_marginBottom="0dp"
-					android:layout_toEndOf="@+id/thuButton"
-					android:background="@drawable/ellipse_7_shape"
-					android:text="@string/friday" />
-
-				<Button
 					android:id="@+id/rectangle_11"
 					android:layout_width="141dp"
 					android:layout_height="57dp"
-					android:layout_marginStart="138dp"
-					android:layout_marginTop="737dp"
-					tools:text="save" />
+					android:layout_below="@+id/rectangle_10"
+					android:layout_alignStart="@+id/rectangle_10"
+					android:layout_marginStart="99dp"
+					android:layout_marginTop="17dp"
+					android:background="@drawable/rectangle_11_shape"
+					android:text="@string/save" />
 
 				<Switch
 					android:id="@+id/setSecuritySwitch"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_alignBottom="@+id/rectangle_9"
-					android:layout_marginStart="130dp"
+					android:layout_marginStart="55dp"
 					android:layout_marginBottom="21dp"
 					android:layout_toEndOf="@+id/set_security"
 					android:scaleX="2"
@@ -302,8 +192,8 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_alignBottom="@+id/rectangle_10"
-					android:layout_marginStart="145dp"
-					android:layout_marginBottom="18dp"
+					android:layout_marginStart="69dp"
+					android:layout_marginBottom="21dp"
 					android:layout_toEndOf="@+id/play_music"
 					android:scaleX="2"
 					android:scaleY="2"
@@ -315,54 +205,50 @@
 					android:layout_height="59dp"
 					android:layout_alignEnd="@+id/rectangle_8"
 					android:layout_alignBottom="@+id/rectangle_8"
-					android:layout_marginEnd="2dp"
-					android:layout_marginBottom="-2dp"
+					android:layout_marginEnd="1dp"
+					android:layout_marginBottom="-4dp"
+					android:autofillHints="Scene1"
 					android:ems="10"
-					android:inputType="text"
 					android:hint="@string/scene_name"
-					android:autofillHints="Scene1" />
-
-				<EditText
-					android:id="@+id/startTimeText"
-					android:layout_width="wrap_content"
-					android:layout_height="48dp"
-					android:layout_alignEnd="@+id/rectangle_6"
-					android:layout_alignBottom="@+id/rectangle_6"
-					android:layout_marginEnd="2dp"
-					android:layout_marginBottom="15dp"
-					android:ems="10"
-					android:inputType="time"
-					tools:hint="@string/time"
-					android:autofillHints="Time" />
-
-				<EditText
-					android:id="@+id/endTimeText"
-					android:layout_width="wrap_content"
-					android:layout_height="48dp"
-					android:layout_alignEnd="@+id/rectangle_7"
-					android:layout_alignBottom="@+id/rectangle_7"
-					android:layout_marginEnd="2dp"
-					android:layout_marginBottom="15dp"
-					android:ems="10"
-					android:inputType="time"
-					android:hint="@string/time"
-					android:autofillHints="Time" />
+					android:inputType="text" />
 
 				<ImageButton
 					android:id="@+id/backButtonNewScene"
-					android:layout_width="50dp"
+					android:layout_width="95dp"
 					android:layout_height="50dp"
 					android:layout_alignBottom="@+id/new_scene"
-					android:layout_marginEnd="-50dp"
-					android:layout_marginBottom="-4dp"
+					android:layout_marginEnd="27dp"
+					android:layout_marginBottom="-5dp"
 					android:layout_toStartOf="@+id/new_scene"
-					android:backgroundTint="#00FFFFFF"
+					android:background="#00FFFFFF"
 					android:contentDescription="@string/backbutton"
-					app:srcCompat="@drawable/reply" />
+					android:foreground="@drawable/reply" />
+
+				<com.google.android.material.card.MaterialCardView
+					android:id="@+id/selectCard"
+					android:layout_width="200dp"
+					android:layout_height="50dp"
+					android:layout_alignBottom="@+id/rectangle_5"
+					android:layout_alignParentStart="true"
+					android:layout_marginStart="77dp"
+
+					android:layout_marginBottom="55dp"
+					android:elevation="10dp"
+					app:cardBackgroundColor="@color/white"
+					app:cardCornerRadius="8dp">
+
+					<TextView
+						android:id="@+id/selectDays"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/select_days" />
+
+				</com.google.android.material.card.MaterialCardView>
+
 
 			</RelativeLayout>
 
 		</RelativeLayout>
 
-	</ScrollView>
-</HorizontalScrollView>
+                    </ScrollView>
+                </HorizontalScrollView>

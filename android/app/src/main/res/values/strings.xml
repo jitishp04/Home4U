@@ -35,6 +35,7 @@
 	<string name="time">Time</string>
 	<string name="backbutton">backButton</string>
     <string name="Scenes">Scenes\n</string>
+<<<<<<< HEAD
 
  <!--  homescreen strings  -->
 <string name="remotely_disable_your_alarm_string">Remotely disable your alarm </string>
@@ -45,5 +46,14 @@
 <string name="home4u_string">Home4U</string>
 <string name="song_name_string">Song name</string>
 <string name="artist_name_string">Artist name</string>
-	<string name="connect_your_phone_to_the_device_and_play_music_string1">connect_your_phone_to_the_device_and_play_music_string</string>
+<string name="connect_your_phone_to_the_device_and_play_music_string1">connect_your_phone_to_the_device_and_play_music_string</string>
+<string name="save">SAVE</string>
+=======
+    <string name="save">SAVE</string>
+    <string name="select_days">Select days</string>
+<<<<<<< HEAD
+>>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
+=======
+    <string name="Home4u">Home4U</string>
+>>>>>>> ae43c1e (add days of the week from newscenecreator_activity to SQLite db and it's function)
 </resources>

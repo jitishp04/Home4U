@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".scene_manager_screen.SceneManagerScreenActivity">
+
+    <TextView
+        android:id="@+id/scenesText"
+        android:layout_width="147dp"
+        android:layout_height="88dp"
+        android:paddingLeft="30sp"
+        android:paddingTop="30sp"
+        android:text="Scenes"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/addSceneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/scenesText"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="42dp"
+        android:layout_toStartOf="@id/scenesText"
+        android:layout_toRightOf="@id/scenesText"
+        android:backgroundTint="#F6F6F6"
+        android:padding="20dp"
+        app:srcCompat="@drawable/plus_icon_32"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/noteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scenesText"
+        android:layout_marginLeft="30sp"
+        android:text="Dictate how the system reacts to conditions."
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/curSceneText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noteText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:text="Current scenes"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/curSceneText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="SpeakableTextPresentCheck">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>

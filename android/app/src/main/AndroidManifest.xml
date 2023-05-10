@@ -21,10 +21,13 @@
         android:theme="@style/Theme.Home4U"
         tools:targetApi="31">
         <activity
-            android:name=".scenes.newscenecreator_activity"
+            android:name=".scene_manager_screen.TestAddSceneActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".scene_manager_screen.SceneManagerScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,8 +42,10 @@
         <receiver
             android:name=".alarm.AlarmStateWatcher"
             android:enabled="true"
-            android:exported="false"
-            android:launchMode="singleInstance" />
+            android:exported="false"/>
+        <activity android:name=".alarm.AlarmActivity" />
+        <activity android:name=".MusicSelectActivity" />
+
         <service android:name="org.eclipse.paho.android.service.MqttService" /> <!-- Inspired by ChatGPT -->
         <receiver
             android:name=".OnBootedReceiver"

@@ -2,7 +2,7 @@
 <resources>
 	<!-- frame strings -->
 
-	<string name="app_name">Page 1</string>
+	<string name="app_name">Home4U</string>
 	<string name="ek_img_content">ExportKit Image</string>
 	<string name="title_string">Your songs</string>
 	<string name="song_count_string">2 songs</string>

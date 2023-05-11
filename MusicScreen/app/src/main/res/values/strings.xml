@@ -5,9 +5,9 @@
 	<string name="app_name">Page 1</string>
 	<string name="ek_img_content">ExportKit Image</string>
 	<string name="title_string">Your songs</string>
-	<string name="song_count_string">? songs</string>
+	<string name="song_count_string">2 songs</string>
 	<string name="song_name1_string">Song name</string>
-	<string name="song_artist_1_string">Song artist </string>
-	<string name="song_name_2_string">Song name</string>
-	<string name="song_artist_2_string">Song artist </string>
+	<string name="song_artist1_string">Song artist </string>
+	<string name="song_name2_string">Song name</string>
+	<string name="song_artist2_string">Song artist </string>
 </resources>

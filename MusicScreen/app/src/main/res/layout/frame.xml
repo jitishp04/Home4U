@@ -9,13 +9,13 @@
 	 *	@file 		frame
 	 *	@date 		Wednesday 10th of May 2023 09:17:31 AM
 	 *	@title 		Page 1
-	 *	@author 	
+	 *	@author 	Raghav Tengse
 	 *	@keywords 	
 	 *	@generator 	Export Kit v1.3.figma
 	 *
 	 */
 	-->
-	<ScrollView android:id="@+id/frame" 
+	<ScrollView android:id="@+id/stage1"
 		android:layout_width="wrap_content" 
 		android:layout_height="match_parent" >
 
@@ -25,7 +25,7 @@
 
 
 
-			<RelativeLayout android:id="@+id/page_frame_ek1"
+			<RelativeLayout android:id="@+id/page_frame_1"
 				android:layout_marginTop="0dp"
 				android:layout_marginStart="0dp"
 				android:layout_width="wrap_content"
@@ -33,12 +33,12 @@
 				>
 
 				<View
-					android:id="@+id/_bg__frame_ek2"
+					android:id="@+id/stage2"
 					android:layout_width="390dp"
 					android:layout_height="844dp"
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
-					android:background="@drawable/_bg__frame_ek2_shape" />
+					android:background="@drawable/stage2_shape" />
 
 				<View
 					android:id="@+id/song_card1"
@@ -79,16 +79,15 @@
 					android:textStyle="bold" />
 
 				<View
-					android:id="@+id/musicicon1"
+					android:id="@+id/music_icon1"
 					android:layout_width="55dp"
 					android:layout_height="57dp"
 					android:layout_below="@+id/title"
 					android:layout_alignStart="@+id/song_card1"
-					android:layout_alignBottom="@+id/musicicon1"
 					android:layout_marginStart="8dp"
 					android:layout_marginTop="1dp"
 					android:layout_marginBottom="0dp"
-					android:background="@drawable/musicicon1_shape" />
+					android:background="@drawable/music_icon1_shape" />
 
 				<TextView android:id="@+id/song_name1"
 
@@ -102,7 +101,7 @@
 					android:text="@string/song_name1_string"
 					 />
 
-				<TextView android:id="@+id/song_artist_1"
+				<TextView android:id="@+id/song_artist1"
 
 					android:textStyle="bold"
 					android:textSize="15sp"
@@ -111,7 +110,7 @@
 					android:layout_marginTop="196dp"
 					android:layout_width="101.5dp"
 					android:layout_height="28.5dp"
-					android:text="@string/song_artist_1_string"
+					android:text="@string/song_artist1_string"
 					 />
 
 				<View
@@ -126,7 +125,7 @@
 					android:background="@drawable/song_card2_shape" />
 
 				<View
-					android:id="@+id/musicicon2"
+					android:id="@+id/music_icon2"
 					android:layout_width="55dp"
 					android:layout_height="57dp"
 					android:layout_alignStart="@+id/song_card2"
@@ -134,9 +133,9 @@
 					android:layout_marginStart="8dp"
 					android:layout_marginTop="261dp"
 					android:layout_marginBottom="5dp"
-					android:background="@drawable/musicicon2_shape" />
+					android:background="@drawable/music_icon2_shape" />
 
-				<TextView android:id="@+id/song_name_2"
+				<TextView android:id="@+id/song_name2"
 
 					android:textStyle="bold"
 					android:textSize="15sp"
@@ -145,7 +144,7 @@
 					android:layout_marginTop="261dp"
 					android:layout_width="146.5dp"
 					android:layout_height="30.5dp"
-					android:text="@string/song_name_2_string"
+					android:text="@string/song_name2_string"
 					 />
 
 				<TextView android:id="@+id/song_artist_2"
@@ -157,10 +156,10 @@
 					android:layout_marginTop="280dp"
 					android:layout_width="101.5dp"
 					android:layout_height="28.5dp"
-					android:text="@string/song_artist_2_string"
+					android:text="@string/song_artist2_string"
 					 />
 
-				<ImageView
+				<ImageButton
 					android:id="@+id/back_button"
 					android:layout_width="50dp"
 					android:layout_height="50dp"
@@ -169,29 +168,33 @@
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="5dp"
 					android:layout_marginEnd="340dp"
+					android:backgroundTint="#FDFAFA"
 					android:contentDescription="back_button"
 					android:src="@drawable/back_button" />
 
-				<ImageView android:id="@+id/album_cover1"
-					android:src="@drawable/album_cover1"
-					android:contentDescription="album_cover1"
-					 android:layout_marginStart="21dp"
-					android:layout_marginTop="180dp"
+				<ImageView
+					android:id="@+id/album_cover1"
 					android:layout_width="50dp"
-					android:layout_height="50dp" />
+					android:layout_height="50dp"
+					android:layout_alignBottom="@+id/music_icon1"
+					android:layout_marginStart="21dp"
+					android:layout_marginTop="180dp"
+					android:layout_marginBottom="4dp"
+					android:contentDescription="album_cover1"
+					android:src="@drawable/album_cover1" />
 
 				<ImageView
 					android:id="@+id/album_cover2"
 					android:layout_width="50dp"
 					android:layout_height="50dp"
-					android:layout_alignEnd="@+id/musicicon2"
+					android:layout_alignEnd="@+id/music_icon2"
 					android:layout_marginStart="21dp"
 					android:layout_marginTop="264dp"
 					android:layout_marginEnd="4dp"
 					android:contentDescription="album_cover2"
 					android:src="@drawable/album_cover2" />
 
-				<ImageView
+				<ImageButton
 					android:id="@+id/play_button2"
 					android:layout_width="60dp"
 					android:layout_height="60dp"
@@ -202,7 +205,7 @@
 					android:contentDescription="play_button2"
 					android:src="@drawable/play_button2" />
 
-				<ImageView
+				<ImageButton
 					android:id="@+id/play_button1"
 					android:layout_width="60dp"
 					android:layout_height="60dp"

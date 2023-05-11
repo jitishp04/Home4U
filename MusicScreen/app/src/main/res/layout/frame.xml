@@ -8,29 +8,37 @@
 	 *	@desc 		
 	 *	@file 		frame
 	 *	@date 		Wednesday 10th of May 2023 09:17:31 AM
-	 *	@title 		Page 1
+	 *	@title 		Music Screen
 	 *	@author 	Raghav Tengse
 	 *	@keywords 	
 	 *	@generator 	Export Kit v1.3.figma
 	 *
 	 */
+
+
+	 /*The numerations 1 and 2 indicate the placement of the items on the screen
+	   1 indicates the items inside the first music card, 2 indicates the items inside
+	   the second music card */
 	-->
+
+
 	<ScrollView android:id="@+id/stage1"
 		android:layout_width="wrap_content" 
-		android:layout_height="match_parent" >
+		android:layout_height="match_parent"
+		android:layout_marginTop="0dp">
+
 
 		<RelativeLayout android:id="@+id/content_container" 
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" >
 
 
-
-			<RelativeLayout android:id="@+id/page_frame_1"
+			<RelativeLayout android:id="@+id/page_layout"
 				android:layout_marginTop="0dp"
 				android:layout_marginStart="0dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				>
+				tools:ignore="UselessParent">
 
 				<View
 					android:id="@+id/stage2"
@@ -53,11 +61,10 @@
 
 				<TextView
 					android:id="@+id/title"
-
 					android:layout_width="308dp"
 					android:layout_height="92dp"
 					android:layout_below="@+id/back_button"
-					android:layout_marginLeft="12dp"
+					android:layout_marginStart="12dp"
 					android:layout_marginTop="29dp"
 					android:text="@string/title_string"
 					android:textColor="@color/title_color"
@@ -66,11 +73,10 @@
 
 				<TextView
 					android:id="@+id/song_count"
-
 					android:layout_width="136dp"
 					android:layout_height="33dp"
 					android:layout_alignBottom="@+id/title"
-					android:layout_marginLeft="20dp"
+					android:layout_marginStart="20dp"
 					android:layout_marginTop="129dp"
 					android:layout_marginBottom="14dp"
 					android:text="@string/song_count_string"
@@ -89,29 +95,29 @@
 					android:layout_marginBottom="0dp"
 					android:background="@drawable/music_icon1_shape" />
 
-				<TextView android:id="@+id/song_name1"
-
+				<TextView
+					android:id="@+id/song_name1"
 					android:textStyle="bold"
 					android:textSize="15sp"
 					android:textColor="@color/title_color"
-					android:layout_marginLeft="80dp"
+					android:layout_marginStart="80dp"
 					android:layout_marginTop="177dp"
-					android:layout_width="146.5dp"
-					android:layout_height="30.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
 					android:text="@string/song_name1_string"
-					 />
+					tools:ignore="RelativeOverlap" />
 
-				<TextView android:id="@+id/song_artist1"
-
+				<TextView
+					android:id="@+id/song_artist1"
 					android:textStyle="bold"
 					android:textSize="15sp"
 					android:textColor="@color/title_color"
-					android:layout_marginLeft="80dp"
+					android:layout_marginStart="80dp"
 					android:layout_marginTop="196dp"
-					android:layout_width="101.5dp"
-					android:layout_height="28.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
 					android:text="@string/song_artist1_string"
-					 />
+					tools:ignore="RelativeOverlap" />
 
 				<View
 					android:id="@+id/song_card2"
@@ -135,24 +141,24 @@
 					android:layout_marginBottom="5dp"
 					android:background="@drawable/music_icon2_shape" />
 
-				<TextView android:id="@+id/song_name2"
-
+				<TextView
+					android:id="@+id/song_name2"
 					android:textStyle="bold"
 					android:textSize="15sp"
 					android:textColor="@color/title_color"
-					android:layout_marginLeft="80dp"
+					android:layout_marginStart="80dp"
 					android:layout_marginTop="261dp"
-					android:layout_width="146.5dp"
-					android:layout_height="30.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
 					android:text="@string/song_name2_string"
-					 />
+					tools:ignore="RelativeOverlap" />
 
 				<TextView android:id="@+id/song_artist_2"
 
 					android:textStyle="bold"
 					android:textSize="15sp"
 					android:textColor="@color/title_color"
-					android:layout_marginLeft="80dp"
+					android:layout_marginStart="80dp"
 					android:layout_marginTop="280dp"
 					android:layout_width="101.5dp"
 					android:layout_height="28.5dp"
@@ -218,6 +224,5 @@
 
 			</RelativeLayout>
 		</RelativeLayout>
-
 	</ScrollView>
 </HorizontalScrollView>

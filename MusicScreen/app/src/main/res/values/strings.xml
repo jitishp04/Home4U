@@ -3,7 +3,7 @@
 	<!-- frame strings -->
 
 	<string name="app_name">Home4U</string>
-	<string name="ek_img_content">ExportKit Image</string>
+	<string name="content_screen">ExportKit Image</string>
 	<string name="title_string">Your songs</string>
 	<string name="song_count_string">2 songs</string>
 	<string name="song_name1_string">Song name</string>

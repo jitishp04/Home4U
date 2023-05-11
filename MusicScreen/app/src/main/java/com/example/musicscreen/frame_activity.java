@@ -73,10 +73,10 @@ public class frame_activity extends Activity {
 	
 		
 		//custom code goes here
-		song_name1.setText("Twinkle Twinkle");
+		song_name1.setText("Twinkle Twinkle"); //first song card
 		song_artist1.setText("Jane Taylor");
 
-		song_name2.setText("Music Scale");
+		song_name2.setText("Music Scale"); // second song card
 		song_artist2.setText("-");
 
 	}

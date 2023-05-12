@@ -1,20 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent" android:layout_height="match_parent" >
-	<!--
-	/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc
-	 *	@file 		homeScreen
-	 *	@date 		Thursday 27th of April 2023 04:16:55 PM
-	 *	@title 		Home Screen
-	 *	@author
-	 *	@keywords
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-	-->
+
 	<ScrollView android:id="@+id/homescreen"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" >
@@ -77,7 +63,7 @@
 
 				<TextView
 					android:id="@+id/remotely_disable_your_alarm"
-					android:layout_width="242dp"
+					android:layout_width="wrap_content"
 					android:layout_height="34dp"
 					android:layout_alignStart="@+id/rectangle_51"
 					android:layout_alignTop="@+id/rectangle_51"
@@ -101,7 +87,7 @@
 					android:layout_alignBottom="@+id/rectangle_81"
 					android:layout_marginStart="53dp"
 					android:layout_marginTop="395dp"
-					android:layout_marginEnd="31dp"
+					android:layout_marginEnd="48dp"
 					android:layout_marginBottom="9dp"
 					android:background="@drawable/rectangle_41_shape"
 					android:text="@string/manage_scenes_string"
@@ -209,7 +195,7 @@
 
 				<TextView
 					android:id="@+id/home4u"
-					android:layout_width="172dp"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_below="@+id/_bg__homescreen_ek2"
 					android:layout_alignParentStart="true"
@@ -243,8 +229,8 @@
 
 				<TextView
 					android:id="@+id/song_name"
-					android:layout_width="77dp"
-					android:layout_height="18dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:layout_alignBottom="@+id/rectangle_51"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_marginStart="94dp"
@@ -257,8 +243,8 @@
 
 				<TextView
 					android:id="@+id/artist_name"
-					android:layout_width="80dp"
-					android:layout_height="18dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:layout_below="@+id/rectangle_51"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_marginStart="94dp"
@@ -295,7 +281,7 @@
 
 				<Switch
 					android:id="@+id/switch2"
-					android:layout_width="210dp"
+					android:layout_width="wrap_content"
 					android:layout_height="48dp"
 					android:layout_below="@+id/alarm_off"
 					android:layout_alignStart="@+id/rectangle_51"

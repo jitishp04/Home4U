@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button toMusicSelectBtn = findViewById(R.id.button_to_music_select);
+/*        Button toMusicSelectBtn = findViewById(R.id.button_to_music_select);
         toMusicSelectBtn.setOnClickListener(view ->
                 startActivity(new Intent(MainActivity.this, MusicSelectActivity.class))
-        );
+        );*/
 
         /*
         if(! AlarmNotifierService.isRunning()){
@@ -55,8 +55,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void View() {
+<<<<<<< HEAD
         sceneMaker = findViewById(R.id.sceneMaker);
 
+    private void View() {
+        //SceneMaker = findViewById(R.id.sceneMaker);
+    }
+}
          */
+=======
+        //ceneMaker = findViewById(R.id.sceneMaker);
+>>>>>>> 10b27dc (Fix layout screen.)
     }
 }

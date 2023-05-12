@@ -1,127 +1,115 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
-	<!-- 
-	/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc 		
-	 *	@file 		homescreen
-	 *	@date 		Thursday 27th of April 2023 04:16:55 PM
-	 *	@title 		Home Screen
-	 *	@author 	
-	 *	@keywords 	
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-	-->
-	<ScrollView android:id="@+id/homescreen" 
-		android:layout_width="wrap_content" 
-		android:layout_height="match_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent" android:layout_height="match_parent" >
 
-		<RelativeLayout android:id="@+id/content_container" 
-			android:layout_width="wrap_content" 
+	<ScrollView android:id="@+id/homescreen"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" >
+
+		<RelativeLayout android:id="@+id/content_container"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" >
 
 
 			<RelativeLayout
-				android:id="@+id/page_homescreen_ek1"
-				android:layout_width="395dp"
+				android:id="@+id/page_homeScreen_ek1"
+				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_marginStart="0dp">
 
-
 				<View
-					android:id="@+id/_bg__homescreen_ek2"
+					android:id="@+id/_bg__homeScreen_ek2"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
 					android:background="@drawable/_bg__homescreen_ek2_shape" />
 
-
 				<View
-					android:id="@+id/rectangle_21"
+					android:id="@+id/playMusic"
 					android:layout_width="192dp"
 					android:layout_height="146dp"
-					android:layout_below="@+id/_bg__homescreen_ek2"
+					android:layout_below="@+id/home4u"
 					android:layout_alignParentStart="true"
-					android:layout_marginStart="203dp"
-					android:layout_marginTop="156dp"
+					android:layout_marginStart="207dp"
+					android:layout_marginTop="48dp"
 					android:alpha="0.50999999046326"
 					android:background="@drawable/rectangle_21_shape" />
 
 				<View
-					android:id="@+id/rectangle_81"
+					android:id="@+id/manageScenes"
 					android:layout_width="189dp"
 					android:layout_height="144dp"
-					android:layout_below="@+id/_bg__homescreen_ek2"
+					android:layout_below="@+id/home4u"
 					android:layout_alignParentStart="true"
-					android:layout_marginStart="5dp"
-					android:layout_marginTop="158dp"
+					android:layout_marginStart="9dp"
+					android:layout_marginTop="50dp"
 					android:alpha="0.50999999046326"
 					android:background="@drawable/rectangle_81_shape" />
 
 				<View
-					android:id="@+id/rectangle_51"
+					android:id="@+id/alarmSystem"
 					android:layout_width="264dp"
 					android:layout_height="213dp"
-					android:layout_below="@+id/_bg__homescreen_ek2"
+					android:layout_below="@+id/_bg__homeScreen_ek2"
 					android:layout_alignParentStart="true"
 					android:layout_alignParentEnd="true"
-					android:layout_marginStart="67dp"
+					android:layout_marginStart="65dp"
 					android:layout_marginTop="333dp"
-					android:layout_marginEnd="64dp"
+					android:layout_marginEnd="66dp"
 					android:alpha="0.34000000357628"
 					android:background="@drawable/rectangle_51_shape" />
 
 				<TextView
 					android:id="@+id/remotely_disable_your_alarm"
-					android:layout_width="242dp"
+					android:layout_width="wrap_content"
 					android:layout_height="34dp"
-					android:layout_alignStart="@+id/rectangle_51"
-					android:layout_alignTop="@+id/rectangle_51"
+					android:layout_alignStart="@+id/alarmSystem"
+					android:layout_alignTop="@+id/alarmSystem"
+					android:layout_alignEnd="@+id/alarmSystem"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginStart="15dp"
+					android:layout_marginStart="19dp"
 					android:layout_marginLeft="105dp"
-					android:layout_marginTop="117dp"
+					android:layout_marginTop="119dp"
+					android:layout_marginEnd="19dp"
 					android:gravity="center"
-					android:text="Remotely enable your alarm"
+					android:text="@string/remotely_disable_your_alarm_string"
 					android:textColor="@color/remotely_disable_your_alarm_color"
 					android:textSize="14sp"
 					android:textStyle="bold" />
 
 				<Button
-					android:id="@+id/rectangle_41"
+					android:id="@+id/manageScenesButton"
 					android:layout_width="116dp"
 					android:layout_height="48dp"
-					android:layout_alignEnd="@+id/rectangle_81"
-					android:layout_alignBottom="@+id/rectangle_81"
+					android:layout_alignEnd="@+id/manageScenes"
+					android:layout_alignBottom="@+id/manageScenes"
 					android:layout_marginStart="53dp"
 					android:layout_marginTop="395dp"
-					android:layout_marginEnd="31dp"
+					android:layout_marginEnd="48dp"
 					android:layout_marginBottom="9dp"
 					android:background="@drawable/rectangle_41_shape"
-					android:text="manage scenes"
-					android:textSize="10sp" />
+					android:text="@string/manage_scenes_string"
+					android:textSize="12sp" />
 
 				<Button
-					android:id="@+id/rectangle_61"
+					android:id="@+id/enableAlarmButton"
 					android:layout_width="148dp"
 					android:layout_height="48dp"
-					android:layout_alignStart="@+id/rectangle_51"
-					android:layout_alignTop="@+id/rectangle_51"
-					android:layout_marginStart="55dp"
-					android:layout_marginTop="156dp"
+					android:layout_alignStart="@+id/alarmSystem"
+					android:layout_alignTop="@+id/alarmSystem"
+					android:layout_alignEnd="@+id/alarmSystem"
+					android:layout_marginStart="66dp"
+					android:layout_marginTop="158dp"
+					android:layout_marginEnd="66dp"
 					android:background="@drawable/rectangle_61_shape"
-					android:text="Enable alarm"
+					android:text="@string/enable_alarm_string"
 					android:textSize="12sp" />
 
 				<TextView
 					android:id="@+id/create_a_scene_that_controls_your_home4u_device_"
 					android:layout_width="182dp"
 					android:layout_height="30dp"
-					android:layout_alignBottom="@+id/rectangle_81"
+					android:layout_alignBottom="@+id/manageScenes"
 					android:layout_alignParentStart="true"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_marginStart="13dp"
@@ -134,112 +122,111 @@
 					android:textSize="12sp"
 					android:textStyle="bold" />
 
+
 				<TextView
 					android:id="@+id/connect_your_phone_to_the_device_and_play_music"
 					android:layout_width="180dp"
 					android:layout_height="wrap_content"
-					android:layout_alignStart="@+id/rectangle_21"
-					android:layout_alignTop="@+id/rectangle_21"
+					android:layout_alignStart="@+id/playMusic"
+					android:layout_alignTop="@+id/playMusic"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_marginStart="3dp"
 					android:layout_marginLeft="233dp"
-					android:layout_marginTop="56dp"
+					android:layout_marginTop="53dp"
 					android:gravity="center"
-					android:text="Connect your phone to the device and play music"
+					android:text="@string/connect_your_phone_to_the_device_and_play_music_string"
 					android:textColor="@color/remotely_disable_your_alarm_color"
 					android:textSize="12sp"
 					android:textStyle="bold" />
 
-
 				<Button
-					android:id="@+id/home_play_music_btn"
+					android:id="@+id/playMusicButton"
 					android:layout_width="109dp"
 					android:layout_height="48dp"
-					android:layout_alignStart="@+id/rectangle_21"
-					android:layout_alignTop="@+id/rectangle_21"
-					android:layout_marginStart="38dp"
+					android:layout_alignStart="@+id/playMusic"
+					android:layout_alignTop="@+id/playMusic"
+					android:layout_marginStart="40dp"
 					android:layout_marginTop="88dp"
 					android:background="@drawable/rectangle_31_shape"
 					android:text="@string/play_music_string"
-					android:textSize="10sp"
-					/>
+					android:textSize="11sp" />
 
 				<ImageView
 					android:id="@+id/media_bluetooth_on"
 					android:layout_width="35dp"
 					android:layout_height="35dp"
-					android:layout_alignStart="@+id/rectangle_21"
-					android:layout_alignTop="@+id/rectangle_21"
-					android:layout_marginStart="79dp"
+					android:layout_alignStart="@+id/playMusic"
+					android:layout_alignTop="@+id/playMusic"
+					android:layout_marginStart="82dp"
 					android:layout_marginTop="12dp"
-					android:contentDescription="music_note"
+					android:contentDescription="@string/play_music_string_note"
 					android:src="@drawable/music_note" />
 
 				<ImageView
 					android:id="@+id/alarm_off"
 					android:layout_width="50dp"
 					android:layout_height="47.17dp"
-					android:layout_alignStart="@+id/rectangle_51"
-					android:layout_alignTop="@+id/rectangle_51"
-					android:layout_marginStart="106dp"
-					android:layout_marginTop="5dp"
-					android:contentDescription="alarm_off"
+					android:layout_alignStart="@+id/alarmSystem"
+					android:layout_alignTop="@+id/alarmSystem"
+					android:layout_marginStart="120dp"
+					android:layout_marginTop="4dp"
+					android:contentDescription="@string/alarm_off_string"
 					android:src="@drawable/alarm_off" />
 
 				<ImageView
 					android:id="@+id/router"
 					android:layout_width="39.27dp"
 					android:layout_height="40.31dp"
-					android:layout_alignStart="@+id/rectangle_81"
-					android:layout_alignTop="@+id/rectangle_81"
-					android:layout_alignEnd="@+id/rectangle_81"
+					android:layout_alignStart="@+id/manageScenes"
+					android:layout_alignTop="@+id/manageScenes"
+					android:layout_alignEnd="@+id/manageScenes"
 					android:layout_marginStart="78dp"
 					android:layout_marginTop="9dp"
 					android:layout_marginEnd="74dp"
-					android:contentDescription="router"
+					android:contentDescription="@string/router_string"
 					android:src="@drawable/router" />
 
 				<TextView
 					android:id="@+id/home4u"
-					android:layout_width="217dp"
-					android:layout_height="52dp"
-					android:layout_below="@+id/_bg__homescreen_ek2"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/_bg__homeScreen_ek2"
 					android:layout_alignParentStart="true"
 					android:layout_alignParentEnd="true"
-					android:layout_marginStart="98dp"
+					android:layout_marginStart="119dp"
 					android:layout_marginLeft="133dp"
-					android:layout_marginTop="53dp"
-					android:layout_marginEnd="80dp"
+					android:layout_marginTop="52dp"
+					android:layout_marginEnd="104dp"
 					android:text="@string/home4u_string"
 					android:textColor="@color/remotely_disable_your_alarm_color"
 					android:textSize="40sp"
 					android:textStyle="bold" />
 
 				<View
-					android:id="@+id/rectangle_91"
-					android:layout_width="440dp"
-					android:layout_height="92dp"
-					android:layout_below="@+id/rectangle_51"
+					android:id="@+id/songPlayerBottom"
+					android:layout_width="wrap_content"
+					android:layout_height="99dp"
+					android:layout_below="@+id/alarmSystem"
 					android:layout_marginStart="0dp"
-					android:layout_marginTop="25dp"
+					android:layout_marginTop="16dp"
 					android:background="@drawable/rectangle_91_shape" />
 
 				<View
-					android:id="@+id/rectangle_110"
+					android:id="@+id/albumBox"
 					android:layout_width="80dp"
 					android:layout_height="80dp"
-					android:layout_below="@+id/rectangle_51"
+					android:layout_below="@+id/alarmSystem"
 					android:layout_marginStart="8dp"
 					android:layout_marginTop="30dp"
 					android:background="@drawable/album" />
 
 				<TextView
 					android:id="@+id/song_name"
-					android:layout_width="77dp"
-					android:layout_height="18dp"
-					android:layout_alignBottom="@+id/rectangle_51"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_alignBottom="@+id/alarmSystem"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginLeft="94dp"
+					android:layout_marginStart="94dp"
 					android:layout_marginBottom="-93dp"
 					android:gravity="center"
 					android:text="@string/song_name_string"
@@ -249,11 +236,11 @@
 
 				<TextView
 					android:id="@+id/artist_name"
-					android:layout_width="80dp"
-					android:layout_height="18dp"
-					android:layout_below="@+id/rectangle_51"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/alarmSystem"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginLeft="94dp"
+					android:layout_marginStart="94dp"
 					android:layout_marginTop="43dp"
 					android:gravity="center"
 					android:text="@string/artist_name_string"
@@ -265,45 +252,46 @@
 					android:id="@+id/play_arrow"
 					android:layout_width="50dp"
 					android:layout_height="50dp"
-					android:layout_alignTop="@+id/rectangle_91"
+					android:layout_alignTop="@+id/songPlayerBottom"
 					android:layout_marginStart="53dp"
 					android:layout_marginTop="19dp"
 					android:layout_toEndOf="@+id/song_name"
-					android:contentDescription="play_arrow"
+					android:contentDescription="@string/play_arrow_string"
 					android:src="@drawable/play_arrow" />
 
 				<ImageButton
 					android:id="@+id/pause"
 					android:layout_width="50dp"
 					android:layout_height="50dp"
-					android:layout_alignTop="@+id/rectangle_91"
+					android:layout_alignTop="@+id/songPlayerBottom"
 					android:layout_alignEnd="@+id/connect_your_phone_to_the_device_and_play_music"
 					android:layout_marginStart="25dp"
 					android:layout_marginTop="19dp"
 					android:layout_marginEnd="20dp"
 					android:layout_toEndOf="@+id/play_arrow"
-					android:contentDescription="pause"
+					android:contentDescription="@string/pause_string"
 					android:src="@drawable/pause" />
 
 				<Switch
-					android:id="@+id/switch2"
+					android:id="@+id/securitySwitch"
 					android:layout_width="wrap_content"
 					android:layout_height="48dp"
 					android:layout_below="@+id/alarm_off"
-					android:layout_alignEnd="@+id/rectangle_51"
+					android:layout_alignStart="@+id/alarmSystem"
+					android:layout_alignEnd="@+id/alarmSystem"
+					android:layout_marginStart="34dp"
 					android:layout_marginTop="11dp"
-					android:layout_marginEnd="25dp"
-					android:text="Enable Security system"
-					android:textOff="Off"
-					android:textOn="On"
-					android:textStyle="bold"/>
+					android:layout_marginEnd="36dp"
+					android:text="@string/enable_security_system_string"
+					android:textStyle="bold"
+					tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 			</RelativeLayout>
 
 			<ImageView android:id="@+id/album"
 				android:src="@drawable/album"
-				android:contentDescription="album"
-				 android:layout_marginStart="-283dp"
+				android:contentDescription="@string/album_string"
+				android:layout_marginStart="-283dp"
 				android:layout_marginTop="70dp"
 				android:layout_width="50dp"
 				android:layout_height="50dp" />
@@ -311,4 +299,4 @@
 		</RelativeLayout>
 
 	</ScrollView>
-</HorizontalScrollView>
+</RelativeLayout>

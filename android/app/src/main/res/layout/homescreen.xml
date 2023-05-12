@@ -78,7 +78,7 @@
 					android:textStyle="bold" />
 
 				<Button
-					android:id="@+id/rectangle_41"
+					android:id="@+id/manageScenesButton"
 					android:layout_width="116dp"
 					android:layout_height="48dp"
 					android:layout_alignEnd="@+id/manageScenes"
@@ -92,7 +92,7 @@
 					android:textSize="12sp" />
 
 				<Button
-					android:id="@+id/rectangle_61"
+					android:id="@+id/enableAlarmButton"
 					android:layout_width="148dp"
 					android:layout_height="48dp"
 					android:layout_alignStart="@+id/alarmSystem"
@@ -140,7 +140,11 @@
 					android:textStyle="bold" />
 
 				<Button
+<<<<<<< HEAD
 					android:id="@+id/home_play_music_btn"
+=======
+					android:id="@+id/playMusicButton"
+>>>>>>> 9e71b45 (Refactor Button ID)
 					android:layout_width="109dp"
 					android:layout_height="48dp"
 					android:layout_alignStart="@+id/playMusic"
@@ -217,7 +221,7 @@
 					android:background="@drawable/rectangle_91_shape" />
 
 				<View
-					android:id="@+id/rectangle_110"
+					android:id="@+id/albumBox"
 					android:layout_width="80dp"
 					android:layout_height="80dp"
 					android:layout_below="@+id/alarmSystem"
@@ -278,7 +282,7 @@
 					android:src="@drawable/pause" />
 
 				<Switch
-					android:id="@+id/switch2"
+					android:id="@+id/securitySwitch"
 					android:layout_width="wrap_content"
 					android:layout_height="48dp"
 					android:layout_below="@+id/alarm_off"

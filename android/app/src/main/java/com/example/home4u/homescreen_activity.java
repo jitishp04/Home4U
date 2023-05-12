@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ImageView;
 
@@ -20,12 +21,14 @@ public class homescreen_activity extends Activity {
 	private View manageScenes;
 	private View alarmSystem;
 	private TextView remotely_disable_your_alarm;
-	private Button rectangle_41;
-	private Button rectangle_61;
+	private Button manageScenesButton;
+	private Button enableAlarmButton;
 	private TextView disable_alarm;
 	private TextView create_a_scene_that_controls_your_home4u_device_;
 	private TextView connect_your_phone_to_the_device_and_play_music;
-	private Button rectangle_31;
+	private Button playMusicButton;
+
+	private Switch securitySwitch;
 	private TextView play_music;
 	private TextView manage_scenes;
 	private ImageView media_bluetooth_on;
@@ -33,7 +36,7 @@ public class homescreen_activity extends Activity {
 
 	private TextView home4u;
 	private View songPlayerBottom;
-	private View rectangle_110;
+	private View albumBox;
 	private TextView song_name;
 	private TextView artist_name;
 
@@ -52,20 +55,20 @@ public class homescreen_activity extends Activity {
 		manageScenes = findViewById(R.id.manageScenes);
 		alarmSystem =  findViewById(R.id.alarmSystem);
 		remotely_disable_your_alarm = findViewById(R.id.remotely_disable_your_alarm);
-		rectangle_41 =  findViewById(R.id.rectangle_41);
-		rectangle_61 = findViewById(R.id.rectangle_61);
+		manageScenesButton =  findViewById(R.id.manageScenesButton);
+		enableAlarmButton = findViewById(R.id.enableAlarmButton);
 		create_a_scene_that_controls_your_home4u_device_ = findViewById(R.id.create_a_scene_that_controls_your_home4u_device_);
 		connect_your_phone_to_the_device_and_play_music = findViewById(R.id.connect_your_phone_to_the_device_and_play_music);
-		rectangle_31 =  findViewById(R.id.rectangle_31);
+		playMusicButton =  findViewById(R.id.playMusicButton);
 		play_music = findViewById(R.id.play_music);
 		media_bluetooth_on =  findViewById(R.id.media_bluetooth_on);
 		alarm_off = findViewById(R.id.alarm_off);
 		home4u = findViewById(R.id.home4u);
 		songPlayerBottom = findViewById(R.id.songPlayerBottom);
-		rectangle_110 = findViewById(R.id.rectangle_110);
+		albumBox = findViewById(R.id.albumBox);
 		song_name = findViewById(R.id.song_name);
 		artist_name = findViewById(R.id.artist_name);
-	
+		securitySwitch = findViewById(R.id.securitySwitch);
 		
 		//custom code goes here
 	

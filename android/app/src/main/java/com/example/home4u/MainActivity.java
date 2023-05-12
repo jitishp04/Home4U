@@ -56,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void View() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         sceneMaker = findViewById(R.id.sceneMaker);
 
          */
 =======
         //ceneMaker = findViewById(R.id.sceneMaker);
 >>>>>>> 10b27dc (Fix layout screen.)
+=======
+        //SceneMaker = findViewById(R.id.sceneMaker);
+>>>>>>> 98d19f8 (Code Clean Up.)
     }
 }

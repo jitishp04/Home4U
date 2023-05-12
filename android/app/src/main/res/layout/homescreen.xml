@@ -140,11 +140,7 @@
 					android:textStyle="bold" />
 
 				<Button
-<<<<<<< HEAD
-					android:id="@+id/home_play_music_btn"
-=======
 					android:id="@+id/playMusicButton"
->>>>>>> 9e71b45 (Refactor Button ID)
 					android:layout_width="109dp"
 					android:layout_height="48dp"
 					android:layout_alignStart="@+id/playMusic"
@@ -153,12 +149,7 @@
 					android:layout_marginTop="88dp"
 					android:background="@drawable/rectangle_31_shape"
 					android:text="@string/play_music_string"
-<<<<<<< HEAD
-					android:textSize="10sp"
-					/>
-=======
 					android:textSize="11sp" />
->>>>>>> 10b27dc (Fix layout screen.)
 
 				<ImageView
 					android:id="@+id/media_bluetooth_on"

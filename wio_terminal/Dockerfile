@@ -58,7 +58,7 @@ RUN arduino-cli lib install "Seeed_Arduino_mbedtls"
 
 
 # Creates env files with requred variables
-RUN cd lib && echo "#define SSID \"\"\n#define SERVER_URL \"\"\n#define WIFI_PASSWORD \"\"" > myEnv.h
+RUN cd lib && echo "#define SSID \"\"\n#define SERVER_URL \"\"\n#define WIFI_PASSWORD \"\"\n#define BROKER_IP \"\"" > myEnv.h
 
 # Compile
 RUN arduino-cli compile -t --fqbn Seeeduino:samd:seeed_wio_terminal --build-path "/wio_terminal/build" .

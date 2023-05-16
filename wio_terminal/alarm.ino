@@ -3,19 +3,19 @@
   Author: Salman Faris
   Source: https://www.hackster.io/Salmanfarisvp/mqtt-on-wio-terminal-4ea8f8
 *****************************************************************************/
+
 #define PIR_MOTION_SENSOR 0
 #include <rpcWiFi.h>
 #include"TFT_eSPI.h"
 #include <PubSubClient.h>
 
 
-const char* server = my_IPv4;  // MQTT Broker URL
-const char* TOPIC_sub = sub_topic;
-const char* TOPIC_pub_connection = pub_topic;
+const char* server = BROKER_IP;  // MQTT Broker URL
 
-TFT_eSPI tft;
-TFT_eSprite spr = TFT_eSprite(&tft);
+#define TOPIC_sub "MotionDetector"
+#define TOPIC_pub_connection "MotionDetector/Connection"
 
+WiFiClient wioClient;
 PubSubClient client(wioClient);
 
 String motionSensorMsg = ""; 
@@ -24,11 +24,18 @@ bool alarmOn = false;
 bool alarmOffManually = false;
 
 
-String getPayload(){
+void setupAlarm(){
+    pinMode(PIR_MOTION_SENSOR, INPUT);
+    pinMode(WIO_BUZZER, OUTPUT);
+    pinMode(WIO_5S_UP, INPUT);
+    pinMode(WIO_5S_DOWN, INPUT);
+    pinMode(WIO_5S_PRESS, INPUT);
 
+    client.setServer(server, 1883); // Connect the MQTT Server   hive_mqtt_server
+    client.setCallback(callback);
 }
 
-void startStreamSongcallback(char* topic, byte* payload, unsigned int length) {
+void callback(char* topic, byte* payload, unsigned int length) {
   tft.fillScreen(TFT_BLACK);
   Serial.print("Message arrived [");
   Serial.print(topic);
@@ -95,25 +102,7 @@ void reconnect() {
   }
 }
 
-void setup() {
-  tft.begin();
-  tft.fillScreen(TFT_BLACK);
-  tft.setRotation(3);
-
-  pinMode(PIR_MOTION_SENSOR, INPUT);
-  pinMode(WIO_BUZZER, OUTPUT);
-  pinMode(WIO_5S_UP, INPUT);
-  pinMode(WIO_5S_DOWN, INPUT);
-  pinMode(WIO_5S_PRESS, INPUT);
-
-  Serial.println();
-  Serial.begin(115200);
-  setup_wifi();
-  client.setServer(server, 1883); // Connect the MQTT Server   hive_mqtt_server
-  client.setCallback(callback);
-}
-
-void loop() {
+void runAlarm() {
   if (!client.connected()) {
     reconnect();
   }

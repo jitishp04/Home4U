@@ -1,5 +1,24 @@
 package com.example.home4u.scenes;
 
+<<<<<<< HEAD
+=======
+/*
+	 *	This content is generated from the API File Info.
+	 *	(Alt+Shift+Ctrl+I).
+	 *
+	 *	@desc 		
+	 *	@file 		newscenecreator
+	 *	@date 		Wednesday 26th of April 2023 10:42:12 AM
+	 *	@title 		Add Scene
+	 *	@author 	
+	 *	@keywords 	
+	 *	@generator 	Export Kit v1.3.figma
+	 *
+	 */
+	
+
+
+>>>>>>> 8256a27 (clean-up newscenecreator_activity)
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.TimePickerDialog;
@@ -12,7 +31,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+<<<<<<< HEAD
+<<<<<<< HEAD
 import android.widget.TextView;
+=======
+>>>>>>> 8256a27 (clean-up newscenecreator_activity)
+=======
+import android.widget.TextView;
+>>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -21,7 +47,14 @@ import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
 import com.example.home4u.scene_manager_screen.SceneManagerScreenActivity;
+<<<<<<< HEAD
+<<<<<<< HEAD
 import com.google.android.material.card.MaterialCardView;
+=======
+>>>>>>> d702884 (Modify delete and undo methods for scene data from db)
+=======
+import com.google.android.material.card.MaterialCardView;
+>>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -30,18 +63,42 @@ public class newscenecreator_activity extends Activity {
 
 	@SuppressLint("UseSwitchCompatOrMaterialCode") //allows backwards compatibility for switches to work on older android
 	private Switch setSecuritySwitch;
+<<<<<<< HEAD
 	@SuppressLint("UseSwitchCompatOrMaterialCode")
 	private Switch playMusicSwitch;
+=======
+>>>>>>> 8256a27 (clean-up newscenecreator_activity)
 	private Button saveButton;
 	private EditText sceneNameTextInput;
 	private ImageButton backButtonNewScene;
+<<<<<<< HEAD
 	private Button startTime;
 	private Button endTime;
+=======
+	private Button monButton;
+	private Button tueButton;
+	private Button wedButton;
+	private Button thuButton;
+	private Button friButton;
+	private Button satButton;
+	private Button sunButton;
+
+
+	private Button startTime;
+	private Button endTime;
+
+>>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
 	private MaterialCardView selectCard;
 	private TextView selectDays;
 	private boolean [] selectedDays;
 	private ArrayList<Integer> daysList = new ArrayList<>();
 	private String [] daysArray = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
 	private int hourStart, minuteStart;
 	private int hourEnd, minuteEnd;
 	private DatabaseHelper dbHelper;
@@ -53,8 +110,12 @@ public class newscenecreator_activity extends Activity {
 		setContentView(R.layout.newscenecreator);
 
 		setSecuritySwitch = findViewById(R.id.setSecuritySwitch);
+<<<<<<< HEAD
 		playMusicSwitch = findViewById(R.id.playMusicSwitch);
 		playMusicSwitch = findViewById(R.id.playMusicSwitch);
+=======
+		@SuppressLint("UseSwitchCompatOrMaterialCode") Switch playMusicSwitch = findViewById(R.id.playMusicSwitch);
+>>>>>>> 8256a27 (clean-up newscenecreator_activity)
 		saveButton = findViewById(R.id.rectangle_11);
 		sceneNameTextInput = findViewById(R.id.sceneNameTextInput);
 		backButtonNewScene = findViewById(R.id.backButtonNewScene);
@@ -69,6 +130,27 @@ public class newscenecreator_activity extends Activity {
 		selectCard.setOnClickListener(v -> {
 			showDaysDialog();
 		});
+<<<<<<< HEAD
+=======
+
+		monButton = findViewById(R.id.monButton);
+		tueButton = findViewById(R.id.tueButton);
+		wedButton = findViewById(R.id.wedButton);
+		thuButton = findViewById(R.id.thuButton);
+		friButton = findViewById(R.id.friButton);
+		satButton = findViewById(R.id.satButton);
+		sunButton = findViewById(R.id.sunButton);
+/*
+		monButton.setOnClickListener(buttonClickListener);
+		tueButton.setOnClickListener(buttonClickListener);
+		wedButton.setOnClickListener(buttonClickListener);
+		thuButton.setOnClickListener(buttonClickListener);
+		friButton.setOnClickListener(buttonClickListener);
+		satButton.setOnClickListener(buttonClickListener);
+		sunButton.setOnClickListener(buttonClickListener);
+>>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
+
+ */
 
 		setSecuritySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
 			if(isChecked){
@@ -89,6 +171,7 @@ public class newscenecreator_activity extends Activity {
 				//TODO
 			}
 		});
+<<<<<<< HEAD
 
 
 		//Check whether it is from a existing/user-selected scene,
@@ -113,6 +196,10 @@ public class newscenecreator_activity extends Activity {
 			backButtonNewScene.setOnClickListener(v -> finish());
 			saveButton.setOnClickListener(v -> checker());
 		}
+=======
+		backButtonNewScene.setOnClickListener(v -> finish());
+		saveButton.setOnClickListener(v -> checker());
+>>>>>>> 8256a27 (clean-up newscenecreator_activity)
 	}
 
 	//MultiSelect pop-up to allow picking of days for the scene
@@ -140,6 +227,33 @@ public class newscenecreator_activity extends Activity {
 				selectDays.setText(stringBuilder.toString());
 			}
 		}).setNegativeButton("cancel", (dialog, which) -> dialog.dismiss()); //cancel button
+		builder.show();
+	}
+
+	//https://www.youtube.com/watch?v=4GdbCl-47wE
+	private void showDaysDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(newscenecreator_activity.this);
+		builder.setTitle("Select days");
+		builder.setCancelable(false);
+		builder.setMultiChoiceItems(daysArray, selectedDays, (dialog, which, isChecked) -> {
+			if(isChecked){
+				daysList.add(which);
+			}else{
+				daysList.remove(which);
+			}
+		}).setPositiveButton("ok", (dialog, which) -> {
+			StringBuilder stringBuilder = new StringBuilder();
+
+			for(int i = 0; i< daysList.size(); i++){
+
+				stringBuilder.append(daysArray[daysList.get(i)]);
+
+				if(i != daysList.size() -1){
+					stringBuilder.append(", ");
+				}
+				selectDays.setText(stringBuilder.toString());
+			}
+		}).setNegativeButton("cancel", (dialog, which) -> dialog.dismiss());
 		builder.show();
 	}
 
@@ -191,7 +305,10 @@ public class newscenecreator_activity extends Activity {
 			//test
 			boolean success = databaseHelper.addOne(sceneDataModel);
 			Toast.makeText(newscenecreator_activity.this, "success= "+ success, Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
 
+=======
+>>>>>>> d702884 (Modify delete and undo methods for scene data from db)
 			startActivity(new Intent(newscenecreator_activity.this, SceneManagerScreenActivity.class));
 			//add transition to other activity
 		}
@@ -199,9 +316,47 @@ public class newscenecreator_activity extends Activity {
 
 	}
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 // The two functions below work to get the start and end time for the scenes:
+=======
+/*
+	//inspired by Chat-gpt: using switch case instead of calling onClickListener multiple times
+	View.OnClickListener buttonClickListener = v -> {
+		// Do something when any of the buttons is clicked
+		switch (v.getId()) {
+			case R.id.monButton:
+
+				break;
+			case R.id.tueButton:
+
+				break;
+			case R.id.wedButton:
+
+				break;
+			case R.id.thuButton:
+
+				break;
+			case R.id.friButton:
+
+				break;
+			case R.id.satButton:
+
+				break;
+			case R.id.sunButton:
+
+				break;
+		}
+	};
+
+ */
+
+>>>>>>> 46ca947 (Create multi-select day picker for newscenecreator_activity)
 //inspired from: https://www.youtube.com/watch?v=c6c1giRekB4
 
+=======
+//inspired from: https://www.youtube.com/watch?v=c6c1giRekB4
+>>>>>>> 8256a27 (clean-up newscenecreator_activity)
 	public void timePickerStart(View view) {
 		TimePickerDialog.OnTimeSetListener onTimeSetListenerStart = (view1, selectHourStart, selectMinuteStart) -> {
 			hourStart = selectHourStart;

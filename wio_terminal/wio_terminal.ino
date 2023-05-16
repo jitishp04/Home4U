@@ -6,7 +6,6 @@
 
 TFT_eSPI tft;
 TFT_eSprite spr = TFT_eSprite(&tft);
-MusicPlayer* musicPlayer;
 
 void setup()
 {
@@ -15,11 +14,11 @@ void setup()
   setupScreen();
   setupWifiWithUI();
 
+  setupMusicPlayer();
+
   myLog("Initial setup done");
   delay(200);
 
-  setupMotion();
-  // musicPlayer = new MusicPlayer();
   // delay(4000);
   // musicPlayer->playSong("scale.txt");
   //notifyAlarm();
@@ -61,16 +60,6 @@ void setupWifiWithUI(){
 
 void loop()
 {
-  if(detectsMotion()){
-    myLog("Motion detected");
-    bool success = notifyAlarm();
-    if(success){
-      delay(120000);
-    } else {
-      delay(1000);
-    }
-  } else {
-    myLog("Watching...");
-    delay(1000);
-  }
+  runMusicPlayer();
+  runAlarm();
 }

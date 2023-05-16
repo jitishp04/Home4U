@@ -10,7 +10,7 @@
 #include <PubSubClient.h>
 
 
-const char* server = BROKER_IP;  // MQTT Broker URL
+const char* server = BROKER_IP;  // MQTT Broker URL, port not included
 
 #define TOPIC_sub "MotionDetector"
 #define TOPIC_pub_connection "MotionDetector/Connection"
@@ -20,19 +20,19 @@ PubSubClient client(wioClient);
 
 String motionSensorMsg = ""; 
 bool securityModeStateOn = false;
-bool alarmOn = false;
+bool alarmTriggered = false;
 bool alarmOffManually = false;
 
 
 void setupAlarm(){
-    pinMode(PIR_MOTION_SENSOR, INPUT);
-    pinMode(WIO_BUZZER, OUTPUT);
-    pinMode(WIO_5S_UP, INPUT);
-    pinMode(WIO_5S_DOWN, INPUT);
-    pinMode(WIO_5S_PRESS, INPUT);
+  pinMode(PIR_MOTION_SENSOR, INPUT);
+  pinMode(WIO_BUZZER, OUTPUT);
+  pinMode(WIO_5S_UP, INPUT);
+  pinMode(WIO_5S_DOWN, INPUT);
+  pinMode(WIO_5S_PRESS, INPUT);
 
-    client.setServer(server, 1883); // Connect the MQTT Server   hive_mqtt_server
-    client.setCallback(callback);
+  client.setServer(server, 1883); // Connect the MQTT Server
+  client.setCallback(callback);
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -67,7 +67,7 @@ void setSecurityMode(String message) {
     alarmOffManually = false;
   } else if (message == "alarm") {
     if (securityModeStateOn == true) {
-      alarmOn = true; 
+      alarmTriggered = true; 
       Serial.println("Alarm on"); 
       motionSensorMsg = "Alarm turned on manually";
     }
@@ -76,11 +76,10 @@ void setSecurityMode(String message) {
   }
 }
 
-void reconnect() {
+void connect() {
   // Loop until we're reconnected
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
-    // Create a random client ID
     String clientId = "WioTerminal";
     // Attempt to connect
     if (client.connect(clientId.c_str())) {
@@ -104,23 +103,41 @@ void reconnect() {
 
 void runAlarm() {
   if (!client.connected()) {
-    reconnect();
+    connect();
   }
   client.loop();
 
   if (!securityModeStateOn) {
-      alarmOn = false;
+      alarmTriggered = false;
       motionSensorMsg = "Security system disabled";
       analogWrite(WIO_BUZZER, 0);
-      tft.fillScreen(TFT_BLACK);
-      tft.setTextSize(2);
-      tft.setCursor((320 - tft.textWidth(motionSensorMsg)) / 2, 120);
-      tft.print(motionSensorMsg);
       Serial.println(motionSensorMsg);
       client.publish(TOPIC_pub_connection, "Security system disabled");
   }
 
-  if (alarmOn) {
+  if (alarmTriggered) {
+    alarmTriggeredProgram();
+  } else {
+    if ((!alarmOffManually) && (securityModeStateOn)) {
+      if (digitalRead(PIR_MOTION_SENSOR)) {
+          motionDetected();
+          
+      } else {
+          motionSensorMsg = "Watching";
+          tft.setCursor((320 - tft.textWidth(motionSensorMsg)) / 2, 120);
+          tft.print(motionSensorMsg);
+          client.publish(TOPIC_pub_connection, "Watching");
+      }
+      Serial.println(motionSensorMsg);
+      delay(1000);
+    }
+  }
+  spr.pushSprite(0, 0);
+  delay(2000);
+}
+
+void alarmTriggeredProgram(){
+  while(!alarmTriggered){
     analogWrite(WIO_BUZZER, 150);
     tft.fillScreen(TFT_BLACK);
     tft.setCursor((320 - tft.textWidth(motionSensorMsg)) / 2, 120); 
@@ -147,30 +164,26 @@ void runAlarm() {
           tft.setCursor((320 - tft.textWidth("Alarm turned off")) / 2, 120); 
           tft.print("Alarm turned off");
           analogWrite(WIO_BUZZER, 0);
-          alarmOn = false;
+          alarmTriggered = false;
           alarmOffManually = true;
           client.publish(TOPIC_pub_connection, "Alarm turned off mannually");
           delay(1000);
         }
       }
     }
-  } else {
-    if ((!alarmOffManually) && (securityModeStateOn)) {
-      if (digitalRead(PIR_MOTION_SENSOR)) {
-          alarmOn = true;
-          motionSensorMsg = "Motion detected";
-          tft.fillScreen(TFT_BLACK);
-          client.publish(TOPIC_pub_connection, "Motion detected");
-      } else {
-          motionSensorMsg = "Watching";
-          tft.setCursor((320 - tft.textWidth(motionSensorMsg)) / 2, 120);
-          tft.print(motionSensorMsg);
-          client.publish(TOPIC_pub_connection, "Watching");
-      }
-      Serial.println(motionSensorMsg);
-      delay(1000);
-    }
   }
-  spr.pushSprite(0, 0);
-  delay(2000);
+
+}
+
+void motionDetected(){
+  alarmTriggered = true;
+  motionSensorMsg = "Motion detected";
+  tft.fillScreen(TFT_BLACK);
+  client.publish(TOPIC_pub_connection, "Motion detected");
+
+  bool success = notifyAlarm();
+  if(success){
+    delay(2000);
+  }
+
 }

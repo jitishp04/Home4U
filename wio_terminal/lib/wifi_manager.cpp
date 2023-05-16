@@ -11,6 +11,7 @@ void setupWifi() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
+    WiFi.begin(SSID, WIFI_PASSWORD);
   }
 
   Serial.println("IP address: ");

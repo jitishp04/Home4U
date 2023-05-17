@@ -16,7 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
-import com.example.home4u.scene_manager_screen.SceneManagerScreenActivity;
+import com.example.home4u.scenes.scene_manager_screen.SceneManagerScreenActivity;
 import com.google.android.material.card.MaterialCardView;
 import java.util.ArrayList;
 import java.util.Locale;

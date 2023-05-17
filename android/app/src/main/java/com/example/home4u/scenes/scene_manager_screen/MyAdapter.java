@@ -1,4 +1,4 @@
-package com.example.home4u.scene_manager_screen;
+package com.example.home4u.scenes.scene_manager_screen;
 
 import android.content.Context;
 import android.view.LayoutInflater;

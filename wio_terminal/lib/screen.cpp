@@ -5,7 +5,6 @@
 
 
 TFT_eSPI tft;
-TFT_eSprite spr = TFT_eSprite(&tft);
 
 
 void setupScreen(){

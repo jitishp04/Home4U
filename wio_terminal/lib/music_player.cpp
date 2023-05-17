@@ -3,6 +3,8 @@
 
 
 #include "song_downloader.cpp"
+#include <ArduinoJson.h>
+#include "song_info.cpp"
 
 #define SPEAKER PIN_WIRE_SCL
 
@@ -13,6 +15,8 @@ class MusicPlayer{
         MusicPlayer(){         
             //TODO: parse this file   
             String songInfo = songDownloader.downloadString("/info.json");
+
+            parseSongInfo(songInfo);
 
             pinMode(WIO_KEY_B, INPUT);
         }
@@ -34,6 +38,31 @@ class MusicPlayer{
         String songAudio = "";
         String lastPlayedSong = "";
         SongDownloader songDownloader;
+        SongInfo** songInfos;
+
+
+        void parseSongInfo(String jsonStr){
+            DynamicJsonDocument doc(1024);
+            deserializeJson(doc, jsonStr);
+
+
+            int songLen = doc["songAmt"];
+            Serial.println(String(songLen));
+
+            songInfos = new SongInfo*[songLen];
+
+
+            for(int i = 0; i < songLen; i++){
+                SongInfo* songInfo = new SongInfo(
+                    doc["songs"][i]["name"],
+                    doc["songs"][i]["fileName"]
+                );
+
+                songInfos[i] = songInfo;
+
+                Serial.println(songInfo->getName());
+            }
+        }
 
         void play(){
             int songStrLength = songAudio.length();
@@ -43,7 +72,7 @@ class MusicPlayer{
                     playerI = 0;
                     break;
                 }
-                
+
                 String frequencyStr = songAudio.substring(playerI, playerI+4);
                 if(frequencyStr == "0000"){
                     delay(MUSIC_TEMPO);

@@ -112,7 +112,6 @@ void runAlarm() {
       delay(1000);
     }
   }
-  spr.pushSprite(0, 0);
   delay(2000);
 }
 

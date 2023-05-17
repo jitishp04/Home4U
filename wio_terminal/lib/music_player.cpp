@@ -13,19 +13,38 @@ class MusicPlayer{
         MusicPlayer(){         
             //TODO: parse this file   
             String songInfo = songDownloader.downloadString("/info.json");
+
+            pinMode(WIO_KEY_B, INPUT);
         }
 
         void playSong(String fileName){
-            song = songDownloader.downloadString("/songs/" + fileName);
-            playerI = 0;
+            if(lastPlayedSong != fileName){
+                songAudio = songDownloader.downloadString("/songs/" + fileName);
+
+                this->lastPlayedSong = fileName;
+                this->playerI = 0;
+            }
+
             play();
         }
 
+
+    private:
+        int playerI = 0;
+        String songAudio = "";
+        String lastPlayedSong = "";
+        SongDownloader songDownloader;
+
         void play(){
-            int songStrLength = song.length();
+            int songStrLength = songAudio.length();
         
-            for(int playerI = 0; playerI < songStrLength && !isPausePressed(); playerI+=5){ 
-                String frequencyStr = song.substring(playerI, playerI+4);
+            for(; !isPausePressed(); playerI+=5){ 
+                if(playerI >= songStrLength){
+                    playerI = 0;
+                    break;
+                }
+                
+                String frequencyStr = songAudio.substring(playerI, playerI+4);
                 if(frequencyStr == "0000"){
                     delay(MUSIC_TEMPO);
                 } 
@@ -34,12 +53,6 @@ class MusicPlayer{
                 }
             }
         }
-
-
-    private:
-        int playerI = 0;
-        String song = "";
-        SongDownloader songDownloader;
 
         // Inspired by https://wiki.seeedstudio.com/Wio-Terminal-Buzzer/
         void playTone(int tone) {
@@ -52,7 +65,7 @@ class MusicPlayer{
         }
 
         bool isPausePressed(){
-            return WIO_KEY_B == LOW;
+            return digitalRead(WIO_KEY_B) == LOW;
         }
 };
 

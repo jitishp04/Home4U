@@ -3,23 +3,23 @@
 
 
 const int PLAY_BTN = WIO_KEY_C;
-const int PAUSE_BTN = WIO_KEY_B;
 
 
-String selectedSong = "scale"; //Song name in the playlist
+String selectedSong = "scale.txt"; //Song name in the playlist
 String playingSong = "scale.txt"; //Currently-playing song name
 MusicPlayer* musicPlayer;
 
 
 void setupMusicPlayer(){
   pinMode(PLAY_BTN, INPUT);
-  pinMode(PAUSE_BTN, INPUT);
 
   pinMode(WIO_5S_UP, INPUT);
   pinMode(WIO_5S_DOWN, INPUT);
   pinMode(WIO_5S_PRESS, INPUT);
 
   musicPlayer = new MusicPlayer();
+
+  drawMusicPlayer();
 }
 
 

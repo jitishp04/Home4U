@@ -8,24 +8,14 @@
 
 void setup()
 {
-  //do first!
+  //Initial setup
   setupSerial();
   setupScreen();
   setupWifi();
 
-
-
-  tft.begin();
-  tft.setRotation(3);
-
-  //setup functions
+  //Setup functions
   setupAlarm();
   setupMusicPlayer();
-
-  drawMusicPlayer();
-
-  //delay(200);
-
 }
 
 
@@ -36,7 +26,6 @@ void setupSerial(){
   Serial.println();
   myLog("Setup serial");
 }
-
 
 
 void loop()

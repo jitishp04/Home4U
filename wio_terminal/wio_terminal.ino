@@ -2,26 +2,30 @@
 #include "lib/logger.cpp"
 #include "lib/music_player.cpp"
 #include "lib/wifi_manager.cpp"
+#include "lib/screen.cpp"
 #undef read
 
-TFT_eSPI tft;
-TFT_eSprite spr = TFT_eSprite(&tft);
 
 void setup()
 {
   //do first!
   setupSerial();
   setupScreen();
-  setupWifiWithUI();
+  setupWifi();
 
+
+
+  tft.begin();
+  tft.setRotation(3);
+
+  //setup functions
+  setupAlarm();
   setupMusicPlayer();
 
-  myLog("Initial setup done");
-  delay(200);
+  drawMusicPlayer();
 
-  // delay(4000);
-  // musicPlayer->playSong("scale.txt");
-  //notifyAlarm();
+  //delay(200);
+
 }
 
 
@@ -30,36 +34,13 @@ void setupSerial(){
   while(!Serial) ; //Wait until serial is open
 
   Serial.println();
-  myLog("== Started ==");
+  myLog("Setup serial");
 }
 
-
-void setupScreen(){
-  tft.begin();
-  tft.setRotation(3);
-
-  tft.fillScreen(TFT_BLACK);
-  tft.setTextColor(TFT_WHITE);
-  tft.setTextSize(3); 
-}
-
-void setupWifiWithUI(){
-  tft.setTextSize(2);
-  tft.setCursor((320 - tft.textWidth("Connecting to Wi-Fi..")) / 2, 120);
-  tft.print("Connecting to Wi-Fi..");
-
-  setupWifi();
-
-  Serial.println("WiFi connected");
-
-  tft.fillScreen(TFT_BLACK);
-  tft.setCursor((320 - tft.textWidth("Connected!")) / 2, 120);
-  tft.print("Connected!");
-}
 
 
 void loop()
 {
   runMusicPlayer();
-  runAlarm();
+  //runAlarm();
 }

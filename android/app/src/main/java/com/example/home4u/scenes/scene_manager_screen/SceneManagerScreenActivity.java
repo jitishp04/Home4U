@@ -1,10 +1,12 @@
-package com.example.home4u.scene_manager_screen;
+package com.example.home4u.scenes.scene_manager_screen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -64,17 +66,18 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                SceneDataModel deletedScene = sceneDataList.get(viewHolder.getAdapterPosition());
-                int position = viewHolder.getAdapterPosition();
+                SceneDataModel deletedScene = sceneDataList.get(viewHolder.getAbsoluteAdapterPosition());
+                int position = viewHolder.getAbsoluteAdapterPosition();
                 SceneDataModel deletedSceneData = dbHelper.retrieveDataOfAScene(deletedScene.getSceneName());
 
-                sceneDataList.remove(viewHolder.getAdapterPosition());
-                myAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                sceneDataList.remove(viewHolder.getAbsoluteAdapterPosition());
+                myAdapter.notifyItemRemoved(viewHolder.getAbsoluteAdapterPosition());
                 myAdapter.notifyDataSetChanged();
 
                 //Remove the scene with its relevant data from db
                 dbHelper.deleteData(deletedScene.getSceneName());
                 Snackbar.make(recyclerView, deletedScene.getSceneName(), Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
+                    @SuppressLint("NotifyDataSetChanged")
                     public void onClick(View v) {
                         sceneDataList.add(position, deletedScene);
 
@@ -111,7 +114,7 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
      */
     private void prepareData() {
         DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
-        List dataList = helper.getAllScenes();
+        List<SceneDataModel> dataList = helper.getAllScenes();
         this.sceneDataList.addAll(dataList);
         myAdapter.notifyDataSetChanged();
     }

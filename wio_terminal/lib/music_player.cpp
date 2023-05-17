@@ -32,12 +32,22 @@ class MusicPlayer{
             play();
         }
 
+        SongInfo* getSongInfo(int i){
+            return songInfos[i];
+        }
+
+        int getSongAmt(){
+            return songLen;
+        }
+
 
     private:
         int playerI = 0;
         String songAudio = "";
         String lastPlayedSong = "";
         SongDownloader songDownloader;
+
+        int songLen = 0;
         SongInfo** songInfos;
 
 
@@ -46,7 +56,7 @@ class MusicPlayer{
             deserializeJson(doc, jsonStr);
 
 
-            int songLen = doc["songAmt"];
+            songLen = doc["songAmt"];
             Serial.println(String(songLen));
 
             songInfos = new SongInfo*[songLen];

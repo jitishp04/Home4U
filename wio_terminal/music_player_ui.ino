@@ -5,9 +5,9 @@
 const int PLAY_BTN = WIO_KEY_C;
 
 
-String selectedSong = "scale.txt"; //Song name in the playlist
-String playingSong = "scale.txt"; //Currently-playing song name
+SongInfo* playingSong;// = "scale.txt"; //Currently-playing song name
 MusicPlayer* musicPlayer;
+int songSelectedI = 0;
 
 
 void setupMusicPlayer(){
@@ -18,6 +18,7 @@ void setupMusicPlayer(){
   pinMode(WIO_5S_PRESS, INPUT);
 
   musicPlayer = new MusicPlayer();
+  playingSong = musicPlayer->getSongInfo(0);
 
   drawMusicPlayer();
 }
@@ -72,15 +73,17 @@ void drawMusicScreen(){
 
 
 void drawSongInPlaylist(){
+  SongInfo* selectedSong = musicPlayer->getSongInfo(songSelectedI);
+
   tft.setTextColor(TFT_YELLOW);
-  tft.setCursor((320 - tft.textWidth(selectedSong)) / 2, 105); 
-  tft.print(selectedSong);
+  tft.setCursor((320 - tft.textWidth(selectedSong->getName())) / 2, 105); 
+  tft.print(selectedSong->getName());
 }
 
 void drawPlayingSong(){
   tft.setTextColor(TFT_DARKCYAN);
-  tft.setCursor((199 - tft.textWidth(playingSong)) / 2, 199); 
-  tft.print(playingSong);
+  tft.setCursor((199 - tft.textWidth(playingSong->getName())) / 2, 199); 
+  tft.print(playingSong->getName());
 }
 
 
@@ -89,21 +92,21 @@ void drawPlayingSong(){
 
 void runMusicPlayer(){
   if (isPressed(PLAY_BTN)) {
-    playingSong = selectedSong;
+    playingSong = musicPlayer->getSongInfo(songSelectedI);
     drawMusicPlayer();
 
-    musicPlayer->playSong(playingSong);
+    musicPlayer->playSong(playingSong->getFileName());
   } 
   
   //UP and DOWN Key for scrolling through the playlist
   else if (isPressed(WIO_5S_UP)) {
-    selectedSong = "scale.txt";
+    songSelectedI = (songSelectedI -1 + musicPlayer->getSongAmt()) % musicPlayer->getSongAmt();
     drawMusicPlayer();
   } else if (isPressed(WIO_5S_DOWN)) {
-    selectedSong = "twinkle_twinkle.txt";
+    songSelectedI = (songSelectedI +1) % musicPlayer->getSongAmt();
     drawMusicPlayer();
   } else if(isPressed(WIO_5S_PRESS)){
-    playingSong = selectedSong;
+    playingSong = musicPlayer->getSongInfo(songSelectedI);
     drawMusicPlayer();
   }
 

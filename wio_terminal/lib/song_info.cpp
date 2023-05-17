@@ -10,10 +10,6 @@ class SongInfo{
             this->fileName = fileName;
         }
 
-        SongInfo(){
-            
-        }
-
 
         String getName(){
             return name;

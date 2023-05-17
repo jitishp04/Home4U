@@ -4,7 +4,6 @@
   Source: https://www.hackster.io/Salmanfarisvp/mqtt-on-wio-terminal-4ea8f8
 *****************************************************************************/
 
-#define PIR_MOTION_SENSOR 0
 #include <rpcWiFi.h>
 #include "TFT_eSPI.h"
 #include <PubSubClient.h>
@@ -15,12 +14,13 @@ const char* server = BROKER_IP;  // MQTT Broker ip, no protocol or port
 #define TOPIC_sub "MotionDetector"
 #define TOPIC_pub_connection "MotionDetector/Connection"
 #define MQTT_PORT 1883
+const int PIR_MOTION_SENSOR = PIN_WIRE1_SCL;
 
 WiFiClient wioClient;
 PubSubClient client(wioClient);
 
 String motionSensorMsg = ""; 
-bool securityModeStateOn = false;
+bool securityModeStateOn = true; //default: false
 bool alarmTriggered = false;
 bool alarmOffManually = false;
 
@@ -67,6 +67,8 @@ void setSecurityMode(String message) {
   tft.setCursor((320 - tft.textWidth(message)) / 2, 120); 
   tft.print(message);
 
+  drawMusicPlayer();
+
   if (message == "enable") {
     securityModeStateOn = true;
     alarmOffManually = false;
@@ -103,16 +105,13 @@ void runAlarm() {
   } else {
     if ((!alarmOffManually) && (securityModeStateOn)) {
       if (digitalRead(PIR_MOTION_SENSOR)) {
-          motionDetected();
-          
+        motionDetected();
       } else {
-          client.publish(TOPIC_pub_connection, "Watching");
+        client.publish(TOPIC_pub_connection, "Watching");
       }
       Serial.println(motionSensorMsg);
-      delay(1000);
     }
   }
-  delay(2000);
 }
 
 void connect() {
@@ -141,7 +140,7 @@ void connect() {
 }
 
 void alarmTriggeredProgram(){
-  while(!alarmTriggered){
+  while(alarmTriggered){
     analogWrite(WIO_BUZZER, 150);
     tft.fillScreen(TFT_BLACK);
     tft.setCursor((320 - tft.textWidth(motionSensorMsg)) / 2, 120); 
@@ -149,6 +148,8 @@ void alarmTriggeredProgram(){
 
     disableAlarmUi();
   }
+
+  drawMusicPlayer();
 }
 
 void disableAlarmUi(){
@@ -187,11 +188,7 @@ void disableAlarmUi(){
 void motionDetected(){
   alarmTriggered = true;
   motionSensorMsg = "Motion detected";
-  tft.fillScreen(TFT_BLACK);
   client.publish(TOPIC_pub_connection, "Motion detected");
 
   bool success = notifyAlarm();
-  if(success){
-    delay(2000);
-  }
 }

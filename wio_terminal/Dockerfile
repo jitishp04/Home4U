@@ -55,6 +55,7 @@ RUN arduino-cli lib install "Seeed Arduino rpcWiFi"
 RUN arduino-cli lib install "PubSubClient"
 RUN arduino-cli lib install "Seeed Arduino SFUD"
 RUN arduino-cli lib install "Seeed_Arduino_mbedtls"
+RUN arduino-cli lib install "ArduinoJson"
 
 
 # Creates env files with requred variables

@@ -55,12 +55,8 @@ class MusicPlayer{
             DynamicJsonDocument doc(1024);
             deserializeJson(doc, jsonStr);
 
-
             songLen = doc["songAmt"];
-            Serial.println(String(songLen));
-
             songInfos = new SongInfo*[songLen];
-
 
             for(int i = 0; i < songLen; i++){
                 SongInfo* songInfo = new SongInfo(
@@ -69,8 +65,6 @@ class MusicPlayer{
                 );
 
                 songInfos[i] = songInfo;
-
-                Serial.println(songInfo->getName());
             }
         }
 

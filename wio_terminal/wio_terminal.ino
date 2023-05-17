@@ -31,5 +31,5 @@ void setupSerial(){
 void loop()
 {
   runMusicPlayer();
-  //runAlarm();
+  runAlarm();
 }

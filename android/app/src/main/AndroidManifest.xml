@@ -21,22 +21,26 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.Home4U"
-        tools:targetApi="31">
+        tools:targetApi="33">
+
+
         <activity
             android:name=".scenes.newscenecreator_activity"
             android:exported="false"
             />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".scene_manager_screen.SceneManagerScreenActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".scenes.scene_manager_screen.SceneManagerScreenActivity"
+            android:exported="true">
+
         </activity>
 
         <activity android:name=".activity.AlarmActivity"/>
@@ -47,7 +51,6 @@
             android:enabled="true"
             android:exported="false"
             android:launchMode="singleInstance"/>
-        <service android:name="org.eclipse.paho.android.service.MqttService" /> <!-- Inspired by ChatGPT -->
         <receiver
             android:name=".OnBootedReceiver"
             android:enabled="true"

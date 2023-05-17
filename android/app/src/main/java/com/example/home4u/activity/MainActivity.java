@@ -21,12 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         goToAlarmActivityIfTriggered();
         NotificationHandler.handleNotificationPermission(this);
-
-        final Button playMusicBtn = findViewById(R.id.home_play_music_btn);
-        playMusicBtn.setOnClickListener(view -> {
-            final Intent newIntent = new Intent(this, MusicSelectActivity.class);
-            startActivity(newIntent);
-        });
     }
 
     private void goToAlarmActivityIfTriggered(){

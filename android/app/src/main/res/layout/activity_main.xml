@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="activity.MainActivity">
 
     <Button
         android:id="@+id/sceneMaker"
@@ -12,7 +12,6 @@
         android:layout_height="116dp"
         android:layout_marginTop="188dp"
         android:text="@string/Scenes"
-        android:text1="open music select"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

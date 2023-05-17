@@ -16,3 +16,11 @@ build_arduino:
   artifacts:
     paths:
       - wio_terminal.ino.bin
+
+build_android:
+  stage: build
+  script:
+    - cd android
+    - ./gradlew build
+  tags:
+    - android

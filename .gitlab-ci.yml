@@ -26,4 +26,4 @@ build_android:
     - android
   artifacts:
     paths:
-      - android/build/
+      - android/app/build/outputs/apk/debug/

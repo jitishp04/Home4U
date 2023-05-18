@@ -1,6 +1,7 @@
 #ifndef MUSIC_PLAYER_H
 #define MUSIC_PLAYER_H
 
+
 #include "song_downloader.cpp"
 
 #define SPEAKER PIN_WIRE_SCL
@@ -15,14 +16,20 @@ class MusicPlayer{
         }
 
         void playSong(String fileName){
-            String song = songDownloader.downloadString("/songs/" + fileName);
-            int songStrLength = song.length();
+            song = songDownloader.downloadString("/songs/" + fileName);
+            playerI = 0;
+            play();
+        }
 
-            for(int i = 0; i < songStrLength; i+=5){
-                String frequencyStr = song.substring(i, i+4);
+        void play(){
+            int songStrLength = song.length();
+        
+            for(int playerI = 0; playerI < songStrLength && !isPausePressed(); playerI+=5){ 
+                String frequencyStr = song.substring(playerI, playerI+4);
                 if(frequencyStr == "0000"){
                     delay(MUSIC_TEMPO);
-                } else {
+                } 
+                else {
                     playTone(frequencyStr.toInt());
                 }
             }
@@ -30,6 +37,8 @@ class MusicPlayer{
 
 
     private:
+        int playerI = 0;
+        String song = "";
         SongDownloader songDownloader;
 
         // Inspired by https://wiki.seeedstudio.com/Wio-Terminal-Buzzer/
@@ -40,6 +49,10 @@ class MusicPlayer{
                 digitalWrite(SPEAKER, LOW);
                 delayMicroseconds(tone);
             }
+        }
+
+        bool isPausePressed(){
+            return WIO_KEY_B == LOW;
         }
 };
 

@@ -43,19 +43,9 @@ package com.example.home4u.scenes;
 
         public static int lastPlayed = 1;
         private View        Background_Frame;
-        private View        song_card1;
         private TextView    title;
         private TextView    song_count;
-        private View        music_icon1;
-        private TextView    song_name1;
-        private TextView    song_artist1;
-        private View        song_card2;
-        private View        music_icon2;
-        private TextView    song_name2;
-        private TextView    song_artist2;
         private ImageButton back_button;
-        private ImageView   album_cover1;
-        private ImageView   album_cover2;
         private ImageButton universal_play;
         private ImageButton pause_button;
         private ImageButton skip_next;
@@ -63,8 +53,7 @@ package com.example.home4u.scenes;
 
         private ListView songListView;
 
-
-
+        
         private BrokerConnection brokerConnection; // Declare the brokerConnection
         int QOS = 0;
         public static final String PUB_TOPIC = "MusicPlayer";

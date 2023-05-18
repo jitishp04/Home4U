@@ -24,3 +24,6 @@ build_android:
     - ./gradlew build
   tags:
     - android
+  artifacts:
+    paths:
+      - android/app/build/outputs/apk/debug/

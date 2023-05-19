@@ -8,8 +8,6 @@ HOME4U is a smart home system that provides users with the experience of monitor
 
 ## Team Information
 Group Number: 16 
-[Other group information](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis/team-contract)
-### Team members
 | Name           | Email                   |
 |----------------|-------------------------|
 | Henrik Lagrosen | guslagrhe@student.gu.se |
@@ -19,8 +17,7 @@ Group Number: 16
 | Raghav Tengse  | gustengra@student.gu.se |
 | Utkarsh Singh  | gussinut@student.gu.se  |
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Further information about the group is [here](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis/team-contract).
 
 ## Setup and Get Started
 ### Material
@@ -50,19 +47,16 @@ docker build -t wio_terminal_image ./wio_terminal
 [//]: <> (Add image for software and hardware architecture)
 
 ## Visuals
+
+[//]: <> (TODO)
+
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
 
 ## Usage
+
+[//]: <> (TODO)
+
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Look for contact inforrmation under [Team information](#team-members)
-
-## Roadmap
-The app will not have further realeases after 28/05/2023
-
-## Full documentation
-See [Wiki](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis/home) for further information regarding project information, usage, team contract and the 3 sprint deliveries.
 
 ## Contributions
 | Name           | Contributions|
@@ -74,11 +68,10 @@ See [Wiki](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis
 | Raghav Tengse  |Designing screens for android app, implement front end and back end for music screen[#22](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/22), input button message from android application.[#8](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/8)  |
 | Utkarsh Singh  |Create home screen [#21](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/21), implement pause feature for wio terminal[#5](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/5), implement pause feature for android application.[#9](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/9)  |
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Full documentation
+See [Wiki](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis/home) for further information regarding project information, usage, team contract and the 3 sprint deliveries.
 
-## License
-For open source projects, say how it is licensed.
-
-## Project status
+## Project status and Support
 The project is stopped completely after 21/05/2023 hence there are unfinished requirements and its associated features that weren't able to be accomplished in the given time frame. Though, an MVP is available for everyone!
+
+Look for contact information under [team information](#team-members) for any support.

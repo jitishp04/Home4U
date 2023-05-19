@@ -72,8 +72,8 @@ See [Wiki](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis
 | Shiyao Xin     |  |
 | Jitish Padhya  |Create scenes page, implement front-end, and back-end for new scene creator along with SQLite database [#7](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/7), worked on executing scenes [#26 (out-of-scope)](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/26), and final README file | 
 | Jacob Sundelid |  |
-| Raghav Tengse  |  |
-| Utkarsh Singh  |  |
+| Raghav Tengse  |Designing screens for android app, implement front end and back end for music screen[#22](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/22), input button message from android application.[#8](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/8)  |
+| Utkarsh Singh  |Create home screen [#21](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/21), implement pause feature for wio terminal[#5](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/5), implement pause feature for android application.[#9](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/9)  |
 
 ## Authors and acknowledgment
 Show your appreciation to those who have contributed to the project.

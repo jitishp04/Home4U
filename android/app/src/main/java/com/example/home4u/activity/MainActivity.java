@@ -2,7 +2,6 @@ package com.example.home4u.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.home4u.NotificationHandler;

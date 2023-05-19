@@ -3,7 +3,7 @@ package com.example.home4u.activity;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.home4u.R;
+import com.example.home4u.activity.R;
 import com.example.home4u.alarm.AlarmStateConnection;
 
 public class AlarmActivity extends AppCompatActivity

@@ -13,6 +13,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
+
 import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;

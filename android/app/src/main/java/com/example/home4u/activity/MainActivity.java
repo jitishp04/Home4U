@@ -44,15 +44,22 @@ public class MainActivity extends AppCompatActivity {
         goToAlarmActivityIfTriggered();
         NotificationHandler.handleNotificationPermission(this);
 
+        /**
+         * Function that handles the event of turing on alarm manually while Security Mode is enabled
+         */
         enableAlarmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 message = "alarm";
                 String secSwitch = enableAlarmBtn.getText().toString();
-                publishCommand(message, 1);
+                publishCommandMsg(1);
                 Toast.makeText(getApplicationContext(), "Alarm - " + secSwitch, Toast.LENGTH_SHORT).show();
             }
         });
+
+        /**
+         *  Function that handles the event of the securitySwitchBtn being checked or unchecked
+         */
         securitySwitchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -64,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     secSwitch = securitySwitchBtn.getTextOff().toString();
                 }
 
-                publishCommand(message, 1);
+                publishCommandMsg(1);
 
                 Toast.makeText(getApplicationContext(), "Security system switch - " + secSwitch,
                         Toast.LENGTH_SHORT).show();
@@ -84,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void publishCommand(String msg, int attemptNo){
+    private void publishCommandMsg(int attemptNo){
         brokerConnection.getMqttClient(mqttClient -> {
             mqttClient.publish(PUB_TOPIC, message, QOS, new IMqttActionListener() {
                 @Override
@@ -96,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     exception.printStackTrace();
 
                     if(attemptNo <= MAX_MQTT_RETRY){
-                        publishCommand(msg, attemptNo+1);
+                        publishCommandMsg( attemptNo+1);
                     }
                 }
             });

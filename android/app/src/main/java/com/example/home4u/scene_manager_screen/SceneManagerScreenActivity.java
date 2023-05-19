@@ -1,4 +1,4 @@
-package com.example.home4u.scenes.scene_manager_screen;
+package com.example.home4u.scene_manager_screen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,11 +16,14 @@ import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
 import com.example.home4u.scenes.newscenecreator_activity;
 import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class SceneManagerScreenActivity extends AppCompatActivity {
+
     private ImageButton addSceneBtn;
+
     private ArrayList<SceneDataModel> sceneDataList;
     private MyAdapter myAdapter;
     private RecyclerView recyclerView;
@@ -56,9 +58,6 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
         Author: chaitanyamunje
         Source: https://www.geeksforgeeks.org/swipe-to-delete-and-undo-in-android-recyclerview/
         */
-        /**
-         * Method to handle deletion and undo a selected scene from the user
-         */
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -67,18 +66,17 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                SceneDataModel deletedScene = sceneDataList.get(viewHolder.getAbsoluteAdapterPosition());
-                int position = viewHolder.getAbsoluteAdapterPosition();
+                SceneDataModel deletedScene = sceneDataList.get(viewHolder.getAdapterPosition());
+                int position = viewHolder.getAdapterPosition();
                 SceneDataModel deletedSceneData = dbHelper.retrieveDataOfAScene(deletedScene.getSceneName());
 
-                sceneDataList.remove(viewHolder.getAbsoluteAdapterPosition());
-                myAdapter.notifyItemRemoved(viewHolder.getAbsoluteAdapterPosition());
+                sceneDataList.remove(viewHolder.getAdapterPosition());
+                myAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
                 myAdapter.notifyDataSetChanged();
 
                 //Remove the scene with its relevant data from db
                 dbHelper.deleteData(deletedScene.getSceneName());
                 Snackbar.make(recyclerView, deletedScene.getSceneName(), Snackbar.LENGTH_LONG).setAction("Undo", new View.OnClickListener() {
-                    @SuppressLint("NotifyDataSetChanged")
                     public void onClick(View v) {
                         sceneDataList.add(position, deletedScene);
 
@@ -98,10 +96,7 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
         }).attachToRecyclerView(recyclerView);
     }
 
-    /**
-     * When user selects/clicks a specific scene, it will go to the add-scene screen with passing the scene name
-     * @param position
-     */
+    //When user selects/clicks a specific scene, it will go to the add-scene screen with passing the scene name
     public void onItemClick(int position) {
         SceneDataModel sceneData = sceneDataList.get(position);
 
@@ -110,12 +105,9 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /**
-     * Retrieve data from database to fill in the sceneManager screen
-     */
     private void prepareData() {
         DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
-        List<SceneDataModel> dataList = helper.getAllScenes();
+        List dataList = helper.getAllScenes();
         this.sceneDataList.addAll(dataList);
         myAdapter.notifyDataSetChanged();
     }

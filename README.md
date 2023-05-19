@@ -23,7 +23,7 @@ Group Number: 16
 On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
 
 ## Setup and Get Started
-### Setup
+### Material
 Hardware requirement:
 - Wio terminal
 - Grove - Speaker
@@ -31,11 +31,10 @@ Hardware requirement:
 - Android phone
 - Laptop or computer
 
-The following image below shows the setup for the Wio terminal to your computer
+### Setup
+![Wio Terminal Setup](README-images/WioTerminalSetupImage.jpg)*Speaker (left), mini PIR motion sensor (right) connected to Wio terminal*
 
-[//]: <> (Add image here)
-
-Make sure the speaker is connected to the left side and motion sensor to the right side
+The following image above shows the setup for the Wio terminal to your computer using an USB-C port. Make sure the speaker is connected to the left side and motion sensor to the right side unless code has been altered.
 
 ### Automated Build
 For the android application:

@@ -19,6 +19,7 @@ package com.example.home4u.scenes;
 
     import android.annotation.SuppressLint;
     import android.app.Activity;
+    import android.content.Intent;
     import android.os.Bundle;
     import android.view.View;
     import android.widget.ImageButton;
@@ -28,7 +29,9 @@ package com.example.home4u.scenes;
     import java.util.List;
 
     import com.example.home4u.R;
+    import com.example.home4u.activity.MainActivity;
     import com.example.home4u.connectivity.BrokerConnection;
+    import com.example.home4u.homescreen_activity;
     import com.example.home4u.music.MusicInfo;
     import com.example.home4u.music.MusicInfoDownloaderCallback;
     import com.example.home4u.music.MusicPlayer;
@@ -96,9 +99,8 @@ package com.example.home4u.scenes;
                 }
             });
             skip_previous.setOnClickListener(view -> musicPlayer.previous());
-            back_button.setOnClickListener(view -> {
-                // goes back to home screen
-            });
+            back_button.setOnClickListener(view ->
+                    startActivity(new Intent(this, MainActivity.class)));
     }
 
         private void handleSongs()

@@ -14,6 +14,7 @@ import com.example.home4u.NotificationHandler;
 import com.example.home4u.R;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.connectivity.BrokerConnection;
+import com.example.home4u.scenes.music_screen_activity;
 import com.example.home4u.scenes.scene_manager_screen.SceneManagerScreenActivity;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -22,7 +23,7 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private BrokerConnection brokerConnection;
-    private Button enableAlarmBtn, manageSceneBtn;
+    private Button enableAlarmBtn, manageSceneBtn, playMusicBtn;
     private Switch securitySwitchBtn;
     private final int QOS = 0;
     private static final String SUB_TOPIC = "MotionDetector/Connection"; // topic to subscribe to
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         enableAlarmBtn = findViewById(R.id.enableAlarmButton);
         securitySwitchBtn = findViewById(R.id.securitySwitch);
         manageSceneBtn = findViewById(R.id.manageScenesButton);
+        playMusicBtn = findViewById(R.id.playMusicButton);
 
         goToAlarmActivityIfTriggered();
         NotificationHandler.handleNotificationPermission(this);
@@ -80,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
         manageSceneBtn.setOnClickListener(view ->
                 startActivity(new Intent(this, SceneManagerScreenActivity.class)));
+
+        playMusicBtn.setOnClickListener(view ->
+                startActivity(new Intent(this, music_screen_activity.class)));
     }
 
     private void goToAlarmActivityIfTriggered(){

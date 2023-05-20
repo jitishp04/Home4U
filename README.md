@@ -34,13 +34,20 @@ Hardware requirement:
 The following image above shows the setup for the Wio terminal to your computer using an USB-C port. Make sure the speaker is connected to the left side and motion sensor to the right side unless code has been altered.
 
 ### Automated Build
-For the android application:
+**For the android application:**
 ```
 cd android && ./gradlew build
 ```
-For Wio terminal:
+**For Wio Terminal:**
 ```
 docker build -t wio_terminal_image ./wio_terminal
+```
+*This will build the app inside a Docker image. To extract the built file, also run:*
+```
+docker run --name wio_terminal_container wio_terminal_image
+docker cp wio_terminal_container:wio_terminal/build/wio_terminal.ino.bin .
+docker stop wio_terminal_container
+docker rm wio_terminal_container
 ```
 
 ## Hardware and Software Architecture
@@ -49,7 +56,7 @@ docker build -t wio_terminal_image ./wio_terminal
 ## Contributions
 | Name           | Contributions|
 |----------------|-------------------------|
-| Henrik Lagrosen|  |
+| Henrik Lagrosen| Implementing music streaming (#18, #20). Backend for playing the streamed music (#4), a tool to generate music info, and part of the music player UI. Controlling music using a phone (#8, #9, #36, #10). Downloading and displaying music for Wio Terminal and Android (#19, #4, #18). Notify of alarm and acknowledge through Android (#13, #35). GitLab CI/CD pipeline (#23, #28).|
 | Shiyao Xin     |  |
 | Jitish Padhya  |Create scenes page, implement front-end, and back-end for new scene creator along with SQLite database [#7](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/7), worked on executing scenes [#26 (out-of-scope)](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/26), and final README file | 
 | Jacob Sundelid |  |

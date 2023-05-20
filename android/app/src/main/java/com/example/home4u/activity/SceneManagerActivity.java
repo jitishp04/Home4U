@@ -1,4 +1,4 @@
-package com.example.home4u.scenes.scene_manager_screen;
+package com.example.home4u.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,15 +12,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
-import com.example.home4u.scenes.newscenecreator_activity;
+import com.example.home4u.scenes.DatabaseHelper;
+import com.example.home4u.scenes.MyAdapter;
 import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SceneManagerScreenActivity extends AppCompatActivity {
+public class SceneManagerActivity extends AppCompatActivity {
     private ImageButton addSceneBtn;
     private ArrayList<SceneDataModel> sceneDataList;
     private MyAdapter myAdapter;
@@ -37,16 +37,16 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
         sceneDataList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(SceneManagerScreenActivity.this));
-        myAdapter = new MyAdapter(sceneDataList, SceneManagerScreenActivity.this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(SceneManagerActivity.this));
+        myAdapter = new MyAdapter(sceneDataList, SceneManagerActivity.this);
         recyclerView.setAdapter(myAdapter);
-        myAdapter.setOnClick(SceneManagerScreenActivity.this);
+        myAdapter.setOnClick(SceneManagerActivity.this);
         prepareData();
 
         addSceneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SceneManagerScreenActivity.this, newscenecreator_activity.class);
+                Intent intent = new Intent(SceneManagerActivity.this, SceneCreatorActivity.class);
                 startActivity(intent);
             }
         });
@@ -105,7 +105,7 @@ public class SceneManagerScreenActivity extends AppCompatActivity {
     public void onItemClick(int position) {
         SceneDataModel sceneData = sceneDataList.get(position);
 
-        Intent intent = new Intent(SceneManagerScreenActivity.this, newscenecreator_activity.class);
+        Intent intent = new Intent(SceneManagerActivity.this, SceneCreatorActivity.class);
         intent.putExtra("name", sceneData.getSceneName());
         startActivity(intent);
     }

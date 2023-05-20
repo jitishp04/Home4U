@@ -3,6 +3,7 @@
 #include "lib/music_player.cpp"
 #include "lib/wifi_manager.cpp"
 #include "lib/screen.cpp"
+#include "lib/broker_conn.cpp"
 #undef read
 
 
@@ -12,6 +13,7 @@ void setup()
   setupSerial();
   setupScreen();
   setupWifi();
+  setupBrokerConn();
 
   //Setup functions
   setupAlarm();

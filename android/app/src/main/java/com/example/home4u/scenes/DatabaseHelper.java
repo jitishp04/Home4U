@@ -1,4 +1,4 @@
-package com.example.home4u;
+package com.example.home4u.scenes;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -6,13 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.transition.Scene;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
+
+import com.example.home4u.SceneDataModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 //Database implementation was inspired from: https://www.youtube.com/watch?v=312RhjfetP8
 public class DatabaseHelper extends SQLiteOpenHelper {

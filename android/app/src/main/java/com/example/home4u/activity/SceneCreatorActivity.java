@@ -1,4 +1,4 @@
-package com.example.home4u.scenes;
+package com.example.home4u.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -14,15 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
-import com.example.home4u.DatabaseHelper;
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
-import com.example.home4u.scenes.scene_manager_screen.SceneManagerScreenActivity;
+import com.example.home4u.scenes.DatabaseHelper;
 import com.google.android.material.card.MaterialCardView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class newscenecreator_activity extends Activity {
+public class SceneCreatorActivity extends Activity {
 
 	@SuppressLint("UseSwitchCompatOrMaterialCode") //allows backwards compatibility for switches to work on older android
 	private Switch setSecuritySwitch, playMusicSwitch;
@@ -42,7 +41,7 @@ public class newscenecreator_activity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.newscenecreator);
+		setContentView(R.layout.activity_scene_creator);
 
 		setSecuritySwitch = findViewById(R.id.setSecuritySwitch);
 		playMusicSwitch = findViewById(R.id.playMusicSwitch);
@@ -110,7 +109,7 @@ public class newscenecreator_activity extends Activity {
 	//MultiSelect pop-up to allow picking of days for the scene
 	//https://www.youtube.com/watch?v=4GdbCl-47wE
 	private void showDaysDialog() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(newscenecreator_activity.this); //used for pop-up over the activity
+		AlertDialog.Builder builder = new AlertDialog.Builder(SceneCreatorActivity.this); //used for pop-up over the activity
 		builder.setTitle("Select days");
 		builder.setCancelable(false);
 		builder.setMultiChoiceItems(daysArray, selectedDays, (dialog, which, isChecked) -> {
@@ -154,7 +153,7 @@ public class newscenecreator_activity extends Activity {
 				Toast.makeText(getApplicationContext(), curSceneData.getSceneName() + "has been updated successfully", Toast.LENGTH_SHORT).show();
 			}
 			dbHelper.close();
-			startActivity(new Intent(newscenecreator_activity.this, SceneManagerScreenActivity.class));
+			startActivity(new Intent(SceneCreatorActivity.this, SceneManagerActivity.class));
 		}
 	}
 
@@ -187,12 +186,12 @@ public class newscenecreator_activity extends Activity {
 			//DatabaseHelper databaseHelper = new DatabaseHelper(newscenecreator_activity.this);
 
 			if (dbHelper.addOne(sceneDataModel)) {
-				Toast.makeText(newscenecreator_activity.this, sceneName + "has been added successfully", Toast.LENGTH_SHORT).show();
+				Toast.makeText(SceneCreatorActivity.this, sceneName + "has been added successfully", Toast.LENGTH_SHORT).show();
 			}
 
 			dbHelper.close();
 			//add transition to other activity
-			startActivity(new Intent(newscenecreator_activity.this, SceneManagerScreenActivity.class));
+			startActivity(new Intent(SceneCreatorActivity.this, SceneManagerActivity.class));
 		}
 	}
 

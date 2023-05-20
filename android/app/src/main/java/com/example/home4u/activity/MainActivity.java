@@ -15,8 +15,6 @@ import com.example.home4u.NotificationHandler;
 import com.example.home4u.R;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.connectivity.BrokerConnection;
-import com.example.home4u.scenes.music_screen_activity;
-import com.example.home4u.scenes.scene_manager_screen.SceneManagerScreenActivity;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
 import org.eclipse.paho.client.mqttv3.IMqttToken;
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homescreen);
+        setContentView(R.layout.activity_main);
 
         brokerConnection = BrokerConnection.getInstance(getApplicationContext());
         enableAlarmBtn = findViewById(R.id.enableAlarmButton);
@@ -82,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         manageSceneBtn.setOnClickListener(view ->
-                startActivity(new Intent(this, SceneManagerScreenActivity.class)));
+                startActivity(new Intent(this, SceneManagerActivity.class)));
 
         goToMusicBtn.setOnClickListener(view -> {
             final Intent newIntent = new Intent(this, MusicActivity.class);

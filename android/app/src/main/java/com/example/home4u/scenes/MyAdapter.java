@@ -1,4 +1,4 @@
-package com.example.home4u.scenes.scene_manager_screen;
+package com.example.home4u.scenes;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.home4u.R;
 import com.example.home4u.SceneDataModel;
+import com.example.home4u.activity.SceneManagerActivity;
 
 import java.util.ArrayList;
 
@@ -23,20 +24,16 @@ Source: https://www.geeksforgeeks.org/cardview-using-recyclerview-in-android-wit
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private ArrayList<SceneDataModel> sceneDataList;
-    private Context context;
 
-    private SceneManagerScreenActivity onClick;
+    private SceneManagerActivity onClick;
 
-    public void setOnClick(SceneManagerScreenActivity onClick) {
+    public void setOnClick(SceneManagerActivity onClick) {
         this.onClick = onClick;
     }
 
-    public interface OnItemClicked {
-        void onItemClick(int position);
-    }
-    public MyAdapter(ArrayList<SceneDataModel> sceneData, SceneManagerScreenActivity activity) {
+
+    public MyAdapter(ArrayList<SceneDataModel> sceneData, SceneManagerActivity activity) {
         this.sceneDataList = sceneData;
-        this.context = activity;
     }
 
     @NonNull

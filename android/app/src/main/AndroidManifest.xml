@@ -25,9 +25,10 @@
 
 
         <activity
-            android:name=".scenes.newscenecreator_activity"
+            android:name=".activity.SceneCreatorActivity"
             android:exported="false"
             />
+
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
@@ -37,14 +38,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity 
-            android:name=".activity.MusicActivity"
-        />
-        <activity
-            android:name=".scenes.scene_manager_screen.SceneManagerScreenActivity"
-            android:exported="true">
 
-        </activity>
+        <activity 
+            android:name=".activity.MusicActivity" />
+
+        <activity
+            android:name=".activity.SceneManagerActivity"
+            android:exported="true"/>
 
         <activity android:name=".activity.AlarmTriggeredActivity"/>
 
@@ -53,6 +53,7 @@
             android:enabled="true"
             android:exported="false"
             android:launchMode="singleInstance"/>
+
         <receiver
             android:name=".OnBootedReceiver"
             android:enabled="true"
@@ -61,6 +62,6 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-    </application>
 
+    </application>
 </manifest>

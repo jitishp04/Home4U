@@ -46,18 +46,6 @@ docker build -t wio_terminal_image ./wio_terminal
 ## Hardware and Software Architecture
 [//]: <> (Add image for software and hardware architecture)
 
-## Visuals
-
-[//]: <> (TODO)
-
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Usage
-
-[//]: <> (TODO)
-
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
 ## Contributions
 | Name           | Contributions|
 |----------------|-------------------------|
@@ -67,6 +55,23 @@ Use examples liberally, and show the expected output if you can. It's helpful to
 | Jacob Sundelid |  |
 | Raghav Tengse  |Designing screens for android app, implement front end and back end for music screen[#22](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/22), input button message from android application.[#8](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/8)  |
 | Utkarsh Singh  |Create home screen [#21](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/21), implement pause feature for wio terminal[#5](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/5), implement pause feature for android application.[#9](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/9)  |
+
+## Visuals
+<details>
+<summary>App visuals</summary>
+
+|            |              |
+|----------------|-------------------------|
+|![Home screen](README-images/HomeScreen.jpg)*Home screen* |![New sceen screen](README-images/CreateAndUpdateSceneScreen.jpg)*Create scenes*  |
+| ![Manage scenes](README-images/ManageScenesScreen.jpg)*Manage scenes*| ![Song player](README-images/SongPlayerScreen.jpg)*Song player* |
+</details>
+
+<details>
+<summary>Wio terminal visuals</summary>
+
+</details>
+
+[//]: <> (TODO)
 
 ## Full documentation
 See [Wiki](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis/home) for further information regarding project information, usage, team contract and the 3 sprint deliveries.

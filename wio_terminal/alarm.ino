@@ -13,7 +13,7 @@ const int PIR_MOTION_SENSOR = PIN_WIRE1_SCL;
 
 
 String motionSensorMsg = ""; 
-bool securityModeStateOn = true; //default: false
+bool securityModeStateOn = false; //default: false
 bool alarmTriggered = false;
 bool alarmOffManually = false;
 
@@ -35,6 +35,7 @@ void setSecurityMode(String message) {
   tft.setTextSize(2);
   tft.setCursor((320 - tft.textWidth(message)) / 2, 120); 
   tft.print(message);
+  Serial.println(message);
 
   drawMusicPlayer();
 
@@ -81,21 +82,22 @@ void runAlarm() {
       Serial.println(motionSensorMsg);
     }
   }
+
+  if(alarmOffManually) {
+    drawMusicPlayer();
+    alarmOffManually = false;
+  }
 }
 
 
 
 void alarmTriggeredProgram(){
-  while(alarmTriggered){
-    analogWrite(WIO_BUZZER, 150);
-    tft.fillScreen(TFT_BLACK);
-    tft.setCursor((320 - tft.textWidth(motionSensorMsg)) / 2, 120); 
-    tft.print(motionSensorMsg);
-
-    disableAlarmUi();
-  }
-
-  drawMusicPlayer();
+  analogWrite(WIO_BUZZER, 150);
+  tft.fillScreen(TFT_BLACK);
+  tft.setCursor((320 - tft.textWidth(motionSensorMsg)) / 2, 120); 
+  tft.print(motionSensorMsg);
+    
+  disableAlarmUi();
 }
 
 void disableAlarmUi(){
@@ -122,6 +124,7 @@ void disableAlarmUi(){
         analogWrite(WIO_BUZZER, 0);
         alarmTriggered = false;
         alarmOffManually = true;
+        securityModeStateOn = false;
         client.publish(TOPIC_pub_connection, "Alarm turned off mannually");
         delay(1000);
       }

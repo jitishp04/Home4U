@@ -37,13 +37,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity 
+            android:name=".scenes.music_screen_activity"
+        />
         <activity
             android:name=".scenes.scene_manager_screen.SceneManagerScreenActivity"
             android:exported="true">
 
         </activity>
 
-        <activity android:name=".activity.AlarmActivity"/>
+        <activity android:name=".activity.AlarmTriggeredActivity"/>
         <activity android:name=".activity.MusicSelectActivity"/>
 
         <receiver

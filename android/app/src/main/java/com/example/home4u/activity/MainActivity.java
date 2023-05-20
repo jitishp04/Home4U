@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     private void goToAlarmActivityIfTriggered(){
         AlarmStateConnection.isAlarmTriggered(isTriggered -> {
             if(isTriggered){
-                final Intent newIntent = new Intent(this, AlarmActivity.class);
+                final Intent newIntent = new Intent(this, AlarmTriggeredActivity.class);
                 startActivity(newIntent);
             }
         });

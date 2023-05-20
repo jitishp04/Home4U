@@ -59,4 +59,17 @@
 	<string name="play_arrow_string">Play arrow</string>
 	<string name="pause_string">Pause</string>
 	<string name="album_string">Album</string>
+    <string name="alarm_has_been_triggered">Alarm has been triggered!</string>
+    <string name="go_to_alarm_control">Go alarm control</string>
+
+	<!-- music screen strings -->
+    <string name="title_string">Your songs</string>
+	<string name="song_count_string">2 songs</string>
+	<string name="play_button_description"> play music</string>
+	<string name="pause_button_description"> pause music</string>
+	<string name="skip_next_description">play the next song</string>
+	<string name="skip_previous_description">play the previous song</string>
+
+
+
 </resources>

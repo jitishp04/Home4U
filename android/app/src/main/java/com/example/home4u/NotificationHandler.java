@@ -12,6 +12,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
@@ -19,7 +20,7 @@ import androidx.core.app.ActivityCompat;
 import com.example.home4u.alarm.AlarmNotificationHandler;
 
 public class NotificationHandler {
-    public static final String HAS_REGISTERED_CHANNEL_ID = "has registered notification channel";
+    public static final String TAG = NotificationHandler.class.getSimpleName();
 
 
     // =============== NOTIFICATION PERMISSION ================
@@ -50,26 +51,10 @@ public class NotificationHandler {
 
     // ============ NOTIFICATION CHANNEL ===========
 
-    public static void handleNotificationChannels(Context context) {
-        if (!hasRegisteredNotificationChannels(context)) {
-            registerNotificationChannels(context);
-            setHasRegisteredNotificationChannels(context);
-        }
-    }
-
-    private static boolean hasRegisteredNotificationChannels(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(spName, Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean(HAS_REGISTERED_CHANNEL_ID, false);
-    }
-
-    private static void registerNotificationChannels(Context context) {
+    //It is ok that this is run multiple times
+    public static void registerNotificationChannels(Context context) {
         AlarmNotificationHandler.createChannel(context);
+        Log.v(TAG, "Registered NotificationChannels");
     }
 
-    private static void setHasRegisteredNotificationChannels(Context context) {
-        context.getSharedPreferences(spName, Context.MODE_PRIVATE)
-                .edit()
-                .putBoolean(HAS_REGISTERED_CHANNEL_ID, true)
-                .apply();
-    }
 }

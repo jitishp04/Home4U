@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name=".scenes.music_screen_activity"
+            android:name=".activity.MusicActivity"
         />
         <activity
             android:name=".scenes.scene_manager_screen.SceneManagerScreenActivity"
@@ -47,7 +47,6 @@
         </activity>
 
         <activity android:name=".activity.AlarmTriggeredActivity"/>
-        <activity android:name=".activity.MusicSelectActivity"/>
 
         <receiver
             android:name=".alarm.AlarmStateWatcher"

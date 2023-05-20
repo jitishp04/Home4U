@@ -15,7 +15,6 @@ import com.example.home4u.NotificationHandler;
 import com.example.home4u.R;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.connectivity.BrokerConnection;
-import com.example.home4u.scenes.music_screen_activity;
 import com.example.home4u.scenes.scene_manager_screen.SceneManagerScreenActivity;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, SceneManagerScreenActivity.class)));
 
         goToMusicBtn.setOnClickListener(view -> {
-            final Intent newIntent = new Intent(this, music_screen_activity.class);
+            final Intent newIntent = new Intent(this, MusicActivity.class);
             startActivity(newIntent);
         });
     }

@@ -69,6 +69,10 @@ docker build -t wio_terminal_image ./wio_terminal
 <details>
 <summary>Wio terminal visuals</summary>
 
+![Wio terminal home screen](README-images/WioTerminalHomeScreen.jpg)*Wio terminal home screen*
+
+The wio terminal has more screens that provide information such as alarm is actived or diactived, and it being triggered.
+ 
 </details>
 
 [//]: <> (TODO)

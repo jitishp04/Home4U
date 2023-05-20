@@ -28,8 +28,6 @@ public class homescreen_activity extends Activity {
 		setContentView(R.layout.homescreen);
 
 
-
-		play_arrow = findViewById(R.id.play_arrow);
 		manageScenesButton =  findViewById(R.id.manageScenesButton);
 		enableAlarmButton = findViewById(R.id.enableAlarmButton);
 		playMusicButton =  findViewById(R.id.playMusicButton);

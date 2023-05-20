@@ -202,76 +202,6 @@
 					android:textSize="40sp"
 					android:textStyle="bold" />
 
-				<View
-					android:id="@+id/songPlayerBottom"
-					android:layout_width="wrap_content"
-					android:layout_height="99dp"
-					android:layout_below="@+id/alarmSystem"
-					android:layout_marginStart="0dp"
-					android:layout_marginTop="16dp"
-					android:background="@drawable/rectangle_91_shape" />
-
-				<View
-					android:id="@+id/albumBox"
-					android:layout_width="80dp"
-					android:layout_height="80dp"
-					android:layout_below="@+id/alarmSystem"
-					android:layout_marginStart="8dp"
-					android:layout_marginTop="30dp"
-					android:background="@drawable/album" />
-
-				<TextView
-					android:id="@+id/song_name"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_alignBottom="@+id/alarmSystem"
-					android:layout_gravity="center_horizontal|center"
-					android:layout_marginStart="94dp"
-					android:layout_marginBottom="-93dp"
-					android:gravity="center"
-					android:text="@string/song_name_string"
-					android:textColor="@color/remotely_disable_your_alarm_color"
-					android:textSize="12sp"
-					android:textStyle="bold" />
-
-				<TextView
-					android:id="@+id/artist_name"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_below="@+id/alarmSystem"
-					android:layout_gravity="center_horizontal|center"
-					android:layout_marginStart="94dp"
-					android:layout_marginTop="43dp"
-					android:gravity="center"
-					android:text="@string/artist_name_string"
-					android:textColor="@color/remotely_disable_your_alarm_color"
-					android:textSize="12sp"
-					android:textStyle="bold" />
-
-				<ImageButton
-					android:id="@+id/play_arrow"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
-					android:layout_alignTop="@+id/songPlayerBottom"
-					android:layout_marginStart="53dp"
-					android:layout_marginTop="19dp"
-					android:layout_toEndOf="@+id/song_name"
-					android:contentDescription="@string/play_arrow_string"
-					android:src="@drawable/play_arrow" />
-
-				<ImageButton
-					android:id="@+id/pause"
-					android:layout_width="50dp"
-					android:layout_height="50dp"
-					android:layout_alignTop="@+id/songPlayerBottom"
-					android:layout_alignEnd="@+id/connect_your_phone_to_the_device_and_play_music"
-					android:layout_marginStart="25dp"
-					android:layout_marginTop="19dp"
-					android:layout_marginEnd="20dp"
-					android:layout_toEndOf="@+id/play_arrow"
-					android:contentDescription="@string/pause_string"
-					android:src="@drawable/pause" />
-
 				<Switch
 					android:id="@+id/securitySwitch"
 					android:layout_width="wrap_content"
@@ -288,13 +218,6 @@
 
 			</RelativeLayout>
 
-			<ImageView android:id="@+id/album"
-				android:src="@drawable/album"
-				android:contentDescription="@string/album_string"
-				android:layout_marginStart="-283dp"
-				android:layout_marginTop="70dp"
-				android:layout_width="50dp"
-				android:layout_height="50dp" />
 
 		</RelativeLayout>
 

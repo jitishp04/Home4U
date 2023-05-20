@@ -1,5 +1,8 @@
 #ifndef MUSIC_PLAYER_H
 #define MUSIC_PLAYER_H
+#define TOPIC_sub "MusicPlayer"
+#define TOPIC_pub_connection "MusicPlayer/Connection"
+#define MQTT_PORT 1883
 
 
 #include "song_downloader.cpp"

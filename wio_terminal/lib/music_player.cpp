@@ -42,12 +42,16 @@ class MusicPlayer{
             return songLen;
         }
 
+        void pause(){
+            doPause = true;
+        }
 
     private:
         int playerI = 0;
         String songAudio = "";
         String lastPlayedSong = "";
         SongDownloader songDownloader;
+        bool doPause;
 
         int songLen = 0;
         SongInfo** songInfos;
@@ -71,6 +75,7 @@ class MusicPlayer{
         }
 
         void play(){
+            doPause = false;
             int songStrLength = songAudio.length();
         
             for(; !isPausePressed(); playerI+=5){ 
@@ -100,6 +105,11 @@ class MusicPlayer{
         }
 
         bool isPausePressed(){
+            if(doPause){
+                return true;
+            }
+
+            runBrokerSub();
             return digitalRead(WIO_KEY_B) == LOW;
         }
 };

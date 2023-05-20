@@ -122,7 +122,7 @@ void musicCommandListener(String message){
   myLog("Music command: " + message);
 
   if(message == "pause"){
-
+    musicPlayer->pause();
   } else {
     musicPlayer->playSong(message);
   }

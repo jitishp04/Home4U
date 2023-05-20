@@ -2,6 +2,7 @@ package com.example.home4u.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -14,6 +15,7 @@ import com.example.home4u.NotificationHandler;
 import com.example.home4u.R;
 import com.example.home4u.alarm.AlarmStateConnection;
 import com.example.home4u.connectivity.BrokerConnection;
+import com.example.home4u.scenes.music_screen_activity;
 import com.example.home4u.scenes.scene_manager_screen.SceneManagerScreenActivity;
 
 import org.eclipse.paho.client.mqttv3.IMqttActionListener;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch securitySwitchBtn;
     private final int QOS = 0;
     private static final String SUB_TOPIC = "MotionDetector/Connection"; // topic to subscribe to
-    public static final String PUB_TOPIC = "MotionDetector";
+    public static final String PUB_TOPIC = "Home4U/alarm";
     private final static int MAX_MQTT_RETRY = 3;
     private String message;
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         enableAlarmBtn = findViewById(R.id.enableAlarmButton);
         securitySwitchBtn = findViewById(R.id.securitySwitch);
         manageSceneBtn = findViewById(R.id.manageScenesButton);
+        final Button goToMusicBtn = findViewById(R.id.playMusicButton);
 
         goToAlarmActivityIfTriggered();
         NotificationHandler.handleNotificationPermission(this);
@@ -80,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
 
         manageSceneBtn.setOnClickListener(view ->
                 startActivity(new Intent(this, SceneManagerScreenActivity.class)));
+
+        goToMusicBtn.setOnClickListener(view -> {
+            final Intent newIntent = new Intent(this, music_screen_activity.class);
+            startActivity(newIntent);
+        });
     }
 
     private void goToAlarmActivityIfTriggered(){
@@ -93,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void publishCommandMsg(int attemptNo){
         brokerConnection.getMqttClient(mqttClient -> {
+            Log.v(TAG, "Publishing: " + PUB_TOPIC + message);
             mqttClient.publish(PUB_TOPIC, message, QOS, new IMqttActionListener() {
                 @Override
                 public void onSuccess(IMqttToken asyncActionToken) {

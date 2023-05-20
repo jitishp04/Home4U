@@ -9,7 +9,7 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 
 public class MusicPlayer {
     private final static String TAG = MusicPlayer.class.getSimpleName();
-    private final static String MQTT_TOPIC = "MusicPlayer";
+    private final static String MQTT_TOPIC = "Home4U/music";
     private final static int MQTT_QOS = 1;
     private final static int MAX_MQTT_RETRY = 3;
 
@@ -25,7 +25,7 @@ public class MusicPlayer {
 
     public void play(int i){
         final SongInfo songInfo = musicInfo.getSongs().get(i);
-        final String command = "play " + songInfo.getFileName();
+        final String command = songInfo.getFileName();
 
         publishCommand(command, 1);
         lastPlayedI = i;

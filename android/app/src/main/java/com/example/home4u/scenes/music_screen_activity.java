@@ -109,6 +109,7 @@ package com.example.home4u.scenes;
                 public void onDownloaded()
                 {
                     runOnUiThread(() -> {
+                        song_count.setText(musicInfo.getSongs().size()+" songs");
                         populateSongView(musicInfo.getSongs());
                     });
                 }

@@ -1,5 +1,6 @@
 #include "lib/logger.cpp"
 #include "lib/screen.cpp"
+#include "lib/broker_conn.cpp"
 
 
 const int PLAY_BTN = WIO_KEY_C;
@@ -21,6 +22,8 @@ void setupMusicPlayer(){
   playingSong = musicPlayer->getSongInfo(0);
 
   drawMusicPlayer();
+
+  musicCallback = musicCommandListener;
 }
 
 
@@ -110,4 +113,17 @@ void runMusicPlayer(){
     drawMusicPlayer();
   }
 
+  runBrokerSub();
+
+
+}
+
+void musicCommandListener(String message){
+  myLog("Music command: " + message);
+
+  if(message == "pause"){
+
+  } else {
+    musicPlayer->playSong(message);
+  }
 }

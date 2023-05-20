@@ -5,6 +5,7 @@
 #include "song_downloader.cpp"
 #include <ArduinoJson.h>
 #include "song_info.cpp"
+#include "broker_conn.cpp"
 
 #define SPEAKER PIN_WIRE_SCL
 
@@ -19,6 +20,7 @@ class MusicPlayer{
             parseSongInfo(songInfo);
 
             pinMode(WIO_KEY_B, INPUT);
+
         }
 
         void playSong(String fileName){

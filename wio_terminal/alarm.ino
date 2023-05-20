@@ -8,7 +8,6 @@
 #include "TFT_eSPI.h"
 #include "lib/broker_conn.cpp"
 
-const char* server = BROKER_IP;  // MQTT Broker ip, no protocol or port
 const int PIR_MOTION_SENSOR = PIN_WIRE1_SCL;
 
 
@@ -26,6 +25,8 @@ void setupAlarm(){
   pinMode(WIO_5S_UP, INPUT);
   pinMode(WIO_5S_DOWN, INPUT);
   pinMode(WIO_5S_PRESS, INPUT);
+
+  alarmCallback = setSecurityMode;
 }
 
 
@@ -58,10 +59,7 @@ void setSecurityMode(String message) {
 // =========== PROGRAM ===========
 
 void runAlarm() {
-  if (!client.connected()) {
-    connect();
-  }
-  client.loop();
+  runBrokerSub();
 
   if (!securityModeStateOn) {
       alarmTriggered = false;

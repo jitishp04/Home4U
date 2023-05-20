@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class ServerConnectionHelper {
     private static final String TAG = ServerConnectionHelper.class.getSimpleName();
-    private static final String URL = "http://192.168.0.135:8081";
+    private static final String URL = "http://192.168.195.69:8081";
 
 
     // *Inspired by ChatGPT*

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- song_card2 from your XD file. -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-	android:shape="rectangle" >
-	<solid android:color="@color/song_card1_color" />
-</shape>
-

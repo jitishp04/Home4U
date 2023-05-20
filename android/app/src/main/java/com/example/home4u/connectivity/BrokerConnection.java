@@ -23,7 +23,7 @@ import java.util.List;
 public class BrokerConnection implements MqttCallback{
     private static final String TAG = BrokerConnection.class.getSimpleName();
 
-    private static final String BROKER_HOST = "192.168.0.135"; // Ip address of the local host
+    private static final String BROKER_HOST = "192.168.195.69"; // Ip address of the local host
     private static final String MQTT_server = "tcp://" + BROKER_HOST + ":1883"; // the server uses tcp protocol on the local host ip and listens to the port 1883
     private static final String CLIENT_ID = "DIT113-Home4U"; // the app client ID name
     private static final int BROKER_RECONNECT_DELAY = 10 * 1000;

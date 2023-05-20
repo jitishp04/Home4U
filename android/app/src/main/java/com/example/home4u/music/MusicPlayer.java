@@ -34,6 +34,7 @@ public class MusicPlayer {
     public void pause(){
         final String command = "pause";
         publishCommand(command, 1);
+
     }
 
     public void next(){

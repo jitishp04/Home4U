@@ -6,6 +6,8 @@ HOME4U is a smart home system that provides users with the experience of monitor
 - Interact (play, pause, skip) songs via app and Wio terminal 
 - Create scenes (though unable to execute, open to development)
 
+Video [link](https://youtu.be/eZnGJqaa51U) for product demo
+
 ## Team Information
 Group Number: 16 
 | Name           | Email                   |

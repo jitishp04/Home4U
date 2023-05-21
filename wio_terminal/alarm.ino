@@ -8,8 +8,7 @@
 #include "TFT_eSPI.h"
 #include "lib/broker_conn.cpp"
 
-const int PIR_MOTION_SENSOR = PIN_WIRE1_SCL;
-
+#define PIR_MOTION_SENSOR 0
 
 String motionSensorMsg = ""; 
 bool securityModeStateOn = false; //default: false

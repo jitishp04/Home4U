@@ -52,6 +52,7 @@ docker rm wio_terminal_container
 
 ## Hardware and Software Architecture
 [//]: <> (Add image for software and hardware architecture)
+![Class Diagram](README-images/class-diagram.jpg)
 
 ## Contributions
 | Name           | Contributions|
@@ -77,6 +78,7 @@ docker rm wio_terminal_container
 <summary>Wio terminal visuals</summary>
 
 ![Wio terminal home screen](README-images/WioTerminalHomeScreen.jpg)*Wio terminal home screen*
+![Component Diagram](README-images/Component_Diagram.jpg)
 
 The wio terminal has more screens that provide information such as alarm is actived or diactived, and it being triggered.
  

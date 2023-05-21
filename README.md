@@ -1,65 +1,15 @@
-# Group 16
-
-
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://git.chalmers.se/courses/dit113/2023/group-16/group-16.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-HOME4YOU
-
+# Home4U - Group 16
 ## Description
-HOME4U is a smart home system that provides users with the experience of monitoring home security from a distance and enjoying smart control of their home through devices, e.g., controlling their home's lights and music from their smartphones.
+HOME4U is a smart home system that provides users with the experience of monitoring home security from a distance and enjoying smart control of their home through devices. This involves:
+- Set security mode from Wio terminal and app
+- Turn off alarm through app and Wio terminal
+- Interact (play, pause, skip) songs via app and Wio terminal 
+- Create scenes (though unable to execute, open to development)
+
+Video [link](https://youtu.be/eZnGJqaa51U) for product demo
 
 ## Team Information
-* Group Number: 16
-### Team members
+Group Number: 16 
 | Name           | Email                   |
 |----------------|-------------------------|
 | Henrik Lagrosen | guslagrhe@student.gu.se |
@@ -69,36 +19,102 @@ HOME4U is a smart home system that provides users with the experience of monitor
 | Raghav Tengse  | gustengra@student.gu.se |
 | Utkarsh Singh  | gussinut@student.gu.se  |
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+Further information about the group is [here](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis/team-contract).
+
+## Setup and Get Started
+### Material
+Hardware requirement:
+- Wio terminal
+- Grove - Speaker
+- Grove - Mini PIR Motion Sensor
+- Android phone
+- Laptop or computer
+
+### Setup
+![Wio Terminal Setup](README-images/WioTerminalSetupImage.jpg)*Speaker (left), mini PIR motion sensor (right) connected to Wio terminal*
+
+The following image above shows the setup for the Wio terminal to your computer using an USB-C port. Make sure the speaker is connected to the left side and motion sensor to the right side unless code has been altered.
+
+<details>
+<summary>Detailed Setup</summary>
+
+1. creates myEnv.h in wio_terminal lib folder
+
+```
+cd wio_terminal/lib && echo "#define SSID \"\"\n#define SERVER_URL \"\"\n#define WIFI_PASSWORD \"\"\n#define BROKER_IP \"\"" > myEnv.h
+```
+2. Fill in the missing information in myEnv such as SSID, WIFI_PASSWORD, SERVER_URL, and BROKER_ID (this shouldn't contain port or protocol)
+
+3. Start server using: 
+```
+cd node_server
+npm install
+node app
+```
+
+4. Head to ServerConnectionHelper URL variable (android/app/src/main/java/com/example/home4u/connectivity/ServerConnectionHelper.java) and set it to the backend server URL
+
+5. Head to BrokerConnection BROKERHOST variable (android/app/src/main/java/com/example/home4u/connectivity/BrokerConnection.java) and set it to the broker IP address without protocol or port
+
+### Automated Build
+**For the android application:**
+```
+cd android && ./gradlew build
+```
+**For Wio Terminal:**
+```
+docker build -t wio_terminal_image ./wio_terminal
+```
+*This will build the app inside a Docker image. To extract the built file, also run:*
+```
+docker run --name wio_terminal_container wio_terminal_image
+docker cp wio_terminal_container:wio_terminal/build/wio_terminal.ino.bin .
+docker stop wio_terminal_container
+docker rm wio_terminal_container
+```
+
+ 
+</details>
+
+## Hardware and Software Architecture
+[//]: <> (Add image for software and hardware architecture)
+![Component Diagram](README-images/Component_Diagram.jpg)*Component Diagram for Wio Terminal & Android Application*
+
+## Contributions
+| Name           | Contributions|
+|----------------|-------------------------|
+| Henrik Lagrosen| Implementing music streaming (#18, #20). Backend for playing the streamed music (#4), a tool to generate music, and part of the music player UI. Controlling music using a phone (#8, #9, #36, #10). Downloading and displaying music for Wio Terminal and Android (#19, #4, #18). Notify of alarm and acknowledge through Android (#13, #35). GitLab CI/CD pipeline (#23, #28).|
+| Shiyao Xin     | Implement backend for security system, incl. enabling and disabling security mode, turning off the alarm triggered by detected motion both via Wio Terminal and Android app, and enabling alarm manually via Android app (#2, #15, #38); create media player UI for Wio Terminal(#4); implement backend for scenes and scene manager UI(#7); work on executing scenes(#26 marked as out-of-scope); clean up code(#29); merge code for Android(#34); adjust Android App layout(#30); make milestone plannings. |
+| Jitish Padhya  |Create scenes page, implement front-end, and back-end for new scene creator along with SQLite database [#7](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/7), worked on executing scenes [#26 (out-of-scope)](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/26), and final README file[#37](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/37) | 
+| Jacob Sundelid | N/A |
+| Raghav Tengse  |Designing screens for android app, implement front end and back end for music screen[#22](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/22), input button message from android application.[#8](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/8)  Created the deliverables page for Sprint-1 and Sprint-2. Created Video Demos for the sprints.|
+| Utkarsh Singh  |Create home screen for android application [#21](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/21), implement pause feature for wio terminal[#5](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/5), implement pause feature for android application.[#9](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/9), final ReadMe file[#37](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/issues/37).  |
 
 ## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+<details>
+<summary>App visuals</summary>
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+|            |              |
+|----------------|-------------------------|
+|![Home screen](README-images/HomeScreen.jpg)*Home screen* |![New sceen screen](README-images/CreateAndUpdateSceneScreen.jpg)*Create scenes*  |
+| ![Manage scenes](README-images/ManageScenesScreen.jpg)*Manage scenes*| ![Song player](README-images/SongPlayerScreen.jpg)*Song player* |
+</details>
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+<details>
+<summary>Wio terminal visuals</summary>
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+![Wio terminal home screen](README-images/WioTerminalHomeScreen.jpg)*Wio terminal home screen*
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+The wio terminal has more screens that provide information such as alarm is actived or diactived, and it being triggered.
+ 
+</details>
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+[//]: <> (TODO)
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Full documentation
+See [Wiki](https://git.chalmers.se/courses/dit113/2023/group-16/group-16/-/wikis/home) for further information regarding project information, usage, team contract and the 3 sprint deliveries.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## Project status and Support
+The project is stopped completely after 21/05/2023 hence there are unfinished requirements and its associated features that weren't able to be accomplished in the given time frame. Though, an MVP is available for everyone!
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Look for contact information under [team information](#team-members) for any support.

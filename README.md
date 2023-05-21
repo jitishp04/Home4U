@@ -33,6 +33,27 @@ Hardware requirement:
 
 The following image above shows the setup for the Wio terminal to your computer using an USB-C port. Make sure the speaker is connected to the left side and motion sensor to the right side unless code has been altered.
 
+<details>
+<summary>Detailed Setup</summary>
+
+1. creates myEnv.h in wio_terminal lib folder
+
+```
+cd wio_terminal/lib && echo "#define SSID \"\"\n#define SERVER_URL \"\"\n#define WIFI_PASSWORD \"\"\n#define BROKER_IP \"\"" > myEnv.h
+```
+2. Fill in the missing information in myEnv such as SSID, WIFI_PASSWORD, SERVER_URL, and BROKER_ID (this shouldn't contain port or protocol)
+
+3. Start server using: 
+```
+cd node_server
+npm install
+node app
+```
+
+4. Head to ServerConnectionHelper URL variable (android/app/src/main/java/com/example/home4u/connectivity/ServerConnectionHelper.java) and set it to the backend server URL
+
+5. Head to BrokerConnection BROKERHOST variable (android/app/src/main/java/com/example/home4u/connectivity/BrokerConnection.java) and set it to the broker IP address without protocol or port
+
 ### Automated Build
 **For the android application:**
 ```
@@ -49,6 +70,9 @@ docker cp wio_terminal_container:wio_terminal/build/wio_terminal.ino.bin .
 docker stop wio_terminal_container
 docker rm wio_terminal_container
 ```
+
+ 
+</details>
 
 ## Hardware and Software Architecture
 [//]: <> (Add image for software and hardware architecture)
